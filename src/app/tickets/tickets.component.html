@@ -1,0 +1,90 @@
+
+
+<form (ngSubmit)="applyFilter()">
+  <label for="player">{{ 'translate.player' | translate }}:</label>
+  <input type="text" id="player" name="playerId" [(ngModel)]="filter.playerId" />
+
+  <label for="status">{{ 'translate.status' | translate }}:</label>
+  <select id="status" name="status" [(ngModel)]="filter.status">
+    <option *ngFor="let option of statusOptions" [value]="option">  
+          {{ 'translate.' + option | translate }}
+    </option>
+  </select>
+
+  <label for="startDate">{{ 'translate.start_date' | translate }}:</label>
+  <input type="date" id="startDate" name="createdFrom" [(ngModel)]="filter.createdFrom" />
+
+  <label for="endDate">{{ 'translate.end_date' | translate }}:</label>
+  <input type="date" id="endDate" name="createdTo" [(ngModel)]="filter.createdTo" />
+
+  <button type="submit">{{ 'translate.filter' | translate }}</button>
+</form>
+
+<div *ngIf="tickets && tickets.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{{ 'translate.player' | translate }} ID</th>
+        <th>{{ 'translate.created_at' | translate }}</th>
+        <th>{{ 'translate.pay_in_amount' | translate }}</th>
+        <th>{{ 'translate.pay_out_amount' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let ticket of tickets">
+        <tr (click)="toggleDetails(ticket.id)">
+          <td>{{ ticket.id }}</td>
+          <td>{{ ticket.playerId }}</td>
+          <td>{{ ticket.createdAt | date }}</td>
+          <td>{{ ticket.payInAmount }}</td>
+          <td>{{ ticket.payOutAmount }}</td>
+        </tr>
+        <tr *ngIf="selectedTicketId === ticket.id">
+          <td colspan="5">
+            <div class="ticket-details">
+              <div *ngIf="ticket.bets && ticket.bets.length > 0">
+                <h4>{{ 'translate.bets' | translate }}:</h4>
+                <ul>
+                  <li *ngFor="let bet of ticket.bets">
+                    <p>{{ 'translate.bet_id' | translate }}: {{ bet.id }}</p>
+                    <p>{{ 'translate.sport' | translate }}: {{ bet.sport }}</p>
+                    <p>{{ 'translate.league' | translate }}: {{ bet.league }}</p>
+                    <p>{{ 'translate.market' | translate }}: {{ bet.market }}</p>
+                    <p>{{ 'translate.participants' | translate }}: {{ bet.participants }}</p>
+                    <p>{{ 'translate.odds' | translate }}: {{ bet.odds }}</p>
+                    <p>{{ 'translate.status' | translate }}: {{ bet.status }}</p>
+                    <p>{{ 'translate.start_at' | translate }}: {{ bet.startAt }}</p>
+                  </li>
+                </ul>
+              </div>
+              <div *ngIf="linkedTransactions && linkedTransactions.length > 0">
+                <h4>{{ 'translate.linked_transactions' | translate }}:</h4>
+                <ul>
+                  <li *ngFor="let transaction of linkedTransactions">
+                    <p>{{ 'translate.id' | translate }}: {{ transaction.id }}</p>
+                    <p>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</p>
+                    <p>{{ 'translate.player_id' | translate }}: {{ transaction.playerId }}</p>
+                    <p>{{ 'translate.provider' | translate }}: {{ transaction.provider }}</p>
+                    <p>{{ 'translate.direction' | translate }}: {{ transaction.direction }}</p>
+                    <p>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</p>
+                    <p>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</p>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <button class="logout-button" type="button" (click)="logout()">{{ 'translate.logout' | translate }}</button>
+</div>
+
+<div *ngIf="tickets && tickets.length === 0">
+  <p>{{ 'translate.no_tickets' | translate }}</p>
+</div>

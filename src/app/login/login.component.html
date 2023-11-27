@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="content-container">
+      <div class="logo-container">
+        <div class="logo"></div>
+      </div>
+      <div class="title-container">
+        <h1 class="title">Backoffice Test</h1>
+      </div>
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <label for="username">{{ 'translate.username' | translate }}:</label>
+    <input type="text" id="username" name="username" [(ngModel)]="username" required>
+  
+    <label for="password">{{ 'translate.password' | translate }}:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" required>
+  
+    <button type="submit" [disabled]="!loginForm.valid" >{{ 'translate.login' | translate }}</button>
+  </form>
+  <div *ngIf="loginError" class="error-message">
+    {{'translate.loginError' | translate}}
+  </div>
+  

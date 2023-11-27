@@ -1,0 +1,95 @@
+
+
+.dashboard-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f6eded;
+
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+
+  nav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 20px;
+
+    .dashboard-button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #030503;
+        color: #231111;
+      }
+
+      &.transaction {
+        background-color: #3498db;
+        color: #fff;
+      }
+
+      &.tickets {
+        background-color: #e74c3c;
+        color: #fff;
+      }
+    }
+  }
+
+  .button-container {
+    display: flex;
+    gap: 20px;
+
+    .dashboard-button {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #030503;
+        color: #231111;
+      }
+
+      &.transaction {
+        background-color: #3498db;
+        color: #fff;
+      }
+
+      &.tickets {
+        background-color: #e74c3c;
+        color: #fff;
+      }
+    }
+  }
+
+  .logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border: 4px solid #060606;
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #030503;
+      color: #231111;
+    }
+  }
+}

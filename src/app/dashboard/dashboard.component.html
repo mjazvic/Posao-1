@@ -1,0 +1,11 @@
+<div class="dashboard-container">
+    <p>{{ 'translate.dashboard' | translate }} </p>  
+    <div *ngIf="hasGrant('CanViewTransactions')">
+      <button class="dashboard-button transaction" type="button" routerLink="/transactions">{{ 'translate.dashboard_transactions' | translate }}</button>
+    </div>
+    <div *ngIf="hasGrant('CanViewTickets')">
+      <button class="dashboard-button tickets" type="button" routerLink="/tickets">{{ 'translate.dashboard_tickets' | translate }}</button>
+    </div>
+    <button class="logout-button" type="button" (click)="logout()">{{ 'translate.logout' | translate }}</button>
+  </div>
+  
