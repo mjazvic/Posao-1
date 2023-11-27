@@ -6,7 +6,7 @@
 
   <label for="status">{{ 'translate.status' | translate }}:</label>
   <select id="status" name="status" [(ngModel)]="filter.status">
-    <option *ngFor="let option of statusOptions" [value]="option">  
+    <option *ngFor="let option of statusOptions" [value]="option">
           {{ 'translate.' + option | translate }}
     </option>
   </select>
@@ -58,10 +58,11 @@
                   </li>
                 </ul>
               </div>
-              <div *ngIf="linkedTransactions && linkedTransactions.length > 0">
-                <h4>{{ 'translate.linked_transactions' | translate }}:</h4>
-                <ul>
-                  <li *ngFor="let transaction of linkedTransactions">
+              <div *ngIf="userHasTransactionsGrant()">
+                <div *ngIf="linkedTransactions && linkedTransactions.length > 0">
+                  <h4>{{ 'translate.linked_transactions' | translate }}:</h4>
+                  <ul>
+                    <li *ngFor="let transaction of linkedTransactions">
                     <p>{{ 'translate.id' | translate }}: {{ transaction.id }}</p>
                     <p>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</p>
                     <p>{{ 'translate.player_id' | translate }}: {{ transaction.playerId }}</p>
@@ -70,8 +71,9 @@
                     <p>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</p>
                     <p>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</p>
 
-                  </li>
-                </ul>
+                    </li>
+                 </ul>
+                </div>
               </div>
             </div>
           </td>

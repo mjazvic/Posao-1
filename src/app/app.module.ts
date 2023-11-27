@@ -6,6 +6,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthGuard } from './auth.guard';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import {LogOutService} from "./log-out.service";
 
 @NgModule({
   declarations: [
@@ -25,9 +28,9 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
   ],
   imports: [
     RouterModule.forRoot([
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'transactions', component: TransactionsComponent },
-      { path: 'tickets', component: TicketsComponent },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'transactions', component: TransactionsComponent,canActivate: [AuthGuard] },
+      { path: 'tickets', component: TicketsComponent,canActivate: [AuthGuard] },
       { path: '', component: LoginComponent },
     ]),
     BrowserModule,
@@ -41,7 +44,8 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
       }
     })
   ],
-  providers: [],
+  providers:[AuthGuard,LogOutService]
+  ,
   bootstrap: [AppComponent]
 })
 export class AppModule { constructor(translate: TranslateService) {

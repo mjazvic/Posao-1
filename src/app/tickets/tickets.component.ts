@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { TicketService } from '../services/ticket.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { TransactionService } from '../services/transaction.service'; 
+import { TransactionService } from '../services/transaction.service';
 import { Ticket, TicketFilter, TicketStatus, TicketBetStatus } from '../models/ticket.model';
 import { Transaction } from '../models/transaction.model';
+import {Grant} from "../models/user.model";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class TicketsComponent implements OnInit {
 
   constructor(
     private ticketService: TicketService,
-    private transactionService: TransactionService, 
+    private transactionService: TransactionService,
     private userService: UserService,
     private router: Router
     ) {}
@@ -36,7 +37,7 @@ export class TicketsComponent implements OnInit {
       (tickets) => {
         this.tickets = tickets;
       },
-      
+
     );
   }
 
@@ -44,16 +45,24 @@ export class TicketsComponent implements OnInit {
     this.loadTickets();
   }
 
-  logout() {
-    this.router.navigate(['']);
- }
+  logout(): void {
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['']);
+    });
+  }
   toggleDetails(ticketId: string) {
     this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
     if (this.selectedTicketId) {
       this.loadLinkedTransactions(this.selectedTicketId);
     } else {
-      this.linkedTransactions = []; 
+      this.linkedTransactions = [];
     }
+  }
+
+  userHasTransactionsGrant(): boolean {
+    // Check if the user has the necessary grant for transactions
+    const currentUser = this.userService.getCurrentUser();
+    return currentUser && currentUser.grants.includes(Grant.CanViewTransactions);
   }
 
   loadLinkedTransactions(ticketId: string) {
@@ -63,5 +72,5 @@ export class TicketsComponent implements OnInit {
       },
    );
   }
-  
+
 }

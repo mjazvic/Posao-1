@@ -22,7 +22,11 @@ export class DashboardComponent {
     return currentUser.grants.includes(grantToCheck);
   }
 
-  logout() {
-     this.router.navigate(['']);
+
+
+  logout(): void {
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['']);
+    });
   }
 }
