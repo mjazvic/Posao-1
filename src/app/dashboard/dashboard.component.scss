@@ -29,7 +29,8 @@ body {
       margin-top: 10px;
 
       &:hover {
-        background-color: #030503;
+        background-color: #d7caca;
+        border: 4px solid #d7caca;
         color: #ffffff;
       }
     }
@@ -49,7 +50,8 @@ body {
         transition: background-color 0.3s ease;
 
         &:hover {
-          background-color: #030503;
+          background-color: #d7caca;
+          border: 4px solid #d7caca;
           color: #ffffff;
         }
       }

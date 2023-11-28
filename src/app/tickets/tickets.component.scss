@@ -50,8 +50,9 @@ form {
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #030503;
-    color: #f8f8f8;
+    background-color: #d7caca;
+    border: 4px solid #d7caca;
+    color: #ffffff;
   }
 }
 
@@ -105,8 +106,9 @@ table {
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #030503;
-    color: #f8f8f8;
+    background-color: #d7caca;
+    border: 4px solid #d7caca;
+    color: #ffffff;
   }
 }
 
