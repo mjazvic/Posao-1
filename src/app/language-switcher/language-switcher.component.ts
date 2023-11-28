@@ -4,12 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-language-switcher',
-  template: `
-    <select class="custom-select" (change)="changeLang($event)">
-      <option value="en">English</option>
-      <option value="hr">Croatian</option>
-    </select>
-  `,
+  templateUrl:'language-switcher.component.html' ,
+  styleUrls: ['./language-switcher.component.scss'],
 })
 export class LanguageSwitcherComponent {
   constructor(private translate: TranslateService) {}

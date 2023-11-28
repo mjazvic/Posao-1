@@ -67,7 +67,7 @@ form {
 
     &:hover {
       background-color: #030503;
-      color: #231111;
+      color: #ffffff;
     }
   }
 
@@ -102,4 +102,8 @@ form {
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    &:hover {
+      background-color: #030503;
+      color: #f8f8f8;
+    }
   }
