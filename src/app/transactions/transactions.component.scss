@@ -73,6 +73,8 @@ form {
 
   table {
     width: 100%;
+    position: relative;
+    margin-bottom: 20px;
     border-collapse: collapse;
 
     th, td {
@@ -91,19 +93,22 @@ form {
     }
   }
 
-  .dashboard{
-    position: absolute;
-    bottom: 10px;
-    left: 45%;
-    border: 4px solid #060606;
-    background-color: #d7caca;
+.dashboard{
+  margin-top: auto;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  left: 45%;
+  border: 4px solid #060606;
+  background-color: #d7caca;
+  font-family: 'sans-serif';
+  border-radius: 50px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
-    border-radius: 50px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: #030503;
-      color: #f8f8f8;
-    }
+  &:hover {
+    background-color: #030503;
+    color: #f8f8f8;
   }
+}
