@@ -55,6 +55,7 @@ export class UserService {
     return WebUtils.mockSuccess('isAuthorized', {}, !!this.currentUser);
   }
 
+
   public getCurrentUser(): User {
     this.loadCurrentUser();
     return this.currentUser;

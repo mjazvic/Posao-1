@@ -4,7 +4,7 @@ import { TransactionService } from '../services/transaction.service';
 import { Transaction, TransactionFilter, TransactionProvider } from '../models/transaction.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { TransactionType } from '../models/transaction.model'; 
+import { TransactionType } from '../models/transaction.model';
 import { TransactionDirection } from '../models/transaction.model';
 
 
@@ -47,10 +47,14 @@ export class TransactionsComponent implements OnInit {
     return Object.values(this.transactionProviders) as string[];
   }
 
-  logout() {
-    this.router.navigate(['']);
-   }
-
+  logout(): void {
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['']);
+    });
+  }
+  dashboard(){
+    this.router.navigate(['/dashboard'])
+  }
   toggleDetails(transactionId: string) {
     this.selectedTransactionId = this.selectedTransactionId === transactionId ? null : transactionId;
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
 import { users} from "./data/user.data";
 import {UserService} from "./services/user.service";
-import {Grant} from "./models/user.model";
+import {Grant, User} from "./models/user.model";
 
 
 @Injectable({
@@ -26,23 +26,24 @@ export class AuthGuard implements CanActivate {
 
       return true;
     } else {
-      // Redirect to the login page or another route
       this.router.navigate(['']);
       return false;
     }
+
   }
 
   private isAllowedUser(user, routePath: string): boolean {
-    // Check if the user has the necessary grant for the requested route
+
     switch (routePath) {
+
       case 'dashboard':
-        return true; // Allow access to the dashboard for all users
+        return true;
       case 'tickets':
         return user.grants.includes(Grant.CanViewTickets);
       case 'transactions':
         return user.grants.includes(Grant.CanViewTransactions);
       default:
-        return false; // Default to not allowed for unknown routes
+        return false;
     }
   }
 }

@@ -86,7 +86,9 @@
 <div>
   <button class="logout-button" type="button" (click)="logout()">{{ 'translate.logout' | translate }}</button>
 </div>
-
+<div>
+  <button class="dashboard" type="button" (click)="dashboard()">{{ 'translate.dashboard' | translate }}</button>
+</div>
 <div *ngIf="tickets && tickets.length === 0">
   <p>{{ 'translate.no_tickets' | translate }}</p>
 </div>

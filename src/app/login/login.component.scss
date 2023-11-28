@@ -6,7 +6,7 @@
     width: 99vw;
   }
   .error-message {
-    color: #ff0000; 
+    color: #ea3e3e;
     margin-top: 10px;
   }
   .title-container {
@@ -14,21 +14,32 @@
     align-items: center;
     justify-content: center;
   }
-  
+input[name="username"] {
+  width: 100px;
+  background-color: #ece6e6;
+
+}
+input[name="password"] {
+   width: 100px;
+  background-color: #ece6e6;
+ }
+button{
+  font-size: 15px;
+  margin-left: 10px;
+}
   .logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .logo {
     width: 400px;
     height: 100px;
     background-size: cover;
-   
+
   }
-  
+
   .title {
     color: darkred;
   }
-  

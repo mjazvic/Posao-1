@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {LogOutService} from "./log-out.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ import {LogOutService} from "./log-out.service";
 
 export class AppComponent implements OnInit {
 
-  constructor(private translate:TranslateService,private logOutService: LogOutService) { }
+  constructor(private translate:TranslateService) { }
 
 
   public ngOnInit(): void { }

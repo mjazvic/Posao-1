@@ -15,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
-import {LogOutService} from "./log-out.service";
+import {LoginGuard} from "./login.guard";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import {LogOutService} from "./log-out.service";
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'transactions', component: TransactionsComponent,canActivate: [AuthGuard] },
       { path: 'tickets', component: TicketsComponent,canActivate: [AuthGuard] },
-      { path: '', component: LoginComponent },
+      { path: '', component: LoginComponent,canActivate: [LoginGuard] },
     ]),
     BrowserModule,
     FormsModule,
@@ -44,7 +44,7 @@ import {LogOutService} from "./log-out.service";
       }
     })
   ],
-  providers:[AuthGuard,LogOutService]
+  providers:[AuthGuard]
   ,
   bootstrap: [AppComponent]
 })

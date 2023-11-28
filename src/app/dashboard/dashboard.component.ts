@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
   constructor(private userService: UserService,private router : Router) {}
 
-  hasGrant(grant: Grant | string): boolean {
+  public hasGrant(grant: Grant | string): boolean {
     const currentUser = this.userService.getCurrentUser();
     if (!currentUser) {
       return false;
@@ -21,6 +21,7 @@ export class DashboardComponent {
     const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
+
 
 
 

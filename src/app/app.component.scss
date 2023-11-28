@@ -1,3 +1,15 @@
+app-language-switcher {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #d7caca;
+  color: #d7caca;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+router-outlet {
+
 .container {
   display: flex;
   align-items: center;
@@ -5,6 +17,7 @@
   height: 90vh;
   width: 99vw;
 }
+
 
 .title-container {
   display: flex;
@@ -28,7 +41,7 @@
 .title {
   color: darkred;
 }
-
+}
 
 
 

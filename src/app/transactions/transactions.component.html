@@ -16,13 +16,13 @@
   <select id="direction" name="direction" [(ngModel)]="filter.direction">
     <option *ngFor="let transactionDirection of getTransactionDirections()" [value]="transactionDirection">
       {{ 'translate.' + transactionDirection | translate }}
-    </option>  
+    </option>
   </select>
 
   <label for="provider">{{ 'translate.provider' | translate }}:</label>
   <select id="provider" name="provider" [(ngModel)]="filter.provider">
     <option *ngFor="let transactionProvider of getTransactionProviders()" [value]="transactionProvider">
-      {{ 'translate.' + transactionProvider | translate }}    </option>  
+      {{ 'translate.' + transactionProvider | translate }}    </option>
   </select>
 
   <label for="createdFrom">{{ 'translate.start_date' | translate }}:</label>
@@ -77,7 +77,12 @@
     </tbody>
   </table>
 </div>
+<div>
+  <button class="dashboard" type="button" (click)="dashboard()">{{ 'translate.dashboard' | translate }}</button>
+</div>
 
 <div *ngIf="transactions && transactions.length === 0">
   <p>{{ 'translate.no_transactions' | translate }}</p>
 </div>
+
+

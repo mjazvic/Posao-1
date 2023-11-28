@@ -37,7 +37,6 @@ export class TicketsComponent implements OnInit {
       (tickets) => {
         this.tickets = tickets;
       },
-
     );
   }
 
@@ -49,6 +48,9 @@ export class TicketsComponent implements OnInit {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']);
     });
+  }
+  dashboard(){
+    this.router.navigate(['/dashboard'])
   }
   toggleDetails(ticketId: string) {
     this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
