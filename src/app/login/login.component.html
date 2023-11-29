@@ -15,8 +15,6 @@
 
         <button type="submit" [disabled]="!loginForm.valid" >{{ 'translate.login' | translate }}</button>
       </form>
-  <div *ngIf="loginError" class="error-message">
-    {{'translate.loginError' | translate}}
-  </div>
+
     </div>
 </div>
