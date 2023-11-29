@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, } from '@angular/router';
 import {UserService} from "./services/user.service";
 import {Router} from "@angular/router";
 
@@ -9,9 +8,7 @@ import {Router} from "@angular/router";
 })
 export class LoginGuard implements CanActivate {
   constructor(private router: Router, private userService: UserService) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
+  canActivate(): boolean {
     const currentUser = this.userService.getCurrentUser();
 
     if (currentUser) {
