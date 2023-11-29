@@ -10,6 +10,8 @@ export interface Ticket {
 }
 
 export interface TicketFilter {
+  username?: string;
+
   playerId?: string;
   status?: TicketStatus;
   createdFrom?: string;

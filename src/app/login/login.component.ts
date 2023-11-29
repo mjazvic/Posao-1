@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import {LoaderService} from "../loader.service";
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,12 @@ export class LoginComponent {
   password: string = '';
   loginError: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router,private loaderService:LoaderService) {}
 
   login() {
-  this.userService.login(this.username,this.password).subscribe(() => {
+    this.loaderService.showLoader();
+
+    this.userService.login(this.username,this.password).subscribe(() => {
   this.router.navigate(['/dashboard']);
 });
 }

@@ -1,6 +1,8 @@
 <form (ngSubmit)="loadTransactions()">
-  <label for="player">{{ 'translate.player' | translate }}:</label>
-  <input type="text" id="player" name="playerId" [(ngModel)]="filter.playerId" />
+  <label for="username">{{ 'translate.username' | translate }}:</label>
+  <select id="username" name="username" [(ngModel)]=userName >
+    <option *ngFor="let player of players" [value]="player.username">{{ player.username }}</option>
+  </select>
 
   <label for="externalId">{{ 'translate.external_id' | translate }}:</label>
   <input type="text" id="externalId" name="externalId" [(ngModel)]="filter.externalId" />
@@ -30,6 +32,8 @@
 
   <label for="createdTo">{{ 'translate.end_date' | translate }}:</label>
   <input type="date" id="createdTo" name="createdTo" [(ngModel)]="filter.createdTo" />
+  <label for="playerId">{{ 'translate.player' | translate }}:</label>
+  <input type="text" id="playerd" name="playerId" [(ngModel)]="filter.playerId" />
 
   <button type="submit">{{ 'translate.filter' | translate }}</button>
 </form>

@@ -7,6 +7,8 @@ import { TransactionService } from '../services/transaction.service';
 import { Ticket, TicketFilter, TicketStatus,  } from '../models/ticket.model';
 import { Transaction } from '../models/transaction.model';
 import {Grant} from "../models/user.model";
+import {players} from "../data/player.data";
+import {LoaderService} from "../loader.service";
 
 
 @Component({
@@ -19,9 +21,11 @@ export class TicketsComponent implements OnInit {
   filter: TicketFilter = {};
   statusOptions = Object.values(TicketStatus);
   selectedTicketId: string | null = null;
-  linkedTransactions: Transaction[] = []; // Store linked transactions
+  linkedTransactions: Transaction[] = [];
+  userName:string;
 
   constructor(
+    private loaderService:LoaderService,
     private ticketService: TicketService,
     private transactionService: TransactionService,
     private userService: UserService,
@@ -33,9 +37,13 @@ export class TicketsComponent implements OnInit {
   }
 
   loadTickets() {
-    this.ticketService.getTickets(this.filter).subscribe(
+    this.loaderService.showLoader();
+
+    this.ticketService.getTickets(this.filter,this.userName).subscribe(
       (tickets) => {
         this.tickets = tickets;
+        this.loaderService.hideLoader();
+
       },
     );
   }
@@ -45,6 +53,8 @@ export class TicketsComponent implements OnInit {
   }
 
   logout(): void {
+    this.loaderService.showLoader();
+
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']);
     });
@@ -69,17 +79,17 @@ export class TicketsComponent implements OnInit {
     return currentUser.grants.includes(grantToCheck);
   }
   userHasTransactionsGrant(): boolean {
-    // Check if the user has the necessary grant for transactions
     const currentUser = this.userService.getCurrentUser();
     return currentUser && currentUser.grants.includes(Grant.CanViewTransactions);
   }
 
   loadLinkedTransactions(ticketId: string) {
+
     this.transactionService.getTransactions({ externalId: ticketId }).subscribe(
       (transactions) => {
         this.linkedTransactions = transactions;
       },
    );
-  }
 
+  } protected readonly players = players;
 }

@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { TransactionType } from '../models/transaction.model';
 import { TransactionDirection } from '../models/transaction.model';
 import {Grant} from "../models/user.model";
+import { players } from '../data/player.data';
+import {LoaderService} from "../loader.service";
+
 
 
 
@@ -22,8 +25,11 @@ export class TransactionsComponent implements OnInit {
   transactionTypes = TransactionType;
   transactionDirectons = TransactionDirection;
   transactionProviders = TransactionProvider;
+  players = players
+  userName:string ;
 
   constructor(
+    private loaderService:LoaderService,
     private transactionService: TransactionService,
     private userService: UserService,
     private router: Router,
@@ -32,6 +38,7 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTransactions();
+
   }
 
   public hasGrant(grant: Grant | string): boolean {
@@ -42,10 +49,15 @@ export class TransactionsComponent implements OnInit {
     const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
+
   loadTransactions() {
-    this.transactionService.getTransactions(this.filter).subscribe((transactions) => {
-      this.transactions = transactions;
-    });
+    this.loaderService.showLoader();
+    this.transactionService.getTransactions(this.filter,this.userName).subscribe(
+      (transactions) => {
+        this.transactions = transactions;
+        this.loaderService.hideLoader();
+      },
+    );
   }
   getTransactionTypes(): string[] {
     return Object.values(this.transactionTypes) as string[];
@@ -58,6 +70,8 @@ export class TransactionsComponent implements OnInit {
   }
 
   logout(): void {
+    this.loaderService.showLoader();
+
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']);
     });
@@ -68,4 +82,6 @@ export class TransactionsComponent implements OnInit {
   toggleDetails(transactionId: string) {
     this.selectedTransactionId = this.selectedTransactionId === transactionId ? null : transactionId;
   }
+
 }
+

@@ -18,6 +18,7 @@ export interface TransactionFilter {
   direction?: TransactionDirection;
   createdFrom?: string;
   createdTo?: string;
+  username?: string;
 }
 
 export enum TransactionType {

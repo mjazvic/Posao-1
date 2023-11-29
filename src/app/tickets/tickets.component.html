@@ -1,8 +1,10 @@
 
 
 <form (ngSubmit)="applyFilter()">
-  <label for="player">{{ 'translate.player' | translate }}:</label>
-  <input type="text" id="player" name="playerId" [(ngModel)]="filter.playerId" />
+  <label for="username">{{ 'translate.username' | translate }}:</label>
+  <select id="username" name="username" [(ngModel)]=userName >
+    <option *ngFor="let player of players" [value]="player.username">{{ player.username }}</option>
+  </select>
 
   <label for="status">{{ 'translate.status' | translate }}:</label>
   <select id="status" name="status" [(ngModel)]="filter.status">

@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {LoaderService} from "./loader.service";
+import { Router,NavigationEnd,NavigationStart,NavigationCancel,NavigationError} from "@angular/router";
+
 
 @Component({
   selector: 'app-root',
@@ -9,11 +12,18 @@ import {Component, OnInit} from '@angular/core';
 
 export class AppComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private loaderService: LoaderService) {}
 
-
-  public ngOnInit(): void { }
-
-
-
-}
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loaderService.showLoader();
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        this.loaderService.hideLoader();
+      }
+    });
+  }}

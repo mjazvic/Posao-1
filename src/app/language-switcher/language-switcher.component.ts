@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {LoaderService} from "../loader.service";
 
 @Component({
   selector: 'app-language-switcher',
@@ -8,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./language-switcher.component.scss'],
 })
 export class LanguageSwitcherComponent {
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService,private loaderService:LoaderService) {}
 
   changeLang(event: Event): void {
     const target = event.target as HTMLSelectElement;
