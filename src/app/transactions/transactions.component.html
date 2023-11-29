@@ -77,6 +77,9 @@
     </tbody>
   </table>
 </div>
+<div *ngIf="hasGrant('CanViewTickets')">
+  <button class="dashboard-button tickets" [ngClass]="{'center-tickets': !hasGrant('CanViewTransactions')}" type="button" routerLink="/tickets">{{ 'translate.dashboard_tickets' | translate }}</button>
+</div>
 <div>
   <button class="dashboard" type="button" (click)="dashboard()">{{ 'translate.dashboard' | translate }}</button>
 </div>

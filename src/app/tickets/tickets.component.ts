@@ -4,7 +4,7 @@ import { TicketService } from '../services/ticket.service';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { TransactionService } from '../services/transaction.service';
-import { Ticket, TicketFilter, TicketStatus, TicketBetStatus } from '../models/ticket.model';
+import { Ticket, TicketFilter, TicketStatus,  } from '../models/ticket.model';
 import { Transaction } from '../models/transaction.model';
 import {Grant} from "../models/user.model";
 
@@ -60,7 +60,14 @@ export class TicketsComponent implements OnInit {
       this.linkedTransactions = [];
     }
   }
-
+  public hasGrant(grant: Grant | string): boolean {
+    const currentUser = this.userService.getCurrentUser();
+    if (!currentUser) {
+      return false;
+    }
+    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
+    return currentUser.grants.includes(grantToCheck);
+  }
   userHasTransactionsGrant(): boolean {
     // Check if the user has the necessary grant for transactions
     const currentUser = this.userService.getCurrentUser();

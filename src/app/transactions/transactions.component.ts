@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { TransactionType } from '../models/transaction.model';
 import { TransactionDirection } from '../models/transaction.model';
+import {Grant} from "../models/user.model";
 
 
 
@@ -26,12 +27,21 @@ export class TransactionsComponent implements OnInit {
     private transactionService: TransactionService,
     private userService: UserService,
     private router: Router,
+
     ) {}
 
   ngOnInit(): void {
     this.loadTransactions();
   }
 
+  public hasGrant(grant: Grant | string): boolean {
+    const currentUser = this.userService.getCurrentUser();
+    if (!currentUser) {
+      return false;
+    }
+    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
+    return currentUser.grants.includes(grantToCheck);
+  }
   loadTransactions() {
     this.transactionService.getTransactions(this.filter).subscribe((transactions) => {
       this.transactions = transactions;

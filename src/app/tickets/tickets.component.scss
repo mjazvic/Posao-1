@@ -111,6 +111,26 @@ table {
     color: #ffffff;
   }
 }
+.transactions{
+  margin-top: auto;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  left: 44.8%;
+  border: 4px solid #060606;
+  background-color: #d7caca;
+  font-family: 'sans-serif';
+  border-radius: 50px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #d7caca;
+    border: 4px solid #d7caca;
+    color: #ffffff;
+  }
+}
 
 
 

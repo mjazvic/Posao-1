@@ -86,6 +86,9 @@
 <div>
   <button class="logout-button" type="button" (click)="logout()">{{ 'translate.logout' | translate }}</button>
 </div>
+<div *ngIf="hasGrant('CanViewTransactions')">
+  <button class="dashboard-button transactions" type="button" routerLink="/transactions">{{ 'translate.dashboard_transactions' | translate }}</button>
+</div>
 <div>
   <button class="dashboard" type="button" (click)="dashboard()">{{ 'translate.dashboard' | translate }}</button>
 </div>
