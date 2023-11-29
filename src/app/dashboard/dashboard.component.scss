@@ -35,25 +35,23 @@ body {
       }
     }
 
-      .logout-button {
-        position: absolute;
+    .logout-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      border: 4px solid #060606;
+      background-color: #d7caca;
+      border-radius: 50px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
 
-        top: 20px;
-        right: 20px;
-        padding: 10px;
-        border: 4px solid #060606;
+      &:hover {
         background-color: #d7caca;
-
-        border-radius: 50px;
-        font-size: 14px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-          background-color: #d7caca;
-          border: 4px solid #d7caca;
-          color: #ffffff;
-        }
+        border: 4px solid #d7caca;
+        color: #ffffff;
       }
+    }
     }}
 
