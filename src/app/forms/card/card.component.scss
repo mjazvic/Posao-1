@@ -1,0 +1,18 @@
+
+.card {
+  border-radius: 8px;
+  padding:0;
+  margin-top: 0;
+  margin-left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 300px;
+  z-index: 100000;
+  background-color: #323232;
+}
+
+h3 {
+  color: #ffffff;
+}

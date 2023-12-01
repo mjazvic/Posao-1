@@ -1,0 +1,29 @@
+<body>
+<div class="dashboard-container">
+  <div class="dark-background">
+    <app-language-switcher></app-language-switcher>
+    <h1 class="title">{{ 'translate.dashboard' | translate }} </h1>
+    <div class="buttons">
+    <div  *ngIf="hasGrant('CanViewTransactions')">
+        <app-button-form class="transactionButton" [ngClass]="{'center-transactions': !hasGrant('CanViewTickets')}" type="button" (click)="changeToTransaction()" buttonAtribute="large" buttonName="{{ 'translate.dashboard_transactions' | translate }}"></app-button-form>
+  </div>
+  <div  *ngIf="hasGrant('CanViewTickets')">
+    <app-button-form class="ticketButton" [ngClass]="{'center-tickets': !hasGrant('CanViewTransactions')}" type="button" (click)="changeToTickets()" buttonAtribute="large" buttonName="{{ 'translate.dashboard_tickets' | translate }}"></app-button-form>
+  </div>
+  </div>
+    <app-logout-form></app-logout-form>
+  </div>
+  <div class="tables">
+  <div id="tick" #ticketSection>
+  <div *ngIf="showTicketDetails" >
+    <app-table-form></app-table-form>
+  </div>
+</div>
+<div id="tack" #transactionSection>
+<div *ngIf="showTransactionDetails">
+  <app-transaction-table-form></app-transaction-table-form>
+</div>
+</div>
+</div>
+</div>
+</body>

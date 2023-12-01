@@ -1,0 +1,79 @@
+body{
+  filterButton{
+    position: relative;
+    left:48%;
+    margin-top: 20%S ;
+    margin-bottom: 20px ;
+
+  }
+table {
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #323232;
+  color: #d7d1d1;
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 1rem;
+  text-align: left;
+}
+th {
+  background: hsla(0, 8%, 3%, 0.7);
+}
+
+tr:nth-of-type(2n) {
+  background: hsla(0, 0%, 0%, 0.1);
+}
+form {
+  margin-top: 20px;
+  margin-bottom: 1px;
+  position: relative;
+  left:3%;
+  font-family: 'sans-serif';
+
+  .submitButton{
+    background-color: rgba(204, 204, 204, 0);
+    border-color: rgba(152, 142, 142, 0);
+    padding: 2px 1px;
+    font-size: 3px;
+    margin-left: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(204, 204, 204, 0);
+      color: #cccccc;
+    }
+  }
+  label {
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  input[name="playerId"] {
+    width: 50px;
+  }
+
+  select[name="status"] {
+    width: 100px;
+  }
+
+  input, select, button {
+
+    margin-right: 4px;
+    margin-bottom: 3px;
+    padding: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.45);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+}
+}

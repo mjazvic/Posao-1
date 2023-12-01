@@ -1,0 +1,34 @@
+.button{
+  background-color: rgba(215, 202, 202, 0);
+  font-size: 30px;
+  color: #bdbaba;
+  border: 4px solid #ffffff;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+
+
+  &.small {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 12px;
+  }
+
+  &.medium {
+    font-size: 14px;
+    padding: 8px 14px;
+    font-weight: bold;
+  }
+
+  &.large {
+    font-size: 20px;
+    padding: 15px 20px;
+    font-weight: bold;
+  }
+  &:hover {
+    border: 4px solid #323232;
+    color: #ffffff;
+    background-color: #323232;
+  }
+}

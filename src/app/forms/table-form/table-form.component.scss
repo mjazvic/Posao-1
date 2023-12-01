@@ -1,0 +1,60 @@
+.filterButton{
+  position: relative;
+  left:48%;
+
+}
+form {
+  margin-top: 20px;
+  margin-bottom: 1px;
+  position: relative;
+  left:25%;
+  font-family: 'sans-serif';
+
+  label {
+    font-weight: bold;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  input[name="playerId"] {
+    width: 50px;
+  }
+
+  select[name="status"] {
+    width: 100px;
+  }
+
+  input, select {
+    margin-right: 4px;
+    margin-bottom: 3px;
+    padding: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.45);
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+}
+table {
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #323232;
+  color: #d7d1d1;
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  padding: 1rem;
+  text-align: left;
+}
+th {
+  background: hsla(0, 8%, 3%, 0.7);
+}
+
+tr:nth-of-type(2n) {
+  background: hsla(0, 0%, 0%, 0.1);
+}

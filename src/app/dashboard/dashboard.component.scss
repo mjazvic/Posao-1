@@ -1,0 +1,54 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ada9a9;
+  font-family: 'YourPreferredFont', sans-serif;
+  .tables{
+    width: 100%;
+  }
+  .dashboard-container {
+    position: relative;
+    font-family: 'sans-serif';
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    justify-content: flex-start;
+    align-items: center;
+    height: 300vh;
+    .dark-background {
+      background-color: #090909;
+      color: #ffffff;
+      padding: 45px;
+      width:100%;
+      text-align: center;
+    }
+    .transactionButton{
+      color: #ea3e3e;
+    }
+    .title {
+      font-size: 60px;
+      margin-top: 10px;
+      color: #bdbaba;
+    }
+    }
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+
+  .ticketButton, .transactionButton {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+
+  }
+
+  }
+
+
+
+
+
+
