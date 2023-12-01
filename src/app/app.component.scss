@@ -1,8 +1,9 @@
+
 app-language-switcher {
   margin-left: 10px;
   margin-top: 10px;
-  background-color: #d7caca;
-  color: #d7caca;
+  background-color: rgba(215, 202, 202, 0);
+  color: rgba(215, 202, 202, 0);
   position: relative;
   top: 10px;
   left: 0;
@@ -11,38 +12,20 @@ app-language-switcher {
 }
 router-outlet {
 
-.container {
+  .container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 90vh;
   width: 99vw;
 }
-
-
-.title-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.logo {
-  width: 400px;
-  height: 100px;
-  background-size: cover;
-  background-image: url("../assets/branding/large-logo.png");
-}
 
-.title {
-  color: darkred;
-}
-}
+
+
+
 
 
 

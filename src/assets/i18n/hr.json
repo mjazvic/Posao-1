@@ -49,10 +49,12 @@
       "SportWon" : "Dobitak",
       "SportLost" : "Gubitak",
       "Created": "Kreiran",
-      "loginError":"Pogresno korisnicko ime ili lozinka.Molimo pokusajte ponovno"
+      "loginError":"Pogresno korisnicko ime ili lozinka.Molimo pokusajte ponovno",
+      "forgot_password":"Zaboravljena lozinka"
 
 
-      }
-    
+
+    }
+
   }
-  
+

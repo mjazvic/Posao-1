@@ -9,6 +9,7 @@ import { Transaction } from '../models/transaction.model';
 import {Grant} from "../models/user.model";
 import {players} from "../data/player.data";
 import {LoaderService} from "../loader.service";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -17,79 +18,10 @@ import {LoaderService} from "../loader.service";
   styleUrls: ['./tickets.component.scss'],
 })
 export class TicketsComponent implements OnInit {
-  tickets: Ticket[];
-  filter: TicketFilter = {};
-  statusOptions = Object.values(TicketStatus);
-  selectedTicketId: string | null = null;
-  linkedTransactions: Transaction[] = [];
-  userName:string;
 
-  constructor(
-    private loaderService:LoaderService,
-    private ticketService: TicketService,
-    private transactionService: TransactionService,
-    private userService: UserService,
-    private router: Router
-    ) {}
+  constructor() {
+  }
 
   ngOnInit() {
-    this.loadTickets();
   }
-
-  loadTickets() {
-    this.loaderService.showLoader();
-
-    this.ticketService.getTickets(this.filter,this.userName).subscribe(
-      (tickets) => {
-        this.tickets = tickets;
-        this.loaderService.hideLoader();
-
-      },
-    );
-  }
-
-  applyFilter() {
-    this.loadTickets();
-  }
-
-  logout(): void {
-    this.loaderService.showLoader();
-
-    this.userService.logout().subscribe(() => {
-      this.router.navigate(['']);
-    });
-  }
-  dashboard(){
-    this.router.navigate(['/dashboard'])
-  }
-  toggleDetails(ticketId: string) {
-    this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
-    if (this.selectedTicketId) {
-      this.loadLinkedTransactions(this.selectedTicketId);
-    } else {
-      this.linkedTransactions = [];
-    }
-  }
-  public hasGrant(grant: Grant | string): boolean {
-    const currentUser = this.userService.getCurrentUser();
-    if (!currentUser) {
-      return false;
-    }
-    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
-    return currentUser.grants.includes(grantToCheck);
-  }
-  userHasTransactionsGrant(): boolean {
-    const currentUser = this.userService.getCurrentUser();
-    return currentUser && currentUser.grants.includes(Grant.CanViewTransactions);
-  }
-
-  loadLinkedTransactions(ticketId: string) {
-
-    this.transactionService.getTransactions({ externalId: ticketId }).subscribe(
-      (transactions) => {
-        this.linkedTransactions = transactions;
-      },
-   );
-
-  } protected readonly players = players;
 }

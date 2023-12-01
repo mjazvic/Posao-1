@@ -1,45 +1,48 @@
-.container {
+body {
+    background: url('https://wallpapertag.com/wallpaper/full/b/5/4/449750-popular-cool-nature-backgrounds-2262x1504-for-phones.jpg') no-repeat center center fixed;
+
+}
+  .container {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 90vh;
     width: 99vw;
-  }
-  .error-message {
-    color: #ea3e3e;
-    margin-top: 10px;
-  }
-  .title-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-input[name="username"] {
-  width: 100px;
-  background-color: #ece6e6;
+    min-height: 100vh;
 
-}
-input[name="password"] {
-   width: 100px;
-  background-color: #ece6e6;
- }
-button{
-  font-size: 15px;
-  margin-left: 10px;
-}
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .error-message {
+      color: #ea3e3e;
+      margin-top: 10px;
+    }
+
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    input[name="username"] {
+      width: 100px;
+      background-color: rgba(236, 230, 230, 0);
+      border-color: rgba(2, 0, 0, 0.52);
+    }
+
+    input[name="password"] {
+      width: 100px;
+      border-color: rgba(0, 0, 0, 0.52);
+      background-color: rgba(80, 174, 236, 0);
+    }
+
+    button {
+      font-size: 15px;
+      margin-left: 10px;
+      color: darkred;
+      background-color: rgba(80, 174, 236, 0);
+      border-color: rgba(0, 0, 0, 0.52);
+    }
+
+    .title {
+      color: darkred;
+    }
   }
 
-  .logo {
-    width: 400px;
-    height: 100px;
-    background-size: cover;
-
-  }
-
-  .title {
-    color: darkred;
-  }
