@@ -39,12 +39,50 @@
   <input type="date" id="createdTo" name="createdTo" [(ngModel)]="filter.createdTo" />
   <label for="playerId">{{ 'translate.player' | translate }}:</label>
   <input type="text" id="playerId" name="playerId" [(ngModel)]="filter.playerId" />
-
   <app-button-form  buttonAtribute="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
 </form>
 </div>
 <div *ngIf="transactions && transactions.length > 0">
-  <app-table [data]="transactions" [columns]="['id', 'playerId', 'provider', 'amount', 'currency']"></app-table>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>{{ 'translate.player' | translate }} ID</th>
+      <th>{{ 'translate.provider' | translate }}</th>
+      <th>{{ 'translate.amount' | translate }}</th>
+      <th>{{ 'translate.currency' | translate }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let transaction of transactions">
+      <tr (click)="toggleDetailsTransaction(transaction.id,transaction.externalId)">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.playerId }}</td>
+        <td>{{ transaction.provider }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.currency }}</td>
+      </tr>
+      <tr *ngIf="selectedTransactionId === transaction.id">
+        <td colspan="5">
+          <div class="transaction-details">
+            <p>ID: {{ transaction.id }}</p>
+            <p>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</p>
+            <p>{{ 'translate.player' | translate }} ID: {{ transaction.playerId }}</p>
+            <p>{{ 'translate.type' | translate }}: {{ transaction.type }}</p>
+            <p>{{ 'translate.direction' | translate }}: {{ transaction.direction }}</p>
+            <p>{{ 'translate.provider' | translate }}: {{ transaction.provider }}</p>
+            <p>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</p>
+            <p>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</p>
+            <p>{{ 'translate.created_at' | translate }}: {{ transaction.createdAt | date }}</p>
+            <div *ngIf="ticketShow">
+            <app-button-form buttonName="Link to Ticket" buttonAtribute="medium" backgroundColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
 </div>
 </body>
 

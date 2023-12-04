@@ -43,7 +43,10 @@ export class TableFormComponent implements  OnInit{
       this.linkedTransactions = [];
     }
   }
-
+  toggleeDetails(ticketId: string) {
+    this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
+    console.log("clicked")
+  }
   loadTickets() {
     this.loaderService.showLoader();
     this.ticketService.getTickets(this.filter,this.userName).subscribe(

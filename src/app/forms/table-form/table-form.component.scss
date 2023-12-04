@@ -59,6 +59,18 @@ table {
   color: #d7d1d1;
   border-collapse: collapse;
   width: 100%;
+.betovi-container{
+  display: flex;
+}
+.betovi{
+  display: inline-block;
+  border-radius: 16px;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+  color: #d7d1d1;
+  background: #323232;
+  margin-right: 30px;
+}
 }
 th, td {
   padding: 1rem;
