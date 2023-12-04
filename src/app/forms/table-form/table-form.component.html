@@ -28,50 +28,7 @@
 </div>
 
 <div *ngIf="tickets && tickets.length > 0">
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>{{ 'translate.player' | translate }} ID</th>
-      <th>{{ 'translate.created_at' | translate }}</th>
-      <th>{{ 'translate.pay_in_amount' | translate }}</th>
-      <th>{{ 'translate.pay_out_amount' | translate }}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let ticket of tickets">
-      <tr (click)="toggleDetails(ticket.id)">
-        <td>{{ ticket.id }}</td>
-        <td>{{ ticket.playerId }}</td>
-        <td>{{ ticket.createdAt | date }}</td>
-        <td>{{ ticket.payInAmount }}</td>
-        <td>{{ ticket.payOutAmount }}</td>
-      </tr>
-      <tr *ngIf="selectedTicketId === ticket.id">
-        <td colspan="5">
-          <div class="ticket-details">
-            <div *ngIf="ticket.bets && ticket.bets.length > 0">
-              <h4>{{ 'translate.bets' | translate }}:</h4>
-              <ul>
-                <li *ngFor="let bet of ticket.bets">
-                  <p>{{ 'translate.bet_id' | translate }}: {{ bet.id }}</p>
-                  <p>{{ 'translate.sport' | translate }}: {{ bet.sport }}</p>
-                  <p>{{ 'translate.league' | translate }}: {{ bet.league }}</p>
-                  <p>{{ 'translate.market' | translate }}: {{ bet.market }}</p>
-                  <p>{{ 'translate.participants' | translate }}: {{ bet.participants }}</p>
-                  <p>{{ 'translate.odds' | translate }}: {{ bet.odds }}</p>
-                  <p>{{ 'translate.status' | translate }}: {{ bet.status }}</p>
-                  <p>{{ 'translate.start_at' | translate }}: {{ bet.startAt }}</p>
-                </li>
-              </ul>
-            </div>
-              <app-button-form buttonName="Link to Transaction" buttonAtribute="medium" backgroundColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
-          </div>
-        </td>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
+  <app-table [data]="tickets" [columns]="['id', 'playerId', 'createdAt', 'payInAmount', 'payOutAmount']"></app-table>
 </div>
 </body>
 

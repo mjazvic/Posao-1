@@ -50,7 +50,6 @@ export class TableFormComponent implements  OnInit{
       (tickets) => {
         this.tickets = tickets;
         this.loaderService.hideLoader();
-          this.ticketSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
       },
     );
   }

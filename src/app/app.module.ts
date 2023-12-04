@@ -24,6 +24,7 @@ import { TableFormComponent } from './forms/table-form/table-form.component';
 import { TransactionTableFormComponent } from './forms/transaction-table-form/transaction-table-form.component';
 import { LogoutFormComponent } from './forms/logout-form/logout-form.component';
 import { ButtonFormComponent } from './forms/button-form/button-form.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ButtonFormComponent } from './forms/button-form/button-form.component';
     TransactionTableFormComponent,
     LogoutFormComponent,
     ButtonFormComponent,
+    TableComponent,
   ],
   imports: [
     RouterModule.forRoot([
