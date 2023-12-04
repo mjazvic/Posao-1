@@ -1,11 +1,9 @@
-body{
-  filterButton{
-    position: relative;
-    left:48%;
-    margin-top: 20%S ;
-    margin-bottom: 20px ;
-
-  }
+.filterButton{
+  position: relative;
+  left:48%;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
 table {
   overflow-x: auto;
   overflow-y: auto;
@@ -76,4 +74,4 @@ form {
 
   }
 }
-}
+

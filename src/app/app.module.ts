@@ -24,8 +24,6 @@ import { TableFormComponent } from './forms/table-form/table-form.component';
 import { TransactionTableFormComponent } from './forms/transaction-table-form/transaction-table-form.component';
 import { LogoutFormComponent } from './forms/logout-form/logout-form.component';
 import { ButtonFormComponent } from './forms/button-form/button-form.component';
-import { InputFieldComponent } from './forms/input-field/input-field.component';
-import { CardComponent } from './forms/card/card.component';
 
 @NgModule({
   declarations: [
@@ -41,14 +39,12 @@ import { CardComponent } from './forms/card/card.component';
     TransactionTableFormComponent,
     LogoutFormComponent,
     ButtonFormComponent,
-    InputFieldComponent,
-    CardComponent
   ],
   imports: [
     RouterModule.forRoot([
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'transactions', component: TransactionsComponent,canActivate: [AuthGuard] },
-      { path: 'tickets', component: TicketsComponent,canActivate: [AuthGuard] },
+      { path: 'transactions/:id', component: TransactionsComponent,canActivate: [AuthGuard] },
+      { path: 'tickets/:id', component: TicketsComponent,canActivate: [AuthGuard] },
       { path: '', component: LoginComponent,canActivate: [LoginGuard] },
     ]),
     BrowserModule,

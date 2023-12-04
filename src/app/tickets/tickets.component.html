@@ -1,1 +1,56 @@
-<p>Dobrodosao u ticket</p>
+<h2>Ticket Details</h2>
+
+<div class="ticketDetails" *ngIf="ticket | async as ticket">
+  <div>
+    <strong>Player ID:</strong> {{ ticket.playerId }}
+  </div>
+  <div>
+    <strong>Player Username:</strong> {{ findPlayerById(ticket.playerId) }}
+  </div>
+  <div>
+    <strong>Created At:</strong> {{ ticket.createdAt | date: 'medium' }}
+  </div>
+  <div>
+    <strong>Pay In Amount:</strong> {{ ticket.payInAmount }} {{ ticket.currency }}
+  </div>
+  <div>
+    <strong>Pay Out Amount:</strong> {{ ticket.payOutAmount }} {{ ticket.currency }}
+  </div>
+  <div>
+    <strong>Status:</strong> {{ ticket.status }}
+  </div>
+
+  <h3>Bets:</h3>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Sport</th>
+      <th>League</th>
+      <th>Market</th>
+      <th>Participants</th>
+      <th>Odds</th>
+      <th>Status</th>
+      <th>Start At</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bet of ticket.bets">
+      <td>{{ bet.id }}</td>
+      <td>{{ bet.sport }}</td>
+      <td>{{ bet.league }}</td>
+      <td>{{ bet.market }}</td>
+      <td>{{ bet.participants.join(', ') }}</td>
+      <td>{{ bet.odds }}</td>
+      <td>{{ bet.status }}</td>
+      <td>{{ bet.startAt | date: 'medium' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="button">
+  <app-button-form buttonName="Back to dashboard" routerLink="/dashboard"></app-button-form>
+</div>
+<app-logout-form></app-logout-form>
+<app-language-switcher color="black"></app-language-switcher>

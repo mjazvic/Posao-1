@@ -14,6 +14,7 @@ import {
   TransactionType
 } from "../models/transaction.model";
 import {players} from "../data/player.data";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-dashboard',
@@ -21,29 +22,19 @@ import {players} from "../data/player.data";
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  userName:string;
+  user:any = this.userService.getCurrentUser().username
   tickets: Ticket[];
-  Tfilter: TransactionFilter = {};
   filter: TicketFilter = {};
-  linkedTransactions: Transaction[] = [];
-  statusOptions = Object.values(TicketStatus);
-  selectedTicketId: string | null = null;
-  selectedTransactionId: string | null = null;
-  transactionTypes = TransactionType;
-  transactionDirectons = TransactionDirection;
-  transactionProviders = TransactionProvider;
+  userVisible:boolean= true;
   transactions: Transaction[];
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   showTicketDetails = false;
   showTransactionDetails = false;
 
-  constructor(
-    private loaderService:LoaderService,
-    private userService: UserService,
-    private ticketService: TicketService,
-    private router : Router,
-    private transactionService: TransactionService) {}
+
+  constructor(private userService: UserService,
+) {}
 
   public hasGrant(grant: Grant | string): boolean {
     const currentUser = this.userService.getCurrentUser();
@@ -56,11 +47,16 @@ export class DashboardComponent {
   changeToTickets(){
     this.showTicketDetails = true;
     this.showTransactionDetails = false;
+    this.change();
   }
   changeToTransaction(){
     this.showTicketDetails = false;
     this.showTransactionDetails = true;
+    this.change();
+  }
+  change() {
+    this.userVisible = false;
   }
 
-
+  protected readonly UserService = UserService;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LoaderService} from "../../loader.service";
 import {UserService} from "../../services/user.service";
 import {Route, Router} from "@angular/router";
@@ -9,6 +9,9 @@ import {Route, Router} from "@angular/router";
   styleUrls: ['./logout-form.component.scss']
 })
 export class LogoutFormComponent implements OnInit {
+  @Input() Color:string="black";
+  choice:string="black";
+
 
   constructor(
     private loaderService: LoaderService,
@@ -16,7 +19,7 @@ export class LogoutFormComponent implements OnInit {
     private router:Router) { }
 
   ngOnInit(): void {
-
+    if (this.Color=="white"){this.choice="white"}
     }
     logout(): void {
       this.loaderService.showLoader();

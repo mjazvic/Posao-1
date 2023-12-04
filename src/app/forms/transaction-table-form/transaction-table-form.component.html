@@ -1,8 +1,9 @@
 <body>
-
-<app-button-form class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button-form>
+<div class="filterButton">
+  <app-button-form  (click)="showFilter()" buttonName="Filter"></app-button-form>
+</div>
 <div *ngIf="filterShow">
-<form (ngSubmit)="loadTransactions()">
+<form (ngSubmit)="applyFilter()">
   <label for="username">{{ 'translate.username' | translate }}:</label>
   <select id="username" name="username" [(ngModel)]=userName >
     <option *ngFor="let player of players" [value]="player.username">{{ player.username }}</option>
@@ -55,7 +56,7 @@
     </thead>
     <tbody>
     <ng-container *ngFor="let transaction of transactions">
-      <tr (click)="toggleDetailsTransaction(transaction.id)">
+      <tr (click)="toggleDetailsTransaction(transaction.id,transaction.externalId)">
         <td>{{ transaction.id }}</td>
         <td>{{ transaction.playerId }}</td>
         <td>{{ transaction.provider }}</td>
@@ -74,8 +75,9 @@
             <p>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</p>
             <p>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</p>
             <p>{{ 'translate.created_at' | translate }}: {{ transaction.createdAt | date }}</p>
-            <app-button-form (click)="loadTicket(transaction.playerId)">Link to ticket</app-button-form>
-
+            <div *ngIf="ticketShow">
+            <app-button-form buttonName="Link to Ticket" buttonAtribute="medium" backgroundColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
+            </div>
           </div>
         </td>
       </tr>

@@ -32,27 +32,16 @@ export class TableFormComponent implements  OnInit{
 
   constructor(
     private loaderService:LoaderService,
-    private userService: UserService,
     private ticketService: TicketService,
-    private router : Router,
-    private transactionService: TransactionService) {}
+    private router : Router)
+  {}
 
   toggleDetails(ticketId: string) {
     this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
     if (this.selectedTicketId) {
-      this.loadLinkedTransactions(this.selectedTicketId);
     } else {
       this.linkedTransactions = [];
     }
-  }
-  getTicketsData(): any[][] {
-    return this.tickets.map(ticket => [
-      ticket.id,
-      ticket.playerId,
-      ticket.createdAt,
-      ticket.payInAmount,
-      ticket.payOutAmount,
-    ]);
   }
 
   loadTickets() {
@@ -74,16 +63,8 @@ export class TableFormComponent implements  OnInit{
     else this.filterShow=false
   }
   loadLinkedTransactions(ticketId: string) {
-
-    this.transactionService.getTransactions({ externalId: ticketId }).subscribe(
-      (transactions) => {
-        this.linkedTransactions = transactions;
-      },
-    ); } protected readonly players = players;
-  userHasTransactionsGrant(): boolean {
-    const currentUser = this.userService.getCurrentUser();
-    return currentUser && currentUser.grants.includes(Grant.CanViewTransactions);
-  }
-
+        this.router.navigate(['/transactions', ticketId]);
+      }
+    protected readonly players = players;
 
 }

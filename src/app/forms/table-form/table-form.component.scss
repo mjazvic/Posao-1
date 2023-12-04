@@ -1,7 +1,8 @@
 .filterButton{
   position: relative;
   left:48%;
-
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 form {
   margin-top: 20px;
@@ -9,7 +10,19 @@ form {
   position: relative;
   left:25%;
   font-family: 'sans-serif';
-
+  select option {
+    background-color: rgba(231, 10, 10, 0);
+    color: #181818;
+    border-radius: 10px;
+    border: 1px solid #000000;
+  }
+  select::after {
+    content: '\25BC'; /* Unicode character for a downward-pointing triangle or arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
   label {
     font-weight: bold;
     margin-left: 3px;

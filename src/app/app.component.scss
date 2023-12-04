@@ -1,26 +1,28 @@
+body {
+  max-width: 100%;
+  app-language-switcher {
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: rgba(215, 202, 202, 0);
+    color: rgba(215, 202, 202, 0);
+    position: relative;
+    top: 10px;
+    left: 0;
+    z-index: 2;
+    border-radius: 50px;
+  }
 
-app-language-switcher {
-  margin-left: 10px;
-  margin-top: 10px;
-  background-color: rgba(215, 202, 202, 0);
-  color: rgba(215, 202, 202, 0);
-  position: relative;
-  top: 10px;
-  left: 0;
-  z-index: 2;
-  border-radius: 50px;
-}
-router-outlet {
+  router-outlet {
 
-  .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90vh;
-  width: 99vw;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      width: 99vw;
+    }
+  }
 }
-}
-
 
 
 

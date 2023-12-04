@@ -2,6 +2,7 @@
 body {
   margin: 0;
   padding: 0;
+  max-width: 100%;
   background-color: #ada9a9;
   font-family: 'YourPreferredFont', sans-serif;
   .tables{
@@ -44,7 +45,12 @@ body {
     cursor: pointer;
 
   }
-
+  .user{
+    margin-top: 50px;
+    color: #2a2929;
+    font-size: 80px;
+    position: relative;
+  }
   }
 
 

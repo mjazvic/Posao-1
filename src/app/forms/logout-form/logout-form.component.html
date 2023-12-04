@@ -1,5 +1,8 @@
-<div>
-  <app-button-form class="logout-button" type="button" (click)="logout()" buttonName="{{ 'translate.logout' | translate }}"></app-button-form>
+<div *ngIf="choice=='black'">
+  <app-button-form class="logout-button"  (click)="logout()" buttonName="{{ 'translate.logout' | translate }}"></app-button-form>
+</div>
+<div *ngIf="choice=='white'">
+  <app-button-form class="logout-button" backgroundColor="white" (click)="logout()" buttonName="{{ 'translate.logout' | translate }}"></app-button-form>
 </div>
 
 

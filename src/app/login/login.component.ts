@@ -11,7 +11,6 @@ import {LoaderService} from "../loader.service";
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  loginError: boolean = false;
 
   constructor(private userService: UserService, private router: Router,private loaderService:LoaderService) {}
 

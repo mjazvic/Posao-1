@@ -26,7 +26,7 @@ export class TransactionTableFormComponent implements OnInit {
   }
 
   userName:string;
-  tickets: Ticket[]= [];
+  tickets: Ticket [][]= [];
   Tfilter: TransactionFilter = {};
   filter: TicketFilter = {};
   selectedTransactionId: string | null = null;
@@ -37,13 +37,16 @@ export class TransactionTableFormComponent implements OnInit {
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
+  ticket: any
+  ticketShow: boolean=false;
 
   constructor(
+
     private ticketService:TicketService,
     private loaderService:LoaderService,
-    private userService: UserService,
     private router : Router,
-   private transactionService: TransactionService) {}
+    private transactionService: TransactionService) {}
+
 
 
   loadTransactions() {
@@ -51,27 +54,16 @@ export class TransactionTableFormComponent implements OnInit {
     this.transactionService.getTransactions(this.Tfilter,this.userName).subscribe(
       (transactions) => {
         this.transactions = transactions;
-        this.loaderService.hideLoader();
+       this.loaderService.hideLoader();
       },
     );
   }
-
-  getTransactionsData(): any[][] {
-    return this.transactions.map(transaction => [
-      transaction.id,
-      transaction.playerId,
-      transaction.provider,
-      transaction.amount,
-      transaction.currency,
-    ]);
-  }
-  getTicket(externalId: string): Ticket | undefined {
-    return this.tickets.find(ticket => ticket.id === externalId);
-  }
   loadTicket(id) {
-    this.ticketService.getTicket(id).subscribe();
+        this.router.navigate(['/tickets', id]);
   }
-
+  applyFilter() {
+    this.loadTransactions();
+  }
   getTransactionTypes(): string[] {
     return Object.values(this.transactionTypes) as string[];
   }
@@ -82,12 +74,12 @@ export class TransactionTableFormComponent implements OnInit {
     return Object.values(this.transactionProviders) as string[];
   }
   showFilter(){
-    if(!this.filterShow){
-      this.filterShow = true}
-   else  this.filterShow = false
+    this.filterShow = !this.filterShow;
   }
-  toggleDetailsTransaction(transactionId: string) {
+  toggleDetailsTransaction(transactionId: string,externalId:string) {
     this.selectedTransactionId = this.selectedTransactionId === transactionId ? null : transactionId;
+    this.ticket=this.ticketService.getTicket(externalId);
+    if(this.ticket != undefined){this.ticketShow=true;}
   }
 
 

@@ -1,6 +1,7 @@
 <body>
-
-<app-button-form class="filterButton" (click)="showFilter()"  buttonName="Filter"></app-button-form>
+<div class="filterButton">
+<app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
+</div>
 <div *ngIf="filterShow">
 <form (ngSubmit)="applyFilter()">
   <label for="username">{{ 'translate.username' | translate }}:</label>
@@ -20,6 +21,7 @@
 
   <label for="endDate">{{ 'translate.end_date' | translate }}:</label>
   <input type="date" id="endDate" name="createdTo" [(ngModel)]="filter.createdTo" />
+
 
   <app-button-form type="submit" buttonAtribute="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
 </form>
@@ -63,22 +65,7 @@
                 </li>
               </ul>
             </div>
-            <div *ngIf="userHasTransactionsGrant()">
-              <div *ngIf="linkedTransactions && linkedTransactions.length > 0">
-                <h4>{{ 'translate.linked_transactions' | translate }}:</h4>
-                <ul>
-                  <li *ngFor="let transaction of linkedTransactions">
-                    <p>{{ 'translate.id' | translate }}: {{ transaction.id }}</p>
-                    <p>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</p>
-                    <p>{{ 'translate.player_id' | translate }}: {{ transaction.playerId }}</p>
-                    <p>{{ 'translate.provider' | translate }}: {{ transaction.provider }}</p>
-                    <p>{{ 'translate.direction' | translate }}: {{ transaction.direction }}</p>
-                    <p>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</p>
-                    <p>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
+              <app-button-form buttonName="Link to Transaction" buttonAtribute="medium" backgroundColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
           </div>
         </td>
       </tr>
