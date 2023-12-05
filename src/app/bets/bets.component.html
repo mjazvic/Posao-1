@@ -1,0 +1,18 @@
+<ul>
+  <div class="betovi-container">
+    <ng-container *ngIf="ticket && ticket.bets && ticket.bets.length > 0">
+      <li *ngFor="let bet of ticket.bets">
+        <div class="betovi">
+        <p>{{ 'translate.bet_id' | translate }}: {{ bet.id }}</p>
+        <p>{{ 'translate.sport' | translate }}: {{ bet.sport }}</p>
+        <p>{{ 'translate.league' | translate }}: {{ bet.league }}</p>
+        <p>{{ 'translate.market' | translate }}: {{ bet.market }}</p>
+        <p>{{ 'translate.participants' | translate }}: {{ bet.participants }}</p>
+        <p>{{ 'translate.odds' | translate }}: {{ bet.odds }}</p>
+        <p>{{ 'translate.status' | translate }}: {{ bet.status }}</p>
+        <p>{{ 'translate.start_at' | translate }}: {{ bet.startAt }}</p>
+        </div>
+      </li>
+    </ng-container>
+  </div>
+</ul>

@@ -1,20 +1,25 @@
 <h2>Transaction Details</h2>
+
 <div class="TransactionDDetail">
-<div *ngFor="let transactionDetails of transactions$ | async" class="transaction-details">
-  <div><strong>ID:</strong> {{ transactionDetails.id }}</div>
-  <div><strong>Username:</strong> {{ findPlayerById(transactionDetails.externalId) }}</div>
-  <div><strong>External ID:</strong> {{ transactionDetails.externalId }}</div>
-  <div><strong>Player ID:</strong> {{ transactionDetails.playerId }}</div>
-  <div><strong>Type:</strong> {{ transactionDetails.type }}</div>
-  <div><strong>Direction:</strong> {{ transactionDetails.direction }}</div>
-  <div><strong>Provider:</strong> {{ transactionDetails.provider }}</div>
-  <div><strong>Amount:</strong> {{ transactionDetails.amount }}</div>
-  <div><strong>Currency:</strong> {{ transactionDetails.currency }}</div>
-  <div><strong>Created At:</strong> {{ transactionDetails.createdAt | date }}</div>
-</div>
+  <mat-card *ngFor="let transactionDetails of transactions$ | async" class="transaction-details">
+    <mat-card-content>
+      <div><strong>ID:</strong> {{ transactionDetails.id }}</div>
+      <div><strong>Username:</strong> {{ findPlayerById(transactionDetails.externalId) }}</div>
+      <div><strong>External ID:</strong> {{ transactionDetails.externalId }}</div>
+      <div><strong>Player ID:</strong> {{ transactionDetails.playerId }}</div>
+      <div><strong>Type:</strong> {{ transactionDetails.type }}</div>
+      <div><strong>Direction:</strong> {{ transactionDetails.direction }}</div>
+      <div><strong>Provider:</strong> {{ transactionDetails.provider }}</div>
+      <div><strong>Amount:</strong> {{ transactionDetails.amount }}</div>
+      <div><strong>Currency:</strong> {{ transactionDetails.currency }}</div>
+      <div><strong>Created At:</strong> {{ transactionDetails.createdAt | date }}</div>
+    </mat-card-content>
+  </mat-card>
+
 </div>
 <div class="button">
 <app-button-form buttonName="Back to dashboard" routerLink="/dashboard"></app-button-form>
 </div>
 <app-logout-form></app-logout-form>
 <app-language-switcher color="black"></app-language-switcher>
+

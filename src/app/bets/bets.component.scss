@@ -1,0 +1,15 @@
+.betovi-container{
+  display: flex;
+  align-items: center;
+}
+.betovi{
+  display: inline-block;
+  background-color: #323232;
+  border-radius: 16px;
+  padding: 15px 10px;
+  margin: 30px;
+  color: #d7d1d1;
+  &:nth-child(odd) {
+    background: hsla(0, 0%, 0%, 0.1);
+  }
+}

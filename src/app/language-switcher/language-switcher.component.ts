@@ -1,23 +1,26 @@
 
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {LoaderService} from "../loader.service";
+import {LoaderService} from "../services/loader.service";
 
 @Component({
   selector: 'app-language-switcher',
   templateUrl:'language-switcher.component.html' ,
   styleUrls: ['./language-switcher.component.scss'],
 })
-export class LanguageSwitcherComponent {
+export class LanguageSwitcherComponent implements OnInit{
   @Input() color:string='white';
-  constructor(private translate: TranslateService,private loaderService:LoaderService) {}
+  langColor:string='black';
+  choice:string="black";
+  constructor(private translate: TranslateService) {}
+  ngOnInit(): void {
+    if (this.color=="white"){this.choice="white";this.langColor="white"}
+  }
 
   changeLang(event: Event): void {
     const target = event.target as HTMLSelectElement;
     const language = target.value;
     this.translate.use(language);
   }
-get langClasses(): string {
-    return `${this.color}`;
-  }
+
 }

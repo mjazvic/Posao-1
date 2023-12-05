@@ -8,7 +8,7 @@ import { Ticket, TicketFilter, TicketStatus,  } from '../models/ticket.model';
 import { Transaction } from '../models/transaction.model';
 import {Grant} from "../models/user.model";
 import {players} from "../data/player.data";
-import {LoaderService} from "../loader.service";
+import {LoaderService} from "../services/loader.service";
 import {TranslateService} from "@ngx-translate/core";
 import {map, Observable, switchMap} from "rxjs";
 import {Player} from "../models/player.model";
@@ -25,13 +25,15 @@ export class TicketsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loaderService.showLoader();
-    this.ticket = this.route.params.pipe(
-      map(params => params['id']),
-      switchMap(id => this.ticketService.getTicket(id)));
-    this.loaderService.hideLoader();
+   this.loadTickets()
   }
-
+loadTickets(){
+  this.loaderService.showLoader();
+  this.ticket = this.route.params.pipe(
+    map(params => params['id']),
+    switchMap(id => this.ticketService.getTicket(id)));
+  this.loaderService.hideLoader();
+}
  findPlayerById(playerId: string): string {
   const player=players.find(player => player.id === playerId);
   return player.username

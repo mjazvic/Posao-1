@@ -1,10 +1,9 @@
 .TransactionDDetail {
-  margin: 20px; /* Add margin or adjust as needed */
+  margin: 20px;
 }
-
 .transaction-details {
   border-radius: 8px;
-  padding: 15px;
+  margin-top: 40px;
   margin-bottom: 15px;
   color: #d7d1d1;
   background: #323232;
@@ -13,14 +12,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  bottom: 20px;
 }
 .transaction-details div {
   margin-bottom: 10px;
 }
 h2 {
+  margin-top: 20px;
   font-size: 50px;
   position: relative;
   text-align: center;
   color: #000000;
 }
+

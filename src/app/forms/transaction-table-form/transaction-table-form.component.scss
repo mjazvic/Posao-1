@@ -14,11 +14,25 @@ table {
   border-collapse: collapse;
   width: 100%;
 
+  .transaction-details {
+    text-align: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 16px;
+    margin-bottom: 5px;
+    color: #d7d1d1;
+    margin-right: 20px;
 
+    &:nth-child(odd) {
+      background: hsla(0, 0%, 0%, 0.1);
+    }
+  }
 }
 th, td {
   padding: 1rem;
-  text-align: left;
+  text-align: center;
+  flex-direction: row;
 }
 th {
   background: hsla(0, 8%, 3%, 0.7);
@@ -28,52 +42,26 @@ tr:nth-of-type(2n) {
   background: hsla(0, 0%, 0%, 0.1);
 }
 form {
-  margin-top: 20px;
-  margin-bottom: 1px;
-  position: relative;
-  left:3%;
-  font-family: 'sans-serif';
-
-  .submitButton{
-    background-color: rgba(204, 204, 204, 0);
-    border-color: rgba(152, 142, 142, 0);
-    padding: 2px 1px;
-    font-size: 3px;
-    margin-left: 5px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: rgba(204, 204, 204, 0);
-      color: #cccccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+mat-form-field {
+  mat-label, mat-select {
+    color: black;
+    .mat-select-value-text {
+      color: black;
     }
   }
-  label {
-    font-weight: bold;
-    margin-left: 3px;
-    margin-right: 3px;
-  }
+}
+mat-form-field {
+  color: #000000;
+  margin-right: 15px;
+}
 
-  input[name="playerId"] {
-    width: 50px;
-  }
+button {
+  margin-left: 15px;
 
-  select[name="status"] {
-    width: 100px;
-  }
-
-  input, select, button {
-
-    margin-right: 4px;
-    margin-bottom: 3px;
-    padding: 0.5rem;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.45);
-
-    &:hover {
-      cursor: pointer;
-    }
-
-  }
 }
 

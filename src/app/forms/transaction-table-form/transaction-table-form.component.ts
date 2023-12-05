@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import {LoaderService} from "../../loader.service";
+import {LoaderService} from "../../services/loader.service";
 import {TicketService} from "../../services/ticket.service";
 import {Ticket, TicketFilter, TicketStatus} from "../../models/ticket.model";
 import {TransactionService} from "../../services/transaction.service";
@@ -14,6 +14,8 @@ import {
 } from "../../models/transaction.model";
 import {players} from "../../data/player.data";
 import {tickets} from "../../data/ticket.data";
+import {PlayerService} from "../../services/player.service";
+import {Player} from "../../models/player.model";
 
 @Component({
   selector: 'app-transaction-table-form',
@@ -40,8 +42,9 @@ export class TransactionTableFormComponent implements OnInit {
   ticket: any
   ticketShow: boolean=false;
 
-  constructor(
 
+  constructor(
+  private playerService:PlayerService,
     private ticketService:TicketService,
     private loaderService:LoaderService,
     private router : Router,
@@ -73,8 +76,13 @@ export class TransactionTableFormComponent implements OnInit {
   getTransactionProviders(): string[] {
     return Object.values(this.transactionProviders) as string[];
   }
+  getplayer(id){
+    const foundPlayer = players.find(player => player.id === id);
+    return foundPlayer.username
+  }
   showFilter(){
     this.filterShow = !this.filterShow;
+
   }
   toggleDetailsTransaction(transactionId: string,externalId:string) {
     this.selectedTransactionId = this.selectedTransactionId === transactionId ? null : transactionId;

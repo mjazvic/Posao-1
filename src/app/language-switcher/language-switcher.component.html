@@ -1,6 +1,18 @@
 <body>
-<select class="select" (change)="changeLang($event)" [ngClass]="langClasses">
-  <option value="en">English</option>
-  <option value="hr">Croatian</option>
-</select>
+<div *ngIf="choice=='black'">
+  <mat-label class="label">Language</mat-label>
+  <app-select-input color="black" label="Language"
+  [options]="[{ value: 'en', label: 'English' }, { value: 'hr', label: 'Croatian' }]"
+  (selectionEventChange)="changeLang($event)"
+></app-select-input>
+</div>
+<div *ngIf="choice=='white'">
+  <mat-label class="label">Language</mat-label>
+  <app-select-input color="white" label="Language"
+    [options]="[{ value: 'en', label: 'English' }, { value: 'hr', label: 'Croatian' }]"
+    (selectionEventChange)="changeLang($event)"
+  ></app-select-input>
+</div>
 </body>
+
+

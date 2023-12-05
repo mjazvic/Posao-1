@@ -3,77 +3,107 @@
   <app-button-form  (click)="showFilter()" buttonName="Filter"></app-button-form>
 </div>
 <div *ngIf="filterShow">
-<form (ngSubmit)="applyFilter()">
-  <label for="username">{{ 'translate.username' | translate }}:</label>
-  <select id="username" name="username" [(ngModel)]=userName >
-    <option *ngFor="let player of players" [value]="player.username">{{ player.username }}</option>
-  </select>
+<form (ngSubmit)="applyFilter()" class="form">
+  <mat-form-field>
+    <mat-label>{{ 'translate.username' | translate }}</mat-label>
+    <mat-select name="username" [(ngModel)]="userName">
+      <mat-option *ngFor="let player of players" [value]="player.username">
+        {{ player.username }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label for="externalId">{{ 'translate.external_id' | translate }}:</label>
-  <input type="text" id="externalId" name="externalId" [(ngModel)]="Tfilter.externalId " />
+  <mat-form-field>
+    <mat-label>{{ 'translate.external_id' | translate }}</mat-label>
+    <input matInput type="text" id="externalId" name="externalId" [(ngModel)]="Tfilter.externalId" />
+  </mat-form-field>
 
-  <label for="type">{{ 'translate.type' | translate }}:</label>
-  <select id="type" name="type" [(ngModel)]="Tfilter.type">
-    <option *ngFor="let transactionType of getTransactionTypes()" [value]="transactionType">
-      {{ 'translate.' + transactionType | translate }}
-    </option>
-  </select>
+  <mat-form-field>
+    <mat-label>{{ 'translate.type' | translate }}</mat-label>
+    <mat-select id="type" name="type" [(ngModel)]="Tfilter.type">
+      <mat-option *ngFor="let transactionType of getTransactionTypes()" [value]="transactionType">
+        {{ 'translate.' + transactionType | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label for="direction">{{ 'translate.direction' | translate }}:</label>
-  <select id="direction" name="direction" [(ngModel)]="Tfilter.direction">
-    <option *ngFor="let transactionDirection of getTransactionDirections()" [value]="transactionDirection">
-      {{ 'translate.' + transactionDirection | translate }}
-    </option>
-  </select>
+  <mat-form-field>
+    <mat-label>{{ 'translate.direction' | translate }}</mat-label>
+    <mat-select id="direction" name="direction" [(ngModel)]="Tfilter.direction">
+      <mat-option *ngFor="let transactionDirection of getTransactionDirections()" [value]="transactionDirection">
+        {{ 'translate.' + transactionDirection | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label for="provider">{{ 'translate.provider' | translate }}:</label>
-  <select id="provider" name="provider" [(ngModel)]="Tfilter.provider">
-    <option *ngFor="let transactionProvider of getTransactionProviders()" [value]="transactionProvider">
-      {{ 'translate.' + transactionProvider | translate }}    </option>
-  </select>
+  <mat-form-field>
+    <mat-label>{{ 'translate.provider' | translate }}</mat-label>
+    <mat-select id="provider" name="provider" [(ngModel)]="Tfilter.provider">
+      <mat-option *ngFor="let transactionProvider of getTransactionProviders()" [value]="transactionProvider">
+        {{ 'translate.' + transactionProvider | translate }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <label for="createdFrom">{{ 'translate.start_date' | translate }}:</label>
-  <input type="date" id="createdFrom" name="createdFrom" [(ngModel)]="filter.createdFrom" />
+  <mat-form-field>
+    <mat-label>{{ 'translate.start_date' | translate }}</mat-label>
+    <input matInput type="date" id="createdFrom" name="createdFrom" [(ngModel)]="filter.createdFrom" />
+  </mat-form-field>
 
-  <label for="createdTo">{{ 'translate.end_date' | translate }}:</label>
-  <input type="date" id="createdTo" name="createdTo" [(ngModel)]="filter.createdTo" />
-  <label for="playerId">{{ 'translate.player' | translate }}:</label>
-  <input type="text" id="playerId" name="playerId" [(ngModel)]="filter.playerId" />
-  <app-button-form  buttonAtribute="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
+  <mat-form-field>
+    <mat-label>{{ 'translate.end_date' | translate }}</mat-label>
+    <input matInput type="date" id="createdTo" name="createdTo" [(ngModel)]="filter.createdTo" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>{{ 'translate.player' | translate }}</mat-label>
+    <input matInput type="text" id="playerId" name="playerId" [(ngModel)]="filter.playerId" />
+  </mat-form-field>
+
+  <app-button-form buttonAtribute="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
 </form>
 </div>
+
 <div *ngIf="transactions && transactions.length > 0">
   <table>
     <thead>
     <tr>
       <th>ID</th>
+      <th>{{ 'translate.username' | translate }} </th>
       <th>{{ 'translate.player' | translate }} ID</th>
+      <th>{{ 'translate.direction' | translate }}</th>
       <th>{{ 'translate.provider' | translate }}</th>
       <th>{{ 'translate.amount' | translate }}</th>
-      <th>{{ 'translate.currency' | translate }}</th>
+      <th>{{ 'translate.type' | translate }}</th>
+      <th>{{ 'translate.created_at' | translate }}</th>
+
     </tr>
     </thead>
     <tbody>
     <ng-container *ngFor="let transaction of transactions">
       <tr (click)="toggleDetailsTransaction(transaction.id,transaction.externalId)">
         <td>{{ transaction.id }}</td>
+        <td>{{ getplayer(transaction.playerId)}}</td>
         <td>{{ transaction.playerId }}</td>
+        <td>{{ transaction.direction }}</td>
         <td>{{ transaction.provider }}</td>
-        <td>{{ transaction.amount }}</td>
-        <td>{{ transaction.currency }}</td>
+        <td>{{ transaction.amount }} {{ transaction.currency }}</td>
+        <td>{{ transaction.type }}</td>
+        <td>{{ transaction.createdAt }}</td>
+
       </tr>
       <tr *ngIf="selectedTransactionId === transaction.id">
         <td colspan="5">
           <div class="transaction-details">
             <p>ID: {{ transaction.id }}</p>
-            <p>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</p>
-            <p>{{ 'translate.player' | translate }} ID: {{ transaction.playerId }}</p>
-            <p>{{ 'translate.type' | translate }}: {{ transaction.type }}</p>
-            <p>{{ 'translate.direction' | translate }}: {{ transaction.direction }}</p>
-            <p>{{ 'translate.provider' | translate }}: {{ transaction.provider }}</p>
-            <p>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</p>
-            <p>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</p>
-            <p>{{ 'translate.created_at' | translate }}: {{ transaction.createdAt | date }}</p>
+            <td>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</td>
+            <td>{{ 'translate.player' | translate }} ID: {{ transaction.playerId }}</td>
+            <td>{{ 'translate.type' | translate }}: {{ transaction.type }}</td>
+            <td>{{ 'translate.direction' | translate }}: {{ transaction.direction }}</td>
+            <td>{{ 'translate.provider' | translate }}: {{ transaction.provider }}</td>
+            <td>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</td>
+            <td>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</td>
+            <td>{{ 'translate.created_at' | translate }}: {{ transaction.createdAt | date }}</td>
             <div *ngIf="ticketShow">
             <app-button-form buttonName="Link to Ticket" buttonAtribute="medium" backgroundColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
             </div>

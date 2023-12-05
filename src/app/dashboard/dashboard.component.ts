@@ -2,7 +2,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Grant, User } from '../models/user.model';
 import { Router } from '@angular/router';
-import {LoaderService} from "../loader.service";
+import {LoaderService} from "../services/loader.service";
 import {TicketService} from "../services/ticket.service";
 import {Ticket, TicketFilter, TicketStatus} from "../models/ticket.model";
 import {TransactionService} from "../services/transaction.service";

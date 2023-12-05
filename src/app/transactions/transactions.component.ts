@@ -1,17 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../services/transaction.service';
-import { Transaction, TransactionFilter, TransactionProvider } from '../models/transaction.model';
-import { UserService } from '../services/user.service';
+import { Transaction, TransactionFilter,  } from '../models/transaction.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import { TransactionType } from '../models/transaction.model';
-import { TransactionDirection } from '../models/transaction.model';
-import {Grant} from "../models/user.model";
-import { players } from '../data/player.data';
-import {LoaderService} from "../loader.service";
-import {map, Observable, switchMap} from "rxjs";
-import {Ticket} from "../models/ticket.model";
 
+import { players } from '../data/player.data';
+import {LoaderService} from "../services/loader.service";
+import {map, Observable, switchMap} from "rxjs";
 
 
 
@@ -33,14 +28,15 @@ export class TransactionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  this.loadtransactions()
+  }
+  loadtransactions(){
     this.loaderService.showLoader()
     this.transactions$ = this.route.params.pipe(
       switchMap(params => {
         const id: string = params['id'];
         this.loaderService.hideLoader();
-        return this.transactionService.getTransactions({ externalId: id });
-
-      })
+        return this.transactionService.getTransactions({ externalId: id }); })
     );
   }
   findPlayerById(playerId: string): string {

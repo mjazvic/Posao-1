@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { UserService} from "../../services/user.service";
 import { Grant } from '../../models/user.model';
 import { Router } from '@angular/router';
-import {LoaderService} from "../../loader.service";
+import {LoaderService} from "../../services/loader.service";
 import {TicketService} from "../../services/ticket.service";
 import {Ticket, TicketFilter, TicketStatus} from "../../models/ticket.model";
 import { TransactionService } from '../../services/transaction.service';
@@ -42,10 +42,6 @@ export class TableFormComponent implements  OnInit{
     } else {
       this.linkedTransactions = [];
     }
-  }
-  toggleeDetails(ticketId: string) {
-    this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
-    console.log("clicked")
   }
   loadTickets() {
     this.loaderService.showLoader();

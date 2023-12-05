@@ -25,6 +25,15 @@ import { TransactionTableFormComponent } from './forms/transaction-table-form/tr
 import { LogoutFormComponent } from './forms/logout-form/logout-form.component';
 import { ButtonFormComponent } from './forms/button-form/button-form.component';
 import { TableComponent } from './table/table.component';
+import { SelectInputComponent } from './forms/select-input/select-input.component';
+import {MatSelectModule} from "@angular/material/select";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatTableModule} from "@angular/material/table";
+import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import { BetsComponent } from './bets/bets.component';
 
 @NgModule({
   declarations: [
@@ -41,13 +50,15 @@ import { TableComponent } from './table/table.component';
     LogoutFormComponent,
     ButtonFormComponent,
     TableComponent,
+    SelectInputComponent,
+    BetsComponent,
   ],
   imports: [
     RouterModule.forRoot([
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'transactions/:id', component: TransactionsComponent,canActivate: [AuthGuard] },
-      { path: 'tickets/:id', component: TicketsComponent,canActivate: [AuthGuard] },
-      { path: '', component: LoginComponent,canActivate: [LoginGuard] },
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: 'transactions/:id', component: TransactionsComponent, canActivate: [AuthGuard]},
+      {path: 'tickets/:id', component: TicketsComponent, canActivate: [AuthGuard]},
+      {path: '', component: LoginComponent, canActivate: [LoginGuard]},
     ]),
     BrowserModule,
     FormsModule,
@@ -58,7 +69,14 @@ import { TableComponent } from './table/table.component';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatCardModule
   ],
   providers:[AuthGuard]
   ,

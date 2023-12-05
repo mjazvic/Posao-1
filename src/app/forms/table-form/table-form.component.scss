@@ -5,50 +5,26 @@
   margin-bottom: 20px;
 }
 form {
-  margin-top: 20px;
-  margin-bottom: 1px;
-  position: relative;
-  left:25%;
-  font-family: 'sans-serif';
-  select option {
-    background-color: rgba(231, 10, 10, 0);
-    color: #181818;
-    border-radius: 10px;
-    border: 1px solid #000000;
-  }
-  select::after {
-    content: '\25BC'; /* Unicode character for a downward-pointing triangle or arrow */
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-  }
-  label {
-    font-weight: bold;
-    margin-left: 3px;
-    margin-right: 3px;
-  }
-
-  input[name="playerId"] {
-    width: 50px;
-  }
-
-  select[name="status"] {
-    width: 100px;
-  }
-
-  input, select {
-    margin-right: 4px;
-    margin-bottom: 3px;
-    padding: 0.5rem;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.45);
-    &:hover {
-      cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+mat-form-field {
+  mat-label, mat-select {
+    color: black;
+    .mat-select-value-text {
+      color: black; // Change this to the color you want for the selected text
     }
-
   }
+}
+mat-form-field {
+  color: #000000;
+  margin-right: 15px;
+}
+
+button {
+  margin-left: 15px;
 }
 table {
   overflow-x: auto;
@@ -59,18 +35,6 @@ table {
   color: #d7d1d1;
   border-collapse: collapse;
   width: 100%;
-.betovi-container{
-  display: flex;
-}
-.betovi{
-  display: inline-block;
-  border-radius: 16px;
-  padding: 15px 10px;
-  margin-bottom: 15px;
-  color: #d7d1d1;
-  background: #323232;
-  margin-right: 30px;
-}
 }
 th, td {
   padding: 1rem;
