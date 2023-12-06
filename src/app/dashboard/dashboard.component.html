@@ -5,10 +5,10 @@
     <h1 class="title">{{ 'translate.dashboard' | translate }} </h1>
     <div class="buttons">
     <div  *ngIf="hasGrant('CanViewTransactions')">
-        <app-button-form class="transactionButton" [ngClass]="{'center-transactions': !hasGrant('CanViewTickets')}"  (click)="changeToTransaction()" buttonAtribute="large" backgroundColor="white" buttonName="{{ 'translate.dashboard_transactions' | translate }}"></app-button-form>
+        <app-button-form class="transactionButton" [ngClass]="{'center-transactions': !hasGrant('CanViewTickets')}"  (click)="changeToTransaction()" buttonSize="large" buttonColor="white" buttonName="{{ 'translate.dashboard_transactions' | translate }}"></app-button-form>
   </div>
   <div  *ngIf="hasGrant('CanViewTickets')">
-    <app-button-form class="ticketButton" [ngClass]="{'center-tickets': !hasGrant('CanViewTransactions')}"  (click)="changeToTickets()" buttonAtribute="large" backgroundColor="white" buttonName="{{ 'translate.dashboard_tickets' | translate }}"></app-button-form>
+    <app-button-form class="ticketButton" [ngClass]="{'center-tickets': !hasGrant('CanViewTransactions')}"  (click)="changeToTickets()" buttonSize="large" buttonColor="white" buttonName="{{ 'translate.dashboard_tickets' | translate }}"></app-button-form>
   </div>
   </div>
     <app-logout-form Color="white"></app-logout-form>

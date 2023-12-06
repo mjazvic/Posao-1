@@ -16,6 +16,7 @@ import {players} from "../../data/player.data";
 import {tickets} from "../../data/ticket.data";
 import {PlayerService} from "../../services/player.service";
 import {Player} from "../../models/player.model";
+import {Grant} from "../../models/user.model";
 
 @Component({
   selector: 'app-transaction-table-form',
@@ -44,7 +45,7 @@ export class TransactionTableFormComponent implements OnInit {
 
 
   constructor(
-  private playerService:PlayerService,
+  private userService:UserService,
     private ticketService:TicketService,
     private loaderService:LoaderService,
     private router : Router,
@@ -83,6 +84,13 @@ export class TransactionTableFormComponent implements OnInit {
   showFilter(){
     this.filterShow = !this.filterShow;
 
+  }
+  public hasGrant(): boolean {
+    const currentUser = this.userService.getCurrentUser();
+    if (!currentUser) {
+      return false;
+    }
+    return currentUser.grants.includes(<Grant>'CanViewTickets');
   }
   toggleDetailsTransaction(transactionId: string,externalId:string) {
     this.selectedTransactionId = this.selectedTransactionId === transactionId ? null : transactionId;

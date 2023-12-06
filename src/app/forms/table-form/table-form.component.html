@@ -34,7 +34,7 @@
       <input matInput type="date" id="endDate" name="createdTo" [(ngModel)]="filter.createdTo" />
     </mat-form-field>
 
-    <app-button-form buttonAtribute="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
+    <app-button-form  buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
   </form>
 
 
@@ -55,7 +55,7 @@
       <tr (click)="toggleDetails(ticket.id)">
         <td>{{ ticket.id }}</td>
         <td>{{ ticket.playerId }}</td>
-        <td>{{ ticket.createdAt | date }}</td>
+        <td>{{ ticket.createdAt |  date :'medium' }}</td>
         <td>{{ ticket.payInAmount }} {{ticket.currency}}</td>
         <td>{{ ticket.payOutAmount }} {{ticket.currency}}</td>
       </tr>
@@ -68,7 +68,9 @@
                   <app-bets betsId="{{ticket.id}}"></app-bets>
                 </div>
             </div>
-              <app-button-form buttonName="Link to Transaction" buttonAtribute="medium" backgroundColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
+          <div *ngIf="hasGrant()">
+              <app-button-form buttonName="Link to Transaction" buttonSize="medium" buttonColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
+          </div>
           </div>
         </td>
       </tr>

@@ -20,6 +20,7 @@
     <div class="forgot-password">
       <a href="#">{{ 'translate.forgot_password' | translate }}</a>
     </div>
+    <div mat-class="error" *ngIf="loginError">Invalid username or password!</div>
   </div>
 </div>
 </body>

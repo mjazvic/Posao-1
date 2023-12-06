@@ -1,6 +1,6 @@
 <body>
 <div class="filterButton">
-  <app-button-form  (click)="showFilter()" buttonName="Filter"></app-button-form>
+  <app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
 </div>
 <div *ngIf="filterShow">
 <form (ngSubmit)="applyFilter()" class="form">
@@ -11,11 +11,6 @@
         {{ player.username }}
       </mat-option>
     </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>{{ 'translate.external_id' | translate }}</mat-label>
-    <input matInput type="text" id="externalId" name="externalId" [(ngModel)]="Tfilter.externalId" />
   </mat-form-field>
 
   <mat-form-field>
@@ -55,12 +50,8 @@
     <input matInput type="date" id="createdTo" name="createdTo" [(ngModel)]="filter.createdTo" />
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>{{ 'translate.player' | translate }}</mat-label>
-    <input matInput type="text" id="playerId" name="playerId" [(ngModel)]="filter.playerId" />
-  </mat-form-field>
 
-  <app-button-form buttonAtribute="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
+  <app-button-form buttonSize="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
 </form>
 </div>
 
@@ -76,12 +67,13 @@
       <th>{{ 'translate.amount' | translate }}</th>
       <th>{{ 'translate.type' | translate }}</th>
       <th>{{ 'translate.created_at' | translate }}</th>
+      <th></th>
 
     </tr>
     </thead>
     <tbody>
     <ng-container *ngFor="let transaction of transactions">
-      <tr (click)="toggleDetailsTransaction(transaction.id,transaction.externalId)">
+      <tr>
         <td>{{ transaction.id }}</td>
         <td>{{ getplayer(transaction.playerId)}}</td>
         <td>{{ transaction.playerId }}</td>
@@ -89,25 +81,9 @@
         <td>{{ transaction.provider }}</td>
         <td>{{ transaction.amount }} {{ transaction.currency }}</td>
         <td>{{ transaction.type }}</td>
-        <td>{{ transaction.createdAt }}</td>
-
-      </tr>
-      <tr *ngIf="selectedTransactionId === transaction.id">
-        <td colspan="5">
-          <div class="transaction-details">
-            <p>ID: {{ transaction.id }}</p>
-            <td>{{ 'translate.external_id' | translate }}: {{ transaction.externalId }}</td>
-            <td>{{ 'translate.player' | translate }} ID: {{ transaction.playerId }}</td>
-            <td>{{ 'translate.type' | translate }}: {{ transaction.type }}</td>
-            <td>{{ 'translate.direction' | translate }}: {{ transaction.direction }}</td>
-            <td>{{ 'translate.provider' | translate }}: {{ transaction.provider }}</td>
-            <td>{{ 'translate.amount' | translate }}: {{ transaction.amount }}</td>
-            <td>{{ 'translate.currency' | translate }}: {{ transaction.currency }}</td>
-            <td>{{ 'translate.created_at' | translate }}: {{ transaction.createdAt | date }}</td>
-            <div *ngIf="ticketShow">
-            <app-button-form buttonName="Link to Ticket" buttonAtribute="medium" backgroundColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
-            </div>
-          </div>
+        <td>{{ transaction.createdAt | date :'medium' }}</td>
+        <td *ngIf="hasGrant()">
+          <app-button-form buttonName="Link to Ticket" buttonSize="small" buttonColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
         </td>
       </tr>
     </ng-container>

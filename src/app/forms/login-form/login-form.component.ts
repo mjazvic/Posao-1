@@ -26,7 +26,9 @@ export class LoginFormComponent  {
       () => {
         this.router.navigate(['/dashboard']);
       },
-
+      (error) => {
+        this.loginError=true;}
     );
+    this.loaderService.hideLoader();
   }
 }

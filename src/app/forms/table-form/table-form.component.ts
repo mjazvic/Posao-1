@@ -31,6 +31,7 @@ export class TableFormComponent implements  OnInit{
   @ViewChild('ticketSection') ticketSection: ElementRef;
 
   constructor(
+    private userService: UserService,
     private loaderService:LoaderService,
     private ticketService: TicketService,
     private router : Router)
@@ -42,6 +43,13 @@ export class TableFormComponent implements  OnInit{
     } else {
       this.linkedTransactions = [];
     }
+  }
+  public hasGrant(): boolean {
+    const currentUser = this.userService.getCurrentUser();
+    if (!currentUser) {
+      return false;
+    }
+    return currentUser.grants.includes(<Grant>'CanViewTransactions');
   }
   loadTickets() {
     this.loaderService.showLoader();

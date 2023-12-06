@@ -7,11 +7,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ButtonFormComponent implements OnInit {
   @Input() buttonName: string = '';
-  @Input() buttonAtribute: string = 'medium';
-  @Input() backgroundColor: string = '';
+  @Input() buttonSize: string = 'medium';
+  @Input() buttonColor: string = ' ';
+
+
 
   get buttonClasses(): string {
-    return `${this.buttonAtribute} ${this.backgroundColor}`;
+    return `${this.buttonSize} ${this.buttonColor}`;
   }
 
 

@@ -10,15 +10,14 @@
       <div><strong>Type:</strong> {{ transactionDetails.type }}</div>
       <div><strong>Direction:</strong> {{ transactionDetails.direction }}</div>
       <div><strong>Provider:</strong> {{ transactionDetails.provider }}</div>
-      <div><strong>Amount:</strong> {{ transactionDetails.amount }}</div>
-      <div><strong>Currency:</strong> {{ transactionDetails.currency }}</div>
-      <div><strong>Created At:</strong> {{ transactionDetails.createdAt | date }}</div>
+      <div><strong>Amount:</strong> {{ transactionDetails.amount }} {{ transactionDetails.currency }}</div>
+      <div><strong>Created At:</strong> {{ transactionDetails.createdAt |date :'medium' }}</div>
     </mat-card-content>
   </mat-card>
 
 </div>
 <div class="button">
-<app-button-form buttonName="Back to dashboard" routerLink="/dashboard"></app-button-form>
+<app-button-form buttonName="Back to dashboard" buttonAttribute="medium"  routerLink="/dashboard"></app-button-form>
 </div>
 <app-logout-form></app-logout-form>
 <app-language-switcher color="black"></app-language-switcher>
