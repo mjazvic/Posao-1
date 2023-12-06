@@ -69,7 +69,7 @@
                 </div>
             </div>
           <div *ngIf="hasGrant()">
-              <app-button-form buttonName="Link to Transaction" buttonSize="medium" buttonColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
+              <app-button-form buttonName="{{ 'translate.linked_transactions' | translate }}" buttonSize="medium" buttonColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
           </div>
           </div>
         </td>

@@ -9,11 +9,10 @@
   background: #323232;
 }
 .button{
+  padding-bottom: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  bottom: 20px;
-}
+  }
 .transaction-details div {
   margin-bottom: 10px;
 }
@@ -24,4 +23,9 @@ h2 {
   text-align: center;
   color: #000000;
 }
-
+.lang {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 10px;
+}

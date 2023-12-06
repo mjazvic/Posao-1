@@ -1,5 +1,12 @@
 {
     "translate": {
+      "language": "Jezik",
+      "croatian": "Hrvatski",
+      "english": "Engleski",
+      "transaction_Details": "Detalji",
+      "linked_tickets": "Povezani listići",
+      "welcome":"Dobrodošao",
+      "ticket_Details":"Detalji",
       "player": "Igrač",
       "type": "Vrsta",
       "direction": "Smjer",

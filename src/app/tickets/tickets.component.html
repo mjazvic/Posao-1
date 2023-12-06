@@ -1,33 +1,36 @@
-<h2>Ticket Details</h2>
+
+<h2>{{ 'translate.ticket_Details' | translate }}</h2>
 
 <div class="ticketDetails" *ngIf="ticket | async as ticket">
   <div>
-    <strong>Player ID:</strong> {{ ticket.playerId }}
+    <strong>{{ 'translate.player' | translate }} ID:</strong> {{ ticket.playerId }}
   </div>
   <div>
-    <strong>Player Username:</strong> {{ findPlayerById(ticket.playerId) }}
+    <strong>{{ 'translate.username' | translate }}:</strong> {{ findPlayerById(ticket.playerId) }}
   </div>
   <div>
-    <strong>Created At:</strong> {{ ticket.createdAt | date: 'medium' }}
+    <strong>{{ 'translate.created_at' | translate }}:</strong> {{ ticket.createdAt | date: 'medium' }}
   </div>
   <div>
-    <strong>Pay In Amount:</strong> {{ ticket.payInAmount }} {{ ticket.currency }}
+    <strong>{{ 'translate.pay_in_amount' | translate }}:</strong> {{ ticket.payInAmount }} {{ ticket.currency }}
   </div>
   <div>
-    <strong>Pay Out Amount:</strong> {{ ticket.payOutAmount }} {{ ticket.currency }}
+    <strong>{{ 'translate.pay_out_amount' | translate }}:</strong> {{ ticket.payOutAmount }} {{ ticket.currency }}
   </div>
   <div>
-    <strong>Status:</strong> {{ ticket.status }}
+    <strong>{{ 'translate.status' | translate }}:</strong> {{ ticket.status }}
   </div>
 
-  <h3>Bets:</h3>
+  <h3>{{ 'translate.bets' | translate }}:</h3>
 
   <table>
     <app-bets betsId="{{ticket.id}}"></app-bets>
   </table>
 </div>
 <div class="button">
-  <app-button-form buttonName="Back to dashboard" routerLink="/dashboard"></app-button-form>
+  <app-button-form buttonName="{{ 'translate.dashboard' | translate }} " routerLink="/dashboard"></app-button-form>
 </div>
 <app-logout-form></app-logout-form>
-<app-language-switcher color="black"></app-language-switcher>
+<div class="lang">
+  <app-language-switcher color="black"></app-language-switcher>
+</div>

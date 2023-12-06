@@ -13,7 +13,7 @@
   </div>
     <app-logout-form Color="white"></app-logout-form>
   </div>
-  <div class="user" *ngIf="userVisible">Welcome {{user}}</div>
+  <div class="user" *ngIf="userVisible">{{ 'translate.welcome' | translate }} {{user}}</div>
 
   <div class="tables">
   <div id="tick" #ticketSection>

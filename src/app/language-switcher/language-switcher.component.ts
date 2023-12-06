@@ -17,10 +17,8 @@ export class LanguageSwitcherComponent implements OnInit{
     if (this.color=="white"){this.choice="white";this.langColor="white"}
   }
 
-  changeLang(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    const language = target.value;
-    this.translate.use(language);
-  }
 
+  changeLang(selectedValue: string): void {
+    this.translate.use(selectedValue);
+  }
 }

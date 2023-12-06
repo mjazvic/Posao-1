@@ -1,22 +1,37 @@
-body{
+body {
   position: absolute;
   top: 10px;
   left: 10px;
-  padding: 15px 20px;
+  padding: 10px 20px;
   background-color: rgba(204, 204, 204, 0);
+
   .white {
-    .label{
+    .mat-label.label {
+      color: red;
+    }
+
+    .label {
       margin-top: 10px;
       font-weight: bold;
       color: #bdbaba;
-    }  }
+    }
+  }
+
   .black {
-    .label{
+    .mat-label.label {
+      color: red;
+    }
+
+    .label {
       margin-top: 10px;
       font-weight: bold;
       color: #030303;
-    }  }
+    }
+  }
 
-
-
+  .mat-label.label {
+    color: red;
+  }
 }
+
+

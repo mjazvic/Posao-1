@@ -1,24 +1,25 @@
-<h2>Transaction Details</h2>
+<h2>{{ 'translate.transaction_Details' | translate }}</h2>
 
 <div class="TransactionDDetail">
   <mat-card *ngFor="let transactionDetails of transactions$ | async" class="transaction-details">
     <mat-card-content>
       <div><strong>ID:</strong> {{ transactionDetails.id }}</div>
-      <div><strong>Username:</strong> {{ findPlayerById(transactionDetails.externalId) }}</div>
-      <div><strong>External ID:</strong> {{ transactionDetails.externalId }}</div>
-      <div><strong>Player ID:</strong> {{ transactionDetails.playerId }}</div>
-      <div><strong>Type:</strong> {{ transactionDetails.type }}</div>
-      <div><strong>Direction:</strong> {{ transactionDetails.direction }}</div>
-      <div><strong>Provider:</strong> {{ transactionDetails.provider }}</div>
-      <div><strong>Amount:</strong> {{ transactionDetails.amount }} {{ transactionDetails.currency }}</div>
-      <div><strong>Created At:</strong> {{ transactionDetails.createdAt |date :'medium' }}</div>
+      <div><strong>{{ 'translate.username' | translate }}:</strong> {{ findPlayerById(transactionDetails.externalId) }}</div>
+      <div><strong>{{ 'translate.external_id' | translate }}:</strong> {{ transactionDetails.externalId }}</div>
+      <div><strong>{{ 'translate.player_id' | translate }}:</strong> {{ transactionDetails.playerId }}</div>
+      <div><strong>{{ 'translate.type' | translate }}:</strong> {{ transactionDetails.type }}</div>
+      <div><strong>{{ 'translate.direction' | translate }}:</strong> {{ transactionDetails.direction }}</div>
+      <div><strong>{{ 'translate.provider' | translate }}:</strong> {{ transactionDetails.provider }}</div>
+      <div><strong>{{ 'translate.amount' | translate }}:</strong> {{ transactionDetails.amount }} {{ transactionDetails.currency }}</div>
+      <div><strong>{{ 'translate.created_at' | translate }}:</strong> {{ transactionDetails.createdAt |date :'medium' }}</div>
     </mat-card-content>
   </mat-card>
 
 </div>
 <div class="button">
-<app-button-form buttonName="Back to dashboard" buttonAttribute="medium"  routerLink="/dashboard"></app-button-form>
+<app-button-form buttonName="{{ 'translate.dashboard' | translate }}" buttonSize="medium"  routerLink="/dashboard"></app-button-form>
 </div>
 <app-logout-form></app-logout-form>
-<app-language-switcher color="black"></app-language-switcher>
-
+<div class="lang">
+  <app-language-switcher color="black"></app-language-switcher>
+</div>

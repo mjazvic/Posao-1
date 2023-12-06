@@ -83,7 +83,7 @@
         <td>{{ transaction.type }}</td>
         <td>{{ transaction.createdAt | date :'medium' }}</td>
         <td *ngIf="hasGrant()">
-          <app-button-form buttonName="Link to Ticket" buttonSize="small" buttonColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
+          <app-button-form buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
         </td>
       </tr>
     </ng-container>

@@ -1,5 +1,12 @@
 {
     "translate": {
+      "language": "Language",
+      "croatian": "Croatian",
+      "english": "English",
+      "transaction_Details": "Transaction Details",
+      "linked_tickets": "linked_tickets",
+      "welcome":"Welcome",
+      "ticket_Details":"Ticket Details",
       "player": "Player",
       "type": "Type",
       "direction": "Direction",
