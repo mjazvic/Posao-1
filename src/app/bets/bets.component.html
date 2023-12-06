@@ -1,6 +1,6 @@
   <div class="betovi-container">
     <ng-container *ngIf="ticket && ticket.bets && ticket.bets.length > 0">
-      <div class="betsRow">
+      <div>
       <div *ngFor="let bet of ticket.bets">
         <div class="betovi">
         <td>{{ 'translate.bet_id' | translate }}: {{ bet.id }}</td>

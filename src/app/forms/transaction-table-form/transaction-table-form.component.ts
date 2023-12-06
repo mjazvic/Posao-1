@@ -17,6 +17,7 @@ import {tickets} from "../../data/ticket.data";
 import {PlayerService} from "../../services/player.service";
 import {Player} from "../../models/player.model";
 import {Grant} from "../../models/user.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-transaction-table-form',
@@ -40,7 +41,7 @@ export class TransactionTableFormComponent implements OnInit {
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
-  ticket: any
+  ticket: Observable<Ticket>;
   ticketShow: boolean=false;
 
 
@@ -63,7 +64,7 @@ export class TransactionTableFormComponent implements OnInit {
     );
   }
   loadTicket(id) {
-        this.router.navigate(['/tickets', id]);
+         this.router.navigate(['/tickets', id]);
   }
   applyFilter() {
     this.loadTransactions();
@@ -83,7 +84,10 @@ export class TransactionTableFormComponent implements OnInit {
   }
   showFilter(){
     this.filterShow = !this.filterShow;
-
+  }
+  hasTicket(id):boolean{
+    this.ticket=this.ticketService.getTicket(id);
+    return this.ticket != undefined;
   }
   public hasGrant(): boolean {
     const currentUser = this.userService.getCurrentUser();
@@ -92,11 +96,7 @@ export class TransactionTableFormComponent implements OnInit {
     }
     return currentUser.grants.includes(<Grant>'CanViewTickets');
   }
-  toggleDetailsTransaction(transactionId: string,externalId:string) {
-    this.selectedTransactionId = this.selectedTransactionId === transactionId ? null : transactionId;
-    this.ticket=this.ticketService.getTicket(externalId);
-    if(this.ticket != undefined){this.ticketShow=true;}
-  }
+
 
 
   protected readonly players = players;
