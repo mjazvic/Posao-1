@@ -1,3 +1,6 @@
+your-parent-selector {
+  display: flex;
+}
 .filterButton{
   position: relative;
   left:48%;
@@ -14,7 +17,7 @@ mat-form-field {
   mat-label, mat-select {
     color: black;
     .mat-select-value-text {
-      color: black; // Change this to the color you want for the selected text
+      color: black;
     }
   }
 }
@@ -27,22 +30,26 @@ button {
   margin-left: 15px;
 }
 table {
-  overflow-x: auto;
-  overflow-y: auto;
   border-radius: 10px;
+  position:relative;
+  align-self: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: #323232;
   color: #d7d1d1;
   border-collapse: collapse;
-  width: 100%;
+  width: 1200px;
 }
 th, td {
+  width: auto;
   padding: 1rem;
   text-align: left;
 }
-th {
-  background: hsla(0, 8%, 3%, 0.7);
+
+.header {
+  background: #181818;
+  border-radius: 10px;
 }
+
 
 tr:nth-of-type(2n) {
   background: hsla(0, 0%, 0%, 0.1);

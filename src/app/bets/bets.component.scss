@@ -1,13 +1,21 @@
 .betovi-container{
+  position: relative;
   display: flex;
   align-items: center;
 }
+.betsRow{
+  position: relative;
+  align-self: center;
+}
+
 .betovi{
   display: inline-block;
   background-color: #323232;
+  width: auto;
+  align-items: center;
   border-radius: 16px;
-  padding: 15px 10px;
-  margin: 30px;
+  padding: 10px;
+  margin: 10px;
   color: #d7d1d1;
   &:nth-child(odd) {
     background: hsla(0, 0%, 0%, 0.1);
