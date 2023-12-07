@@ -13,11 +13,8 @@ import {
   TransactionType
 } from "../../models/transaction.model";
 import {players} from "../../data/player.data";
-import {tickets} from "../../data/ticket.data";
-import {PlayerService} from "../../services/player.service";
-import {Player} from "../../models/player.model";
 import {Grant} from "../../models/user.model";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Component({
   selector: 'app-transaction-table-form',
@@ -41,30 +38,32 @@ export class TransactionTableFormComponent implements OnInit {
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
-  ticket: Observable<Ticket>;
-  ticketShow: boolean=false;
-
+  ticket: Ticket;
+  ticketShow:boolean=true;
+  selectedTicket:Observable<Ticket>;
 
   constructor(
-  private userService:UserService,
+    private userService:UserService,
     private ticketService:TicketService,
     private loaderService:LoaderService,
     private router : Router,
     private transactionService: TransactionService) {}
 
 
-
   loadTransactions() {
     this.loaderService.showLoader();
-    this.transactionService.getTransactions(this.Tfilter,this.userName).subscribe(
+    this.transactionService.getTransactions(this.Tfilter).subscribe(
       (transactions) => {
         this.transactions = transactions;
        this.loaderService.hideLoader();
       },
     );
   }
-  loadTicket(id) {
-         this.router.navigate(['/tickets', id]);
+  getTicket(id){
+    this.loaderService.showLoader();
+    this.selectedTicket=this.ticketService.getTicket(id)
+    this.loaderService.hideLoader();
+
   }
   applyFilter() {
     this.loadTransactions();
@@ -85,9 +84,20 @@ export class TransactionTableFormComponent implements OnInit {
   showFilter(){
     this.filterShow = !this.filterShow;
   }
-  hasTicket(id):boolean{
-    this.ticket=this.ticketService.getTicket(id);
-    return this.ticket != undefined;
+  hasTickett(id: string): Observable<boolean> {
+    return this.ticketService.getTickets({}).pipe(
+      map((tickets) => tickets.some((ticket) => ticket.id === id))
+    );
+  }
+  hasTicket(id: string): boolean {
+    this.ticketService.getTicket(id).subscribe(
+      (ticket) => {
+        this.ticket = ticket;
+        console.log("ticket id je: ", id, " ticket ovo je : ", this.ticket.playerId);
+        return this.ticket.playerId != null;
+      },
+    );
+    return false;
   }
   public hasGrant(): boolean {
     const currentUser = this.userService.getCurrentUser();

@@ -8,6 +8,7 @@ import {Ticket, TicketFilter, TicketStatus} from "../../models/ticket.model";
 import { TransactionService } from '../../services/transaction.service';
 import { Transaction } from "../../models/transaction.model";
 import {players} from "../../data/player.data";
+import {Observable, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-table-form',
@@ -26,11 +27,13 @@ export class TableFormComponent implements  OnInit{
   linkedTransactions: Transaction[] = [];
   statusOptions = Object.values(TicketStatus);
   selectedTicketId: string | null = null;
-  transactions: Transaction[];
+  selectedTransactions: Observable<Transaction[]>;
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
+  protected readonly players = players;
 
   constructor(
+    private transactionService:TransactionService,
     private userService: UserService,
     private loaderService:LoaderService,
     private ticketService: TicketService,
@@ -68,9 +71,11 @@ export class TableFormComponent implements  OnInit{
     this.filterShow = true}
     else this.filterShow=false
   }
-  loadLinkedTransactions(ticketId: string) {
-        this.router.navigate(['/transactions', ticketId]);
-      }
-    protected readonly players = players;
+
+  getTransactions(id){
+    this.selectedTransactions = this.transactionService.getTransactions({ externalId: id });
+
+  }
+
 
 }

@@ -1,0 +1,29 @@
+<div>
+<div class="popup-container"  *ngIf="transactions$ | async as Transaction" [ngClass]="{'active' : transactions$}">
+  <div class="TransactionDDetail">
+    <mat-card *ngFor="let transactionDetails of transactions$ | async" (click)="minMax(transactionDetails.id)" class="transaction-details">
+      <mat-card-content >
+        <div>
+        <div><strong>ID:</strong> {{ transactionDetails.id }}</div>
+        <div *ngIf="minimazedState[transactionDetails.id]">
+        <div><strong>{{ 'translate.username' | translate }}:</strong> {{ findPlayerById(transactionDetails.playerId) }}</div>
+        <div><strong>{{ 'translate.external_id' | translate }}:</strong> {{ transactionDetails.externalId }}</div>
+        <div><strong>{{ 'translate.player_id' | translate }}:</strong> {{ transactionDetails.playerId }}</div>
+        <div><strong>{{ 'translate.type' | translate }}:</strong> {{ transactionDetails.type }}</div>
+        <div><strong>{{ 'translate.direction' | translate }}:</strong> {{ transactionDetails.direction }}</div>
+        <div><strong>{{ 'translate.provider' | translate }}:</strong> {{ transactionDetails.provider }}</div>
+        <div><strong>{{ 'translate.amount' | translate }}:</strong> {{ transactionDetails.amount }} {{ transactionDetails.currency }}</div>
+        <div><strong>{{ 'translate.created_at' | translate }}:</strong> {{ transactionDetails.createdAt |date :'medium' }}</div>
+        </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+    <div class="button">
+      <app-button-form buttonColor="white" buttonSize="small" buttonName="{{ 'translate.close' | translate }}" (click)="closePopup()"></app-button-form>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="transactions$ | async as Transaction" [ngClass]="{'active' : transactions$}" (click)="closePopup()"></div>

@@ -1,4 +1,4 @@
-<body>
+<body  *ngIf="transactions && transactions.length > 0">
 <div class="filterButton">
   <app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
 </div>
@@ -55,7 +55,7 @@
 </form>
 </div>
 
-<div *ngIf="transactions && transactions.length > 0">
+<div>
   <table>
     <thead>
     <tr>
@@ -68,12 +68,11 @@
       <th>{{ 'translate.type' | translate }}</th>
       <th>{{ 'translate.created_at' | translate }}</th>
       <th></th>
-
     </tr>
     </thead>
     <tbody>
     <ng-container *ngFor="let transaction of transactions">
-      <tr>
+      <tr >
         <td>{{ transaction.id }}</td>
         <td>{{ getplayer(transaction.playerId)}}</td>
         <td>{{ transaction.playerId }}</td>
@@ -82,13 +81,12 @@
         <td>{{ transaction.amount }} {{ transaction.currency }}</td>
         <td>{{ transaction.type }}</td>
         <td>{{ transaction.createdAt | date :'medium' }}</td>
-        <td *ngIf="hasGrant() && hasTicket(transaction.externalId)">
-          <app-button-form buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="loadTicket(transaction.externalId)"></app-button-form>
-        </td>
+       <td>  <app-button-form *ngIf="hasGrant() && ticketShow"  buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="getTicket(transaction.externalId)" ></app-button-form>
       </tr>
     </ng-container>
     </tbody>
   </table>
+  <app-pop-up  [ticket]="selectedTicket"></app-pop-up>
 </div>
 </body>
 

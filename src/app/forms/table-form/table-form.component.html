@@ -1,4 +1,4 @@
-<body>
+<body *ngIf="tickets && tickets.length > 0">
 <div class="filterButton">
 <app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
 </div>
@@ -39,7 +39,7 @@
 
 
 </div>
-<div *ngIf="tickets && tickets.length > 0">
+<div >
   <table>
     <thead class="header">
     <tr>
@@ -68,13 +68,12 @@
                   <app-bets betsId="{{ticket.id}}"></app-bets>
                 </div>
             </div>
-          <div *ngIf="hasGrant()">
-              <app-button-form buttonName="{{ 'translate.linked_transactions' | translate }}" buttonSize="medium" buttonColor="white" (click)="loadLinkedTransactions(ticket.id)"></app-button-form>
-          </div>
+             <app-button-form *ngIf="hasGrant()" buttonName="{{ 'translate.linked_transactions' | translate }}" buttonSize="medium" buttonColor="white"(click)="getTransactions(ticket.id)" ></app-button-form>
           </div>
         </td>
       </tr>
     </ng-container>
+    <app-pop-up-transaction  [transactions$]="selectedTransactions"></app-pop-up-transaction>
     </tbody>
   </table>
 

@@ -24,7 +24,6 @@ import { TableFormComponent } from './forms/table-form/table-form.component';
 import { TransactionTableFormComponent } from './forms/transaction-table-form/transaction-table-form.component';
 import { LogoutFormComponent } from './forms/logout-form/logout-form.component';
 import { ButtonFormComponent } from './forms/button-form/button-form.component';
-import { TableComponent } from './table/table.component';
 import { SelectInputComponent } from './forms/select-input/select-input.component';
 import {MatSelectModule} from "@angular/material/select";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +33,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import { BetsComponent } from './bets/bets.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transaction.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +50,10 @@ import { BetsComponent } from './bets/bets.component';
     TransactionTableFormComponent,
     LogoutFormComponent,
     ButtonFormComponent,
-    TableComponent,
     SelectInputComponent,
     BetsComponent,
+    PopUpComponent,
+    PopUpTransactionComponent,
   ],
   imports: [
     RouterModule.forRoot([

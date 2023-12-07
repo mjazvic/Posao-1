@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
   max-width: 100%;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: #ada9a9;
   font-family: 'YourPreferredFont', sans-serif;
   .tables{

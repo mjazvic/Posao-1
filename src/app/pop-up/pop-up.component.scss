@@ -1,27 +1,40 @@
-.ticketDetailsContainer {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  width: auto;
-}
-
-.ticketDetails {
+.popup-container {
+  display: none;
+  position: fixed;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 80vw;
+  max-height: 80vh;
+  padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background: #323232;
+  background: hsla(0, 7%, 3%, 0.94);
   color: #d7d1d1;
-  padding: 2rem;
-  margin: 3rem;
+  z-index: 1000;
+}
+.popup-container.active, .overlay.active {
+  display: block;
+}
+.ticketDetails {
+  width: 100%;
+  padding: 1rem;
 }
 .ticketDetails div {
   margin-bottom: 1rem;
 }
+
 .button{
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  position: relative;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-around;
+  margin: 20px;
 }
+
 table {
   overflow-x: auto;
   overflow-y: auto;
@@ -39,25 +52,6 @@ th, td {
 th {
   background: hsla(0, 8%, 3%, 0.7);
 }
-
 tr:nth-of-type(2n) {
   background: hsla(0, 0%, 0%, 0.1);
 }
-h2 {
-  font-size: 50px;
-  position: relative;
-  text-align: center;
-  color: #000000;
-  margin-top: 30px;
-}
-.lang {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 10px;
-}
-
-
-
-
-
