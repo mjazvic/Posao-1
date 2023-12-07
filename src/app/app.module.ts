@@ -14,8 +14,6 @@ import { AuthGuard } from './auth.guard';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { TransactionsComponent } from './transactions/transactions.component';
-import { TicketsComponent } from './tickets/tickets.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import {LoginGuard} from "./login.guard";
 import { LoaderComponent } from './loader/loader.component';
@@ -41,8 +39,6 @@ import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transacti
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    TransactionsComponent,
-    TicketsComponent,
     LanguageSwitcherComponent,
     LoaderComponent,
     LoginFormComponent,
@@ -58,8 +54,6 @@ import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transacti
   imports: [
     RouterModule.forRoot([
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      {path: 'transactions/:id', component: TransactionsComponent, canActivate: [AuthGuard]},
-      {path: 'tickets/:id', component: TicketsComponent, canActivate: [AuthGuard]},
       {path: '', component: LoginComponent, canActivate: [LoginGuard]},
     ]),
     BrowserModule,
