@@ -3,7 +3,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import {LoaderService} from "../../services/loader.service";
 import {TicketService} from "../../services/ticket.service";
-import {Ticket, TicketFilter, TicketStatus} from "../../models/ticket.model";
+import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {TransactionService} from "../../services/transaction.service";
 import {
   Transaction,
@@ -37,7 +37,7 @@ export class TransactionTableFormComponent implements OnInit {
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
-  ticket: Observable<Ticket>;
+  ticket: Ticket;
   selectedTicket:Observable<Ticket>;
 
   constructor(
@@ -82,25 +82,15 @@ export class TransactionTableFormComponent implements OnInit {
   showFilter(){
     this.filterShow = !this.filterShow;
   }
-  hasTicket(id){
-    this.ticket=this.ticketService.getTicket(id)
-    return this.ticket != null;
-  }
-  hasTickett(id: string): Observable<boolean> {
-    return this.ticketService.getTickets({}).pipe(
-      map((tickets) => tickets.some((ticket) => ticket.id === id))
-    );
-  }
-  /** hasTicke(id: string): boolean {
+
+  hasTicket(id: string): boolean {
     this.ticketService.getTicket(id).subscribe(
       (ticket) => {
-        this.ticket = ticket;
-        console.log("ticket id je: ", id, " ticket ovo je : ", this.ticket.playerId);
-        return this.ticket.playerId != null;
+        ticket.id = id;
       },
     );
-    return false;
-  }*/
+    return this.ticket == null;
+  }
   public hasGrant(): boolean {
     const currentUser = this.userService.getCurrentUser();
     if (!currentUser) {

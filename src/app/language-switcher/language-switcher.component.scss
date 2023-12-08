@@ -6,10 +6,6 @@ body {
   background-color: rgba(204, 204, 204, 0);
 
   .white {
-    .mat-label.label {
-      color: red;
-    }
-
     .label {
       margin-top: 10px;
       font-weight: bold;
@@ -18,10 +14,6 @@ body {
   }
 
   .black {
-    .mat-label.label {
-      color: red;
-    }
-
     .label {
       margin-top: 10px;
       font-weight: bold;
@@ -29,9 +21,6 @@ body {
     }
   }
 
-  .mat-label.label {
-    color: red;
-  }
 }
 
 

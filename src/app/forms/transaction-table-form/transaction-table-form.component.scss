@@ -36,9 +36,11 @@ form {
 mat-form-field {
   margin: 15px;
   color: #000000;
-  mat-label, mat-select {
-    color: black;
+  mat-label, mat-select, {
+    color: #2f2f2f;
+    font-weight: bold;
   }
+
 }
 
 

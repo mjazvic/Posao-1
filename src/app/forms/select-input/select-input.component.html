@@ -1,7 +1,7 @@
 <body>
 <mat-label class="label">{{ label }}</mat-label>
-<mat-select [ngClass]="langClasses()" (selectionChange)="onChange($event)">
-  <mat-option *ngFor="let option of options" [value]="option.value">
+<mat-select class="select" [ngClass]="langClasses()" (selectionChange)="onChange($event)">
+  <mat-option  class="option" *ngFor="let option of options" [value]="option.value">
     {{ option.label }}
   </mat-option>
 </mat-select>

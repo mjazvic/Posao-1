@@ -20,7 +20,7 @@ ticket:Ticket;
   }
   toggle(){
     this.loaderService.showLoader();
-  this.ticketService.getTicket(this.betsId).subscribe(
+    this.ticketService.getTicket(this.betsId).subscribe(
     (tickets) => {
       this.ticket = tickets;
     })

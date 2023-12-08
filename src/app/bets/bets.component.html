@@ -3,17 +3,18 @@
       <div>
       <div *ngFor="let bet of ticket.bets">
         <div class="betovi">
-        <td>{{ 'translate.bet_id' | translate }}: {{ bet.id }}</td>
-        <td>{{ 'translate.sport' | translate }}: {{ bet.sport }}</td>
-        <td>{{ 'translate.league' | translate }}: {{ bet.league }}</td>
-        <td>{{ 'translate.market' | translate }}: {{ bet.market }}</td>
-        <td>{{ 'translate.participants' | translate }}: {{ bet.participants }}</td>
-        <td>{{ 'translate.odds' | translate }}: {{ bet.odds }}</td>
-        <td>{{ 'translate.status' | translate }}: {{ bet.status }}</td>
-        <td>{{ 'translate.start_at' | translate }}: {{ bet.startAt | date :'medium' }}</td>
+        <td><strong>{{ 'translate.bet_id' | translate }}: </strong> {{ bet.id }}</td>
+        <td><strong>{{ 'translate.sport' | translate }}: </strong> {{ bet.sport }}</td>
+        <td><strong>{{ 'translate.league' | translate }}: </strong>{{ bet.league }}</td>
+        <td><strong>{{ 'translate.market' | translate }}: </strong> {{ bet.market }}</td>
+        <td><strong>{{ 'translate.participants' | translate }}: </strong> {{ bet.participants }}</td>
+        <td><strong>{{ 'translate.odds' | translate }} </strong> {{ bet.odds }}</td>
+        <td><strong>{{ 'translate.status' | translate }}: </strong> {{ bet.status }}</td>
+        <td><strong>{{ 'translate.start_at' | translate }}: </strong> {{ bet.startAt | date :'medium' }}</td>
         </div>
       </div>
       </div>
     </ng-container>
   </div>
+
 
