@@ -30,7 +30,6 @@ export class TransactionTableFormComponent implements OnInit {
   tickets: Ticket [][]= [];
   Tfilter: TransactionFilter = {};
   filter: TicketFilter = {};
-  selectedTransactionId: string | null = null;
   transactionTypes = TransactionType;
   transactionDirectons = TransactionDirection;
   transactionProviders = TransactionProvider;
@@ -38,8 +37,7 @@ export class TransactionTableFormComponent implements OnInit {
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
-  ticket: Ticket;
-  ticketShow:boolean=true;
+  ticket: Observable<Ticket>;
   selectedTicket:Observable<Ticket>;
 
   constructor(
@@ -52,7 +50,7 @@ export class TransactionTableFormComponent implements OnInit {
 
   loadTransactions() {
     this.loaderService.showLoader();
-    this.transactionService.getTransactions(this.Tfilter).subscribe(
+    this.transactionService.getTransactions(this.Tfilter,this.userName).subscribe(
       (transactions) => {
         this.transactions = transactions;
        this.loaderService.hideLoader();
@@ -84,12 +82,16 @@ export class TransactionTableFormComponent implements OnInit {
   showFilter(){
     this.filterShow = !this.filterShow;
   }
+  hasTicket(id){
+    this.ticket=this.ticketService.getTicket(id)
+    return this.ticket != null;
+  }
   hasTickett(id: string): Observable<boolean> {
     return this.ticketService.getTickets({}).pipe(
       map((tickets) => tickets.some((ticket) => ticket.id === id))
     );
   }
-  hasTicket(id: string): boolean {
+  /** hasTicke(id: string): boolean {
     this.ticketService.getTicket(id).subscribe(
       (ticket) => {
         this.ticket = ticket;
@@ -98,7 +100,7 @@ export class TransactionTableFormComponent implements OnInit {
       },
     );
     return false;
-  }
+  }*/
   public hasGrant(): boolean {
     const currentUser = this.userService.getCurrentUser();
     if (!currentUser) {

@@ -1,33 +1,19 @@
 .filterButton{
   position: relative;
-  left:48%;
+  display: grid;
+  place-items: center;
   margin-top: 15px;
   margin-bottom: 20px;
 }
 table {
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  position:relative;
+  box-shadow: 0 0 20px 5px rgba(10, 10, 10, 0.74);
   background: #323232;
   color: #d7d1d1;
   border-collapse: collapse;
   width: 100%;
-
-
-  .transaction-details {
-    text-align: center;
-    padding: 5px;
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    border-radius: 16px;
-    margin-bottom: 5px;
-    color: #d7d1d1;
-    margin-right: 20px;
-
-    &:nth-child(odd) {
-      background: hsla(0, 0%, 0%, 0.1);
-    }
-  }
 }
 th, td {
   padding: 1rem;
@@ -37,34 +23,22 @@ th, td {
 th {
   background: hsla(0, 8%, 3%, 0.7);
 }
-
 tr:nth-of-type(2n) {
   background: hsla(0, 0%, 0%, 0.1);
 }
 form {
-  left: 20px;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 mat-form-field {
+  margin: 15px;
+  color: #000000;
   mat-label, mat-select {
     color: black;
-    .mat-select-value-text {
-      color: black;
-    }
   }
 }
-mat-form-field {
-  color: #000000;
-  margin-right: 15px;
-}
 
-button {
-  margin-left: 15px;
-
-}
 

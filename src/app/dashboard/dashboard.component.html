@@ -17,16 +17,11 @@
   <div class="user" *ngIf="userVisible">{{ 'translate.welcome' | translate }} {{user}}</div>
 
   <div class="tables">
-  <div id="tick" #ticketSection>
   <div *ngIf="showTicketDetails" >
     <app-table-form></app-table-form>
   </div>
-</div>
-<div id="tack" #transactionSection>
 <div *ngIf="showTransactionDetails">
   <app-transaction-table-form></app-transaction-table-form>
-
-</div>
 </div>
 </div>
 </div>

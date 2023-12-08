@@ -9,6 +9,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { Transaction } from "../../models/transaction.model";
 import {players} from "../../data/player.data";
 import {Observable, switchMap} from "rxjs";
+import {Player} from "../../models/player.model";
 
 @Component({
   selector: 'app-table-form',
@@ -67,15 +68,19 @@ export class TableFormComponent implements  OnInit{
     this.loadTickets();
   }
   showFilter(){
-    if(!this.filterShow){
-    this.filterShow = true}
-    else this.filterShow=false
+    this.filterShow = !this.filterShow;
   }
 
   getTransactions(id){
+    this.loaderService.showLoader();
     this.selectedTransactions = this.transactionService.getTransactions({ externalId: id });
+    this.loaderService.hideLoader();
 
   }
+getPlayer(id):string{
+    const foundPlayer = this.players.find(player => player.id===id)
+  return foundPlayer.username;
 
+}
 
 }

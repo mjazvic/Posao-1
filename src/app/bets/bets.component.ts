@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TicketService} from "../services/ticket.service";
 import {Ticket, TicketFilter} from "../models/ticket.model";
-import {Observable} from "rxjs";
+import {LoaderService} from "../services/loader.service";
 
 @Component({
   selector: 'app-bets',
@@ -13,14 +13,18 @@ ticket:Ticket;
   filter: TicketFilter = {};
  @Input() betsId:string;
 
-  constructor(private ticketService :TicketService) { }
+  constructor(private ticketService :TicketService,private loaderService:LoaderService) { }
 
   ngOnInit(): void {
     this.toggle()
   }
   toggle(){
+    this.loaderService.showLoader();
   this.ticketService.getTicket(this.betsId).subscribe(
     (tickets) => {
       this.ticket = tickets;
     })
-}}
+    this.loaderService.hideLoader();
+
+  }
+}

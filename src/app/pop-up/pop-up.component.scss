@@ -9,11 +9,16 @@
   max-height: 80vh;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background: hsla(0, 7%, 3%, 0.94);
   color: #d7d1d1;
   z-index: 1000;
+  align-items: center;
 }
+h1{
+  position: relative;
+  display: flex;
+  align-self: center;
+  }
 .popup-container.active, .overlay.active {
   display: block;
 }

@@ -1,5 +1,7 @@
 {
     "translate": {
+      "transactions": "Transactions",
+      "ticket": "Ticket",
       "close": "Close",
       "language": "Language",
       "croatian": "Croatian",

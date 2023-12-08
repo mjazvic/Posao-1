@@ -7,9 +7,9 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #ada9a9;
-  font-family: 'YourPreferredFont', sans-serif;
   .tables{
     width: 100%;
+    align-content: center;
   }
   .dashboard-container {
     position: relative;
@@ -37,13 +37,13 @@ body {
     }
     }
   .buttons {
+    margin-top: 50px;
     display: flex;
-    align-items: center;
+    justify-content: center;
   }
-
   .ticketButton, .transactionButton {
     padding: 10px;
-    margin: 5px;
+    margin: 10px;
     border: none;
     cursor: pointer;
 
@@ -51,6 +51,7 @@ body {
   .user{
     margin-top: 50px;
     color: #2a2929;
+    top: 140px;
     font-size: 80px;
     position: relative;
   }

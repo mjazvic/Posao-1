@@ -10,7 +10,7 @@ import {players} from "../data/player.data";
 })
 export class PopUpTransactionComponent implements OnInit {
   @Input() transactions$: Observable<Transaction[]>;
-  minimazedState: { [key: string]: boolean } = {}; // Object to store minimized state for each transaction
+  minimazedState: { [key: string]: boolean } = {};
 
 
   constructor() { }
@@ -37,4 +37,5 @@ export class PopUpTransactionComponent implements OnInit {
     this.minimazedState[transactionId] = !this.minimazedState[transactionId];
 
   }
+
 }

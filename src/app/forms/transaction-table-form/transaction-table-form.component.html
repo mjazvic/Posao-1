@@ -3,8 +3,8 @@
   <app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
 </div>
 <div *ngIf="filterShow">
-<form (ngSubmit)="applyFilter()" class="form">
-  <mat-form-field>
+<form>
+  <mat-form-field (ngSubmit)="applyFilter()">
     <mat-label>{{ 'translate.username' | translate }}</mat-label>
     <mat-select name="username" [(ngModel)]="userName">
       <mat-option *ngFor="let player of players" [value]="player.username">
@@ -72,7 +72,7 @@
     </thead>
     <tbody>
     <ng-container *ngFor="let transaction of transactions">
-      <tr >
+      <tr>
         <td>{{ transaction.id }}</td>
         <td>{{ getplayer(transaction.playerId)}}</td>
         <td>{{ transaction.playerId }}</td>
@@ -81,7 +81,7 @@
         <td>{{ transaction.amount }} {{ transaction.currency }}</td>
         <td>{{ transaction.type }}</td>
         <td>{{ transaction.createdAt | date :'medium' }}</td>
-       <td>  <app-button-form *ngIf="hasGrant() && ticketShow"  buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="getTicket(transaction.externalId)" ></app-button-form>
+       <td>  <app-button-form *ngIf="hasGrant() && hasTicket(transaction.externalId)"  buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="getTicket(transaction.externalId)" ></app-button-form>
       </tr>
     </ng-container>
     </tbody>

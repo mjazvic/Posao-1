@@ -10,12 +10,9 @@ export class ButtonFormComponent implements OnInit {
   @Input() buttonSize: string = 'medium';
   @Input() buttonColor: string = ' ';
 
-
-
   get buttonClasses(): string {
     return `${this.buttonSize} ${this.buttonColor}`;
   }
-
 
   constructor() { }
 

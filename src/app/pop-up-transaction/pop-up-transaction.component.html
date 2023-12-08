@@ -1,7 +1,8 @@
 <div>
 <div class="popup-container"  *ngIf="transactions$ | async as Transaction" [ngClass]="{'active' : transactions$}">
+  <h1>{{ 'translate.transactions' | translate }}</h1>
   <div class="TransactionDDetail">
-    <mat-card *ngFor="let transactionDetails of transactions$ | async" (click)="minMax(transactionDetails.id)" class="transaction-details">
+    <mat-card *ngFor="let transactionDetails of transactions$ | async" (click)="minMax(transactionDetails.id)" class="transaction-details" >
       <mat-card-content >
         <div>
         <div><strong>ID:</strong> {{ transactionDetails.id }}</div>

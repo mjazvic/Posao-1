@@ -1,10 +1,8 @@
 <body *ngIf="tickets && tickets.length > 0">
 <div class="filterButton">
-<app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
+  <app-button-form (click)="showFilter()"  buttonName="Filter"></app-button-form>
 </div>
 <div *ngIf="filterShow">
-
-
   <form (ngSubmit)="applyFilter()">
     <mat-form-field>
       <mat-label>{{ 'translate.username' | translate }}</mat-label>
@@ -37,30 +35,29 @@
     <app-button-form  buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
   </form>
 
-
 </div>
-<div >
+<div class="parent-div" >
   <table>
     <thead class="header">
-    <tr>
-      <th>ID</th>
+      <th class="th1">ID</th>
+      <th>{{ 'translate.username' | translate }} </th>
       <th>{{ 'translate.player' | translate }} ID</th>
       <th>{{ 'translate.created_at' | translate }}</th>
       <th>{{ 'translate.pay_in_amount' | translate }}</th>
-      <th>{{ 'translate.pay_out_amount' | translate }}</th>
-    </tr>
+      <th class="th2">{{ 'translate.pay_out_amount' | translate }}</th>
     </thead>
     <tbody>
     <ng-container *ngFor="let ticket of tickets">
       <tr (click)="toggleDetails(ticket.id)">
         <td>{{ ticket.id }}</td>
+        <td>{{ getPlayer(ticket.playerId)}}</td>
         <td>{{ ticket.playerId }}</td>
         <td>{{ ticket.createdAt |  date :'medium' }}</td>
         <td>{{ ticket.payInAmount }} {{ticket.currency}}</td>
         <td>{{ ticket.payOutAmount }} {{ticket.currency}}</td>
       </tr>
       <tr *ngIf="selectedTicketId === ticket.id">
-        <td colspan="5">
+        <td colspan="6">
           <div class="ticket-details">
             <div *ngIf="ticket.bets && ticket.bets.length > 0">
               <h4>{{ 'translate.bets' | translate }}:</h4>
@@ -76,7 +73,6 @@
     <app-pop-up-transaction  [transactions$]="selectedTransactions"></app-pop-up-transaction>
     </tbody>
   </table>
-
 </div>
 </body>
 

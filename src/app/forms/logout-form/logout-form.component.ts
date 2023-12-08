@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LoaderService} from "../../services/loader.service";
 import {UserService} from "../../services/user.service";
-import {Route, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-logout-form',

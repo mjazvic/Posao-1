@@ -1,4 +1,5 @@
 <div class="popup-container"  *ngIf="ticket | async as ticket" [ngClass]="{'active' : ticket}">
+  <h1>{{ 'translate.ticket' | translate }}</h1>
   <div class="ticketDetails">
     <div>
       <strong>{{ 'translate.player' | translate }} ID:</strong> {{ ticket.playerId }}
