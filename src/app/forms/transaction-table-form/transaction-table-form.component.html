@@ -55,9 +55,9 @@
 </form>
 </div>
 
-<div>
+<div class="parent-div">
   <table>
-    <thead>
+    <thead class="header">
     <tr>
       <th>ID</th>
       <th>{{ 'translate.username' | translate }} </th>
@@ -81,7 +81,7 @@
         <td>{{ transaction.amount }} {{ transaction.currency }}</td>
         <td>{{ transaction.type }}</td>
         <td>{{ transaction.createdAt | date :'medium' }}</td>
-       <td>  <app-button-form *ngIf="hasGrant() && hasTicket(transaction.externalId)"  buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="getTicket(transaction.externalId)" ></app-button-form>
+       <td>  <app-button-form *ngIf="hasGrant() "  buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="getTicket(transaction.externalId)" ></app-button-form>
       </tr>
     </ng-container>
     </tbody>

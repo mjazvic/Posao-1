@@ -3,6 +3,7 @@ export interface User {
   username: string;
   password: string;
   grants: Grant[];
+  imageUrl:string;
 }
 
 export enum Grant {

@@ -8,6 +8,8 @@ export interface Transaction {
   amount: number;
   currency: string;
   createdAt: string;
+
+  hasTicket?: boolean;
 }
 
 export interface TransactionFilter {

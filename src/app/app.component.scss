@@ -1,16 +1,5 @@
 body {
   max-width: 100%;
-  app-language-switcher {
-    margin-left: 10px;
-    margin-top: 10px;
-    background-color: rgba(215, 202, 202, 0);
-    color: rgba(215, 202, 202, 0);
-    position: relative;
-    top: 10px;
-    left: 0;
-    z-index: 2;
-    border-radius: 50px;
-  }
 
   router-outlet {
     .container {

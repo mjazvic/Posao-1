@@ -59,7 +59,7 @@ export class TransactionTableFormComponent implements OnInit {
   }
   getTicket(id){
     this.loaderService.showLoader();
-    this.selectedTicket=this.ticketService.getTicket(id)
+    this.selectedTicket = this.ticketService.getTicket(id)
     this.loaderService.hideLoader();
 
   }

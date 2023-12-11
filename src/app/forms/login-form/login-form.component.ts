@@ -24,7 +24,7 @@ export class LoginFormComponent  {
 
     this.userService.login(this.username, this.password).subscribe(
       () => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['']);
       },
       (error) => {
         this.loginError=true;}

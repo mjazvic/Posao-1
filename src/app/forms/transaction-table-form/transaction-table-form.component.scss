@@ -1,3 +1,5 @@
+body{
+}
 .filterButton{
   position: relative;
   display: grid;
@@ -5,20 +7,32 @@
   margin-top: 15px;
   margin-bottom: 20px;
 }
-table {
-  border-radius: 16px;
+.parent-div{
+  display: flex;
+  justify-content: center;
+}
+table{
   overflow: hidden;
-  position:relative;
-  box-shadow: 0 0 20px 5px rgba(10, 10, 10, 0.74);
+  border-radius: 16px;
   background: #323232;
+  box-shadow: 0 0 20px 5px rgba(10, 10, 10, 0.74);
+  position:relative;
   color: #d7d1d1;
   border-collapse: collapse;
-  width: 100%;
+  width: 1500px;
+  margin-bottom: 20px;
+}
+.header{
+  background: #000000;
 }
 th, td {
-  padding: 1rem;
+  padding: 1rem ;
   text-align: center;
   flex-direction: row;
+  gap:20px;
+}
+td{
+  padding: 10px;
 }
 th {
   background: hsla(0, 8%, 3%, 0.7);

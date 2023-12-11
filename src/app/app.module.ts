@@ -32,6 +32,12 @@ import {MatCardModule} from "@angular/material/card";
 import { BetsComponent } from './bets/bets.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transaction.component';
+import { HeaderComponent } from './header/header.component';
+import { MainComponent } from './main/main.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {NgOptimizedImage} from "@angular/common";
+import { TableComponent } from './forms/table/table.component';
 
 @NgModule({
   declarations: [
@@ -49,30 +55,42 @@ import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transacti
     BetsComponent,
     PopUpComponent,
     PopUpTransactionComponent,
+    HeaderComponent,
+    MainComponent,
+    FooterComponent,
+    SidebarComponent,
+    TableComponent,
   ],
-  imports: [
-    RouterModule.forRoot([
-      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      {path: '', component: LoginComponent, canActivate: [LoginGuard]},
-    ]),
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    MatSelectModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatTableModule,
-    MatIconModule,
-    MatCardModule
-  ],
+    imports: [
+        RouterModule.forRoot([
+            {
+                path: '', component: MainComponent, children: [
+                    {path: 'tickets', component: TableFormComponent},
+                    {path: 'transactions', component: TransactionTableFormComponent},
+                ],
+            },
+            {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+            {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+        ]),
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        MatSelectModule,
+        BrowserAnimationsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatTableModule,
+        MatIconModule,
+        MatCardModule,
+        NgOptimizedImage
+    ],
   providers:[AuthGuard]
   ,
   bootstrap: [AppComponent]

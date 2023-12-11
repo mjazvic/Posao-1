@@ -24,7 +24,7 @@ export class LogoutFormComponent implements OnInit {
     logout(): void {
       this.loaderService.showLoader();
       this.userService.logout().subscribe(() => {
-        this.router.navigate(['']);
+        this.router.navigate(['login']);
       });
   }
 

@@ -3,6 +3,7 @@
   <div class="dark-background" >
     <app-language-switcher></app-language-switcher>
     <h1 class="title">{{ 'translate.dashboard' | translate }} </h1>
+
     <div class="buttons">
     <div  *ngIf="hasGrant('CanViewTransactions')">
         <app-button-form class="transactionButton" [ngClass]="{'center-transactions': !hasGrant('CanViewTickets')}"  (click)="changeToTransaction()" buttonSize="large" buttonColor="white" buttonName="{{ 'translate.dashboard_transactions' | translate }}"></app-button-form>
@@ -13,7 +14,13 @@
   </div>
     <app-logout-form Color="white"></app-logout-form>
   </div>
-  <div class="user" *ngIf="userVisible">{{ 'translate.welcome' | translate }} {{user}}</div>
+  <app-table
+              [columns]="tableColumns"
+              [data]="tickets"
+              [actionId]="'id'"
+              (outAction)=" getTransactions($event)"
+          ></app-table>
+  <app-pop-up-transaction  [transactions$]="selectedTransactions"></app-pop-up-transaction>
 
   <div class="tables">
   <div *ngIf="showTicketDetails" >

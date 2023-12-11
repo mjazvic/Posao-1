@@ -1,3 +1,4 @@
+<body>
 <div *ngIf="choice=='black'">
   <app-select-input color="black" label="{{ 'translate.language' | translate }}"
                     [options]="[{ value: 'en', label: 'English' }, { value: 'hr', label: 'Croatian' }]"
@@ -11,3 +12,4 @@
                     (selectionChange)="changeLang($event)"
   ></app-select-input>
 </div>
+</body>

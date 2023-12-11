@@ -17,9 +17,6 @@
 
       <button type="submit" [disabled]="!loginForm.valid">{{ 'translate.login' | translate }}</button>
     </form>
-    <div class="forgot-password">
-      <a href="#">{{ 'translate.forgot_password' | translate }}</a>
-    </div>
     <div mat-class="error" *ngIf="loginError">{{ 'translate.loginError' | translate }}</div>
   </div>
 </div>

@@ -75,7 +75,6 @@ export class TableFormComponent implements  OnInit{
     this.loaderService.showLoader();
     this.selectedTransactions = this.transactionService.getTransactions({ externalId: id });
     this.loaderService.hideLoader();
-
   }
 getPlayer(id):string{
     const foundPlayer = this.players.find(player => player.id===id)

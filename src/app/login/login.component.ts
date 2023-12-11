@@ -16,9 +16,8 @@ export class LoginComponent {
 
   login() {
     this.loaderService.showLoader();
-
     this.userService.login(this.username,this.password).subscribe(() => {
-  this.router.navigate(['/dashboard']);
+    this.router.navigate(['']);
 });
 }
 
