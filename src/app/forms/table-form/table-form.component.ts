@@ -1,15 +1,15 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { UserService} from "../../services/user.service";
-import { Grant } from '../../models/user.model';
-import { Router } from '@angular/router';
+import {UserService} from "../../services/user.service";
+import {Grant} from '../../models/user.model';
+import {Router} from '@angular/router';
 import {LoaderService} from "../../services/loader.service";
 import {TicketService} from "../../services/ticket.service";
 import {Ticket, TicketFilter, TicketStatus} from "../../models/ticket.model";
-import { TransactionService } from '../../services/transaction.service';
-import { Transaction } from "../../models/transaction.model";
+import {TransactionService} from '../../services/transaction.service';
+import {Transaction} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
-import {Observable, switchMap} from "rxjs";
-import {Player} from "../../models/player.model";
+import {Observable, timer} from "rxjs";
+import {tickets} from "../../data/ticket.data";
 
 @Component({
   selector: 'app-table-form',
@@ -23,15 +23,27 @@ export class TableFormComponent implements  OnInit{
   }
   filterShow: boolean = false;
   userName:string;
-  tickets: Ticket[];
   filter: TicketFilter = {};
-  linkedTransactions: Transaction[] = [];
+  tickets: Observable<Ticket[]>=this.ticketService.getTickets(this.filter)
   statusOptions = Object.values(TicketStatus);
-  selectedTicketId: string | null = null;
-  selectedTransactions: Observable<Transaction[]>;
+  selectedTransactions:Observable<Transaction[]> ;
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   protected readonly players = players;
+  selectedTicket: Ticket;
+
+  ticketTableConfiguration =[
+    { type: 'column', header: 'ID', field: 'id' },
+    { type: 'column', header: 'player_id', field: 'playerId' },
+    { type: 'column', header: 'created_at', field: 'createdAt' },
+    { type: 'column', header: 'payInAmount', field: 'payInAmount' },
+    { type: 'column', header: 'payOutAmount', field: 'payOutAmount' },
+    { type: 'column', header: 'currency', field: 'currency' },
+    { type: 'column', header: 'status', field: 'status' },
+    { type: 'action',action: value =>this.getTicket(value),name:'bets'},
+    { type: 'action',action: value => this.getTransactions(value),name:'transactions'},
+    { ID:'id'}
+  ];
 
   constructor(
     private transactionService:TransactionService,
@@ -39,15 +51,14 @@ export class TableFormComponent implements  OnInit{
     private loaderService:LoaderService,
     private ticketService: TicketService,
     private router : Router)
-  {}
-
-  toggleDetails(ticketId: string) {
-    this.selectedTicketId = this.selectedTicketId === ticketId ? null : ticketId;
-    if (this.selectedTicketId) {
-    } else {
-      this.linkedTransactions = [];
-    }
+  {
   }
+
+  getTicket(ticket:Ticket):void{
+    this.selectedTicket=ticket;
+  }
+
+
   public hasGrant(): boolean {
     const currentUser = this.userService.getCurrentUser();
     if (!currentUser) {
@@ -59,7 +70,7 @@ export class TableFormComponent implements  OnInit{
     this.loaderService.showLoader();
     this.ticketService.getTickets(this.filter,this.userName).subscribe(
       (tickets) => {
-        this.tickets = tickets;
+        //this.tickets = tickets;
         this.loaderService.hideLoader();
       },
     );
@@ -67,19 +78,20 @@ export class TableFormComponent implements  OnInit{
   applyFilter() {
     this.loadTickets();
   }
+
   showFilter(){
     this.filterShow = !this.filterShow;
   }
-
-  getTransactions(id){
-    this.loaderService.showLoader();
-    this.selectedTransactions = this.transactionService.getTransactions({ externalId: id });
-    this.loaderService.hideLoader();
+  getTransactions(ticket:Ticket){
+    console.log(ticket)
+    this.selectedTransactions = this.transactionService.getTransactions({ externalId: ticket.id });
   }
+
 getPlayer(id):string{
     const foundPlayer = this.players.find(player => player.id===id)
   return foundPlayer.username;
 
 }
 
+  protected readonly close = close;
 }

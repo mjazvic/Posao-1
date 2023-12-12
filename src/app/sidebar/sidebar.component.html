@@ -1,19 +1,16 @@
-<div class="sidebar-btn" (click)="openSidebar()" >&#9776;</div>
-<div class="sidebar" [ngClass]="{ 'open': isOpen }">
+<div class="sidebar" [ngClass]="{ 'open': isOpen }" (mouseenter)="openSidebar()" (mouseout)="closeSidebar()">
+<div class="userDiv">
   <div *ngIf="isOpen" class="user">
     {{user.username}}
   </div>
+  </div>
+  <div class="buttons">
+    <app-button-form *ngIf="hasGrant('CanViewTickets')" (click)="openTickets()" buttonName="{{ 'dashboard_tickets' | translate }}" buttonColor="white"></app-button-form>
+  </div>
+  <div class="buttons">
+  <app-button-form *ngIf="hasGrant('CanViewTransactions')" (click)="openTransactions()" buttonName="{{ 'dashboard_transactions' | translate }}" buttonColor="white"></app-button-form>
+  </div>
 
-  <div class="buttons">
-    <app-button-form *ngIf="hasGrant('CanViewTickets')" (click)="openTickets()" buttonName="{{ 'translate.dashboard_tickets' | translate }}" buttonColor="white"></app-button-form>
-  </div>
-  <div class="buttons">
-  <app-button-form *ngIf="hasGrant('CanViewTransactions')" (click)="openTransactions()" buttonName="{{ 'translate.dashboard_transactions' | translate }}" buttonColor="white"></app-button-form>
-  </div>
-  <div class="close">
-    <app-button-form (click)="closeSidebar()" buttonColor="white" buttonName="{{ 'translate.close' | translate }}"></app-button-form>
-</div>
-</div>
 
 <div class="tables">
   <div *ngIf="showTicketDetails" >
@@ -23,3 +20,4 @@
     <app-transaction-table-form></app-transaction-table-form>
   </div>
 </div>
+</div>>

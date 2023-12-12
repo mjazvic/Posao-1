@@ -38,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {NgOptimizedImage} from "@angular/common";
 import { TableComponent } from './forms/table/table.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { TableComponent } from './forms/table/table.component';
     FooterComponent,
     SidebarComponent,
     TableComponent,
+    FormComponent,
   ],
     imports: [
         RouterModule.forRoot([

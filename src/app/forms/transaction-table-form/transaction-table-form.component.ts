@@ -33,12 +33,27 @@ export class TransactionTableFormComponent implements OnInit {
   transactionTypes = TransactionType;
   transactionDirectons = TransactionDirection;
   transactionProviders = TransactionProvider;
-  transactions: Transaction[];
+  transactions:any=this.transactionService.getTransactions(this.Tfilter)
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
   ticket: Ticket;
-  selectedTicket:Observable<Ticket>;
+  selectedTicket:Ticket;
+  selectedTransactions:Observable<Transaction[]> ;
+
+
+
+
+  transactionTableConfiguration = [
+    { type: 'column', header: 'ID', field: 'id', },
+    { type: 'column', header: 'player_id', field: 'playerId' },
+    { type: 'column', header: 'created_at', field: 'createdAt' },
+    { type: 'column', header: 'type', field: 'type' },
+    { type: 'column', header: 'direction', field: 'direction' },
+    { type: 'column', header: 'currency', field: 'currency' },
+    { type: 'action',action: value=> this.getTicket(value),name:'ticket' }
+  ];
+
 
   constructor(
     private userService:UserService,
@@ -52,17 +67,15 @@ export class TransactionTableFormComponent implements OnInit {
     this.loaderService.showLoader();
     this.transactionService.getTransactions(this.Tfilter,this.userName).subscribe(
       (transactions) => {
-        this.transactions = transactions;
+        //this.transactions = transactions;
        this.loaderService.hideLoader();
       },
     );
   }
-  getTicket(id){
-    this.loaderService.showLoader();
-    this.selectedTicket = this.ticketService.getTicket(id)
-    this.loaderService.hideLoader();
-
+  getTicket(ticket:Ticket):void{
+    this.selectedTicket=ticket;
   }
+
   applyFilter() {
     this.loadTransactions();
   }

@@ -1,34 +1,34 @@
-<div class="popup-container"  *ngIf="ticket | async as ticket" [ngClass]="{'active' : ticket}">
-  <h1>{{ 'translate.ticket' | translate }}</h1>
+<div class="popup-container"  *ngIf="ticket" [ngClass]="{'active' : ticket}">
+  <div  class="button">
+  <app-button-form buttonColor="white" buttonSize="small" buttonName="{{ 'close' | translate }}" (click)="closePopup()"></app-button-form>
+  </div>
+    <h1>{{ 'ticket' | translate }}</h1>
   <div class="ticketDetails">
     <div>
-      <strong>{{ 'translate.player' | translate }} ID:</strong> {{ ticket.playerId }}
+      <strong>{{ 'player' | translate }} ID:</strong> {{ ticket.playerId }}
     </div>
     <div>
-      <strong>{{ 'translate.username' | translate }} :</strong> {{ findPlayerById(ticket.playerId) }}
+      <strong>{{ 'username' | translate }} :</strong> {{ findPlayerById(ticket.playerId) }}
     </div>
     <div>
-      <strong>{{ 'translate.created_at' | translate }}:</strong> {{ ticket.createdAt | date: 'medium' }}
+      <strong>{{ 'created_at' | translate }}:</strong> {{ ticket.createdAt | date: 'medium' }}
     </div>
     <div>
-      <strong>{{ 'translate.pay_in_amount' | translate }}:</strong> {{ ticket.payInAmount }} {{ ticket.currency }}
+      <strong>{{ 'pay_in_amount' | translate }}:</strong> {{ ticket.payInAmount }} {{ ticket.currency }}
     </div>
     <div>
-      <strong>{{ 'translate.pay_out_amount' | translate }}:</strong> {{ ticket.payOutAmount }} {{ ticket.currency }}
+      <strong>{{ 'pay_out_amount' | translate }}:</strong> {{ ticket.payOutAmount }} {{ ticket.currency }}
     </div>
     <div>
-      <strong>{{ 'translate.status' | translate }}:</strong> {{ ticket.status }}
+      <strong>{{ 'status' | translate }}:</strong> {{ ticket.status }}
     </div>
 
-    <h3><strong>{{ 'translate.bets' | translate }}:</strong></h3>
+    <h3><strong>{{ 'bets' | translate }}:</strong></h3>
 
     <table>
       <app-bets betsId="{{ticket.id}}"></app-bets>
     </table>
-    <div class="button">
-      <app-button-form buttonColor="white" buttonSize="small" buttonName="{{ 'translate.close' | translate }}" (click)="closePopup()"></app-button-form>
-    </div>
   </div>
 </div>
 
-<div class="overlay" *ngIf="ticket | async as ticket" [ngClass]="{'active' : ticket}" (click)="closePopup()"></div>
+<div class="overlay" *ngIf="ticket" [ngClass]="{'active' : ticket}" (click)="closePopup()"></div>

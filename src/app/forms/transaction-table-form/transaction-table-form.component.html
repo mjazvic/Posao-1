@@ -1,11 +1,10 @@
-<body  *ngIf="transactions && transactions.length > 0">
 <div class="filterButton">
   <app-button-form  (click)="showFilter()"  buttonName="Filter"></app-button-form>
 </div>
 <div *ngIf="filterShow">
 <form>
   <mat-form-field (ngSubmit)="applyFilter()">
-    <mat-label>{{ 'translate.username' | translate }}</mat-label>
+    <mat-label>{{ 'username' | translate }}</mat-label>
     <mat-select name="username" [(ngModel)]="userName">
       <mat-option *ngFor="let player of players" [value]="player.username">
         {{ player.username }}
@@ -14,80 +13,54 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>{{ 'translate.type' | translate }}</mat-label>
+    <mat-label>{{ 'type' | translate }}</mat-label>
     <mat-select id="type" name="type" [(ngModel)]="Tfilter.type">
       <mat-option *ngFor="let transactionType of getTransactionTypes()" [value]="transactionType">
-        {{ 'translate.' + transactionType | translate }}
+        {{  transactionType | translate }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>{{ 'translate.direction' | translate }}</mat-label>
+    <mat-label>{{ 'direction' | translate }}</mat-label>
     <mat-select id="direction" name="direction" [(ngModel)]="Tfilter.direction">
       <mat-option *ngFor="let transactionDirection of getTransactionDirections()" [value]="transactionDirection">
-        {{ 'translate.' + transactionDirection | translate }}
+        {{ transactionDirection | translate }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>{{ 'translate.provider' | translate }}</mat-label>
+    <mat-label>{{ 'provider' | translate }}</mat-label>
     <mat-select id="provider" name="provider" [(ngModel)]="Tfilter.provider">
       <mat-option *ngFor="let transactionProvider of getTransactionProviders()" [value]="transactionProvider">
-        {{ 'translate.' + transactionProvider | translate }}
+        {{  transactionProvider | translate }}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>{{ 'translate.start_date' | translate }}</mat-label>
+    <mat-label>{{ 'start_date' | translate }}</mat-label>
     <input matInput type="date" id="createdFrom" name="createdFrom" [(ngModel)]="filter.createdFrom" />
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>{{ 'translate.end_date' | translate }}</mat-label>
+    <mat-label>{{ 'end_date' | translate }}</mat-label>
     <input matInput type="date" id="createdTo" name="createdTo" [(ngModel)]="filter.createdTo" />
   </mat-form-field>
 
 
-  <app-button-form buttonSize="small" buttonName="{{ 'translate.filter' | translate }}"></app-button-form>
+  <app-button-form buttonSize="small" buttonName="{{ 'filter' | translate }}"></app-button-form>
 </form>
 </div>
-
-<div class="parent-div">
-  <table>
-    <thead class="header">
-    <tr>
-      <th>ID</th>
-      <th>{{ 'translate.username' | translate }} </th>
-      <th>{{ 'translate.player' | translate }} ID</th>
-      <th>{{ 'translate.direction' | translate }}</th>
-      <th>{{ 'translate.provider' | translate }}</th>
-      <th>{{ 'translate.amount' | translate }}</th>
-      <th>{{ 'translate.type' | translate }}</th>
-      <th>{{ 'translate.created_at' | translate }}</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let transaction of transactions">
-      <tr>
-        <td>{{ transaction.id }}</td>
-        <td>{{ getplayer(transaction.playerId)}}</td>
-        <td>{{ transaction.playerId }}</td>
-        <td>{{ transaction.direction }}</td>
-        <td>{{ transaction.provider }}</td>
-        <td>{{ transaction.amount }} {{ transaction.currency }}</td>
-        <td>{{ transaction.type }}</td>
-        <td>{{ transaction.createdAt | date :'medium' }}</td>
-       <td>  <app-button-form *ngIf="hasGrant() "  buttonName="{{ 'translate.linked_tickets' | translate }}" buttonSize="small" buttonColor="white" (click)="getTicket(transaction.externalId)" ></app-button-form>
-      </tr>
-    </ng-container>
-    </tbody>
-  </table>
+<div class="table">
+  <app-table
+    [configuration]="transactionTableConfiguration"
+    [data]="transactions"
+  ></app-table>
+  <app-pop-up-transaction [transactions]="selectedTransactions" ></app-pop-up-transaction>
   <app-pop-up  [ticket]="selectedTicket"></app-pop-up>
 </div>
-</body>
+
 
 

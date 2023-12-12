@@ -1,17 +1,23 @@
 <table>
   <thead class="header">
   <tr>
-    <ng-container *ngFor="let column of columns">
-      <th>{{ column.header }}</th>
+    <ng-container *ngFor="let column of configuration">
+      <th *ngIf="column.type === 'column'">
+      <th>{{ column.header | translate }}</th>
+      <td *ngIf="column.type === 'action'">{{ column.header | translate }}</td>
     </ng-container>
   </tr>
   </thead>
   <tbody>
   <ng-container *ngFor="let row of data | async">
     <tr>
-      <ng-container *ngFor="let column of columns">
-          <td *ngIf="column.field != ''">{{ row[column.field] ==newId}}</td>
-        <app-button-form *ngIf="column.field == ''" buttonColor="white" (click)="action('3')" buttonName="button"></app-button-form>
+      <ng-container *ngFor="let column of configuration">
+        <th *ngIf="column.type === 'column'">
+        <td>{{ row[column.field] | translate}}</td>
+      </ng-container>
+      <ng-container *ngFor="let column of configuration">
+        <th *ngIf="column.type === 'action'">
+        <app-button-form (click)=" column.action(row)" [buttonName]="column.name | translate"   buttonColor="white"></app-button-form>
       </ng-container>
     </tr>
   </ng-container>

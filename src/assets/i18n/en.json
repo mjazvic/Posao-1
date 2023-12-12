@@ -1,5 +1,5 @@
 {
-    "translate": {
+
       "transactions": "Transactions",
       "ticket": "Ticket",
       "close": "Close",
@@ -61,6 +61,6 @@
       "Created": "Created",
       "loginError":"Wrong username or password.Please try again",
       "forgot_password":"Forgot password"
-    }
+
   }
 

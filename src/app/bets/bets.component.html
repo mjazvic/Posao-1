@@ -3,14 +3,14 @@
       <div>
       <div *ngFor="let bet of ticket.bets">
         <div class="betovi">
-        <td><strong>{{ 'translate.bet_id' | translate }}: </strong> {{ bet.id }}</td>
-        <td><strong>{{ 'translate.sport' | translate }}: </strong> {{ bet.sport }}</td>
-        <td><strong>{{ 'translate.league' | translate }}: </strong>{{ bet.league }}</td>
-        <td><strong>{{ 'translate.market' | translate }}: </strong> {{ bet.market }}</td>
-        <td><strong>{{ 'translate.participants' | translate }}: </strong> {{ bet.participants }}</td>
-        <td><strong>{{ 'translate.odds' | translate }} </strong> {{ bet.odds }}</td>
-        <td><strong>{{ 'translate.status' | translate }}: </strong> {{ bet.status }}</td>
-        <td><strong>{{ 'translate.start_at' | translate }}: </strong> {{ bet.startAt | date :'medium' }}</td>
+        <td><strong>{{ 'bet_id' | translate }}: </strong> {{ bet.id }}</td>
+        <td><strong>{{ 'sport' | translate }}: </strong> {{ bet.sport }}</td>
+        <td><strong>{{ 'league' | translate }}: </strong>{{ bet.league }}</td>
+        <td><strong>{{ 'market' | translate }}: </strong> {{ bet.market }}</td>
+        <td><strong>{{ 'participants' | translate }}: </strong> {{ bet.participants }}</td>
+        <td><strong>{{ 'odds' | translate }} </strong> {{ bet.odds }}</td>
+        <td><strong>{{ 'status' | translate }}: </strong> {{ bet.status }}</td>
+        <td><strong>{{ 'start_at' | translate }}: </strong> {{ bet.startAt | date :'medium' }}</td>
         </div>
       </div>
       </div>

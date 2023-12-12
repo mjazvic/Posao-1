@@ -25,53 +25,11 @@ mat-form-field {
   color: #000000;
   margin-right: 15px;
 }
-.parent-div{
-  display: flex;
-  justify-content: center;
-}
-
-button {
-  margin-left: 15px;
-}
-
-th, td {
-  width: auto;
-  text-align: center;
-  padding: 1rem;
-  cursor: pointer;
-}
-tr{
-  align-items: center;
-}
-table{
-  overflow: hidden;
-  border-radius: 16px;
-  background: #323232;
-  box-shadow: 0 0 20px 5px rgba(10, 10, 10, 0.74);
+.table{
   position:relative;
-  color: #d7d1d1;
-  border-collapse: collapse;
-  width: 1200px;
-}
-.header{
-  background: #000000;
-}
-tr:nth-of-type(2n) {
-  background: hsla(0, 0%, 0%, 0.1);
-}
-.ticket-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  display:flex;
+  justify-content: center;
+  margin: 20px;
 
-  .betovi-container {
-    display: inline-block;
-    text-align: left;
-  }
-  h4 {
-    align-self: flex-start;
-  }
 }
-
 

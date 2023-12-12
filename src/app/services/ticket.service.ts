@@ -10,7 +10,7 @@ import {players} from "../data/player.data";
 })
 export class TicketService {
 
-  constructor() { }
+  constructor() {}
 
   public getTicket(id: string): Observable<Ticket> {
     const ticket = tickets.find(t => t.id === id);

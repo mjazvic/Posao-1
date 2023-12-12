@@ -9,7 +9,7 @@ import {players} from "../data/player.data";
   styleUrls: ['./pop-up-transaction.component.scss']
 })
 export class PopUpTransactionComponent implements OnInit {
-  @Input() transactions$: Observable<Transaction[]>;
+  @Input() transactions:Observable<Transaction[]>;
   minimazedState: { [key: string]: boolean } = {};
 
 
