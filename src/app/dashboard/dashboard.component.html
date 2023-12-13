@@ -15,12 +15,9 @@
     <app-logout-form Color="white"></app-logout-form>
   </div>
 
-  <app-table
-              [configuration]="ticketTableConfiguration"
-              [data]="tickets"
-          ></app-table>
-  <app-pop-up  [ticket]="selectedTicket"></app-pop-up>
-<app-pop-up-transaction [transactions]="selectedTransactions" ></app-pop-up-transaction>
+  <app-form [configuration]="Configuration" (formSubmit)="applyFilter($event)"></app-form>
+  <app-table [configuration]="ticketTableConfiguration" [data]="tickets"></app-table>
+  <app-pop-up-form [configuration]="popUpConfiguration" [data]="transaction"></app-pop-up-form>
 
   <div class="tables">
   <div *ngIf="showTicketDetails" >

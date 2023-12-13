@@ -1,4 +1,4 @@
-<div class="sidebar" [ngClass]="{ 'open': isOpen }" (mouseenter)="openSidebar()" (mouseout)="closeSidebar()">
+<div class="sidebar" [ngClass]="{ 'open': isOpen }" (click)="openSidebar()" >
 <div class="userDiv">
   <div *ngIf="isOpen" class="user">
     {{user.username}}
@@ -11,7 +11,6 @@
   <app-button-form *ngIf="hasGrant('CanViewTransactions')" (click)="openTransactions()" buttonName="{{ 'dashboard_transactions' | translate }}" buttonColor="white"></app-button-form>
   </div>
 
-
 <div class="tables">
   <div *ngIf="showTicketDetails" >
     <app-table-form></app-table-form>
@@ -20,4 +19,4 @@
     <app-transaction-table-form></app-transaction-table-form>
   </div>
 </div>
-</div>>
+</div>

@@ -1,0 +1,120 @@
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {LoaderService} from "../../services/loader.service";
+import {Ticket, TicketFilter} from "../../models/ticket.model";
+import {TransactionService} from "../../services/transaction.service";
+import {
+  Transaction,
+  TransactionFilter,
+} from "../../models/transaction.model";
+import {players} from "../../data/player.data";
+import { Observable} from "rxjs";
+import {Grant} from "../../models/user.model";
+import {UserService} from "../../services/user.service";
+
+@Component({
+  selector: 'app-transaction-table-form',
+  templateUrl: './transaction-table-form.component.html',
+  styleUrls: ['./transaction-table-form.component.scss']
+})
+export class TransactionTableFormComponent implements OnInit {
+  ngOnInit(): void {
+    this.loadTransactions(this.Tfilter,this.userName);
+  }
+
+  userName:string;
+  tickets: Ticket [][]= [];
+  Tfilter: TransactionFilter = {};
+  filter: TicketFilter = {};
+  transactions:any=this.transactionService.getTransactions(this.Tfilter)
+  @ViewChild('ticketSection') transactionSection: ElementRef;
+  @ViewChild('ticketSection') ticketSection: ElementRef;
+  filterShow: boolean = false;
+  ticket: Ticket;
+  selectedTicket:Ticket;
+  selectedTransactions:Observable<Transaction[]> ;
+
+  filterConfiguration = [
+    { type: 'input', header: 'Username', field: 'username', filterType: 'exact' },
+    { type: 'input', header: 'Player ID', field: 'playerId', filterType: 'exact' },
+    { type: 'select', header: 'type', field: 'type', filterType: 'exact', options: [
+        { label: 'PaymentProviderWithdraw', value: 'PaymentProviderWithdraw' },
+        { label: 'PaymentProviderDeposit', value: 'PaymentProviderDeposit' },
+        { label: 'SportPayIn', value: 'SportPayIn' },
+        { label: 'SportPayOut', value: 'SportPayOut' },
+        { label: 'SportWon', value: 'SportWon' },
+        { label: 'SportLost', value: 'SportLost' },
+      ] },
+    { type: 'select', header: 'provider', field: 'provider', filterType: 'exact', options: [
+        { label: 'PaymentProvider', value: 'PaymentProvider' },
+        { label: 'Sport', value: 'Sport' },
+      ] },
+    { type: 'select', header: 'direction', field: 'direction', filterType: 'exact', options: [
+        { label: 'Withdraw', value: 'Withdraw' },
+        { label: 'PayIn', value: 'PayIn' },
+        { label: 'PayOut', value: 'PayOut' },
+        { label: 'Won', value: 'Won' },
+        { label: 'Lost', value: 'Lost' },
+      ] },
+    { type: 'date', header: 'Created From', field: 'createdFrom', filterType: 'range' },
+    { type: 'date', header: 'Created To', field: 'createdTo', filterType: 'range' },
+    {type:'button',header: 'filter'}
+  ];
+
+  transactionTableConfiguration = [
+    { type: 'column', header: 'ID', field: 'id', },
+    { type: 'column', header: 'player_id', field: 'playerId' },
+    { type: 'column', header: 'created_at', field: 'createdAt',date:true},
+    { type: 'column', header: 'type', field: 'type' },
+    { type: 'column', header: 'provider', field: 'provider' },
+    { type: 'column', header: 'direction', field: 'direction' },
+    { type: 'column', header: 'amount',field1:'amount',field2:'currency',bind:true},
+    { type: 'action',action: value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets') }
+  ];
+
+
+  constructor(
+    private userService:UserService,
+    private loaderService:LoaderService,
+    private transactionService: TransactionService) {}
+
+
+  loadTransactions(filter,username) {
+    this.loaderService.showLoader();
+    this.transactionService.getTransactions(filter,username).subscribe(
+      (transactions) => {
+        this.transactions = transactions;
+       this.loaderService.hideLoader();
+      },
+    );
+  }
+  getTicket(ticket:Ticket):void{
+    this.selectedTicket=ticket;
+  }
+
+    applyFilter(formValues: any) {
+      const transactionFilter: TransactionFilter = {
+        username: formValues.username,
+        playerId: formValues.playerId,
+        type: formValues.type,
+        provider: formValues.provider,
+        direction:formValues.direction,
+        createdFrom: formValues.createdFrom,
+        createdTo: formValues.createdTo,
+      };
+      const username:string=formValues.username;
+    this.loadTransactions(transactionFilter,username);
+  }
+
+  public hasGrant(grant: Grant | string): boolean {
+    const currentUser = this.userService.getCurrentUser();
+    if (!currentUser) {
+      return false;
+    }
+    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
+    return currentUser.grants.includes(grantToCheck);
+  }
+  showFilter(){
+    this.filterShow = !this.filterShow;
+  }
+  protected readonly players = players;
+}

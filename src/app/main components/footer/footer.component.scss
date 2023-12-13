@@ -1,14 +1,15 @@
-body{
+div{
   background-color: #111111;
   bottom: 0;
-  height: 15%;
+  height: 50px;
   width: 100%;
   text-align: center;
-  position: absolute;
+  position: fixed;
   display: flex;
   color: #ada9a9;
   align-items: center;
   justify-content: center;
+  z-index: 1
 }
 h3{
   position: relative;

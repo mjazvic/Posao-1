@@ -7,26 +7,20 @@ import {players} from "../data/player.data";
   templateUrl: './pop-up.component.html',
   styleUrls: ['./pop-up.component.scss'],
 })
-export class PopUpComponent implements OnInit, OnChanges {
+export class PopUpComponent implements OnInit{
   @Input() ticket: Ticket;
   @Output() onClose: EventEmitter<any>;
 
   constructor() {
-    this.onClose = new EventEmitter<any>();
   }
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges', changes, this.ticket);
   }
 
   closePopup() {
     document.querySelector('.popup-container')?.classList.remove('active');
     document.querySelector('.overlay')?.classList.remove('active');
   }
-
 
   findPlayerById(playerId: string): string {
     const player = players.find(player => player.id === playerId);

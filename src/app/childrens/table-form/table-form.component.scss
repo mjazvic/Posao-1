@@ -3,27 +3,18 @@
   position: relative;
   margin-top: 15px;
   margin-bottom: 20px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: auto;
 }
-form {
+.form {
   transition: max-height 0.3s ease-in-out;
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
-}
-mat-form-field {
-  margin: 15px;
-  color: #000000;
-  mat-label, mat-select {
-    color: black;
-  }
-}
-mat-form-field {
-  color: #000000;
-  margin-right: 15px;
+  justify-content: space-around;
 }
 .table{
   position:relative;

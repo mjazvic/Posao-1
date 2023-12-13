@@ -1,9 +1,9 @@
 <div>
 <div class="popup-container"  *ngIf="transactions | async as Transaction" [ngClass]="{'active' : transactions}">
-  <div class="button">
-    <app-button-form buttonColor="white" buttonSize="small" buttonName="{{ 'close' | translate }}" (click)="closePopup()"></app-button-form>
+  <div>
+    <h1>{{ 'transactions' | translate }}</h1>
+    <app-button-form class="button" buttonColor="white" buttonSize="small" buttonName="{{ 'close' | translate }}" (click)="closePopup()"></app-button-form>
   </div>
-  <h1>{{ 'transactions' | translate }}</h1>
   <div class="TransactionDDetail">
     <mat-card *ngFor="let transactionDetails of transactions | async" (click)="minMax(transactionDetails.id)" class="transaction-details" >
       <mat-card-content >

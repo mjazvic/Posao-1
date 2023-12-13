@@ -9,7 +9,7 @@ import {players} from "../data/player.data";
   styleUrls: ['./pop-up-transaction.component.scss']
 })
 export class PopUpTransactionComponent implements OnInit {
-  @Input() transactions:Observable<Transaction[]>;
+  @Input() transactions:any;
   minimazedState: { [key: string]: boolean } = {};
 
 
@@ -17,10 +17,7 @@ export class PopUpTransactionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  openPopup() {
-    document.querySelector('.popup-container')?.classList.add('active');
-    document.querySelector('.overlay')?.classList.add('active');
-  }
+
   closePopup() {
     document.querySelector('.popup-container')?.classList.remove('active');
     document.querySelector('.overlay')?.classList.remove('active');

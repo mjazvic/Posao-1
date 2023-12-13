@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Grant, User} from "../models/user.model";
-import {UserService} from "../services/user.service";
+import {Grant, User} from "../../models/user.model";
+import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -44,5 +44,7 @@ export class SidebarComponent implements OnInit {
     this.isOpen=false;
 
   }
-
+  preventSidebarClose(event: MouseEvent) {
+    event.stopPropagation();
+  }
 }

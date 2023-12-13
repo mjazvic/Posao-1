@@ -9,15 +9,17 @@
   </tr>
   </thead>
   <tbody>
-  <ng-container *ngFor="let row of data | async">
+  <ng-container *ngFor="let row of data ">
     <tr>
       <ng-container *ngFor="let column of configuration">
         <th *ngIf="column.type === 'column'">
-        <td>{{ row[column.field] | translate}}</td>
+        <td *ngIf="column.date">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
+        <td *ngIf="column.bind">{{ row[column.field1] }} {{ row[column.field2] }}</td>
+        <td *ngIf="!column.date && !column.bind">{{ row[column.field] }}</td>
       </ng-container>
       <ng-container *ngFor="let column of configuration">
         <th *ngIf="column.type === 'action'">
-        <app-button-form (click)=" column.action(row)" [buttonName]="column.name | translate"   buttonColor="white"></app-button-form>
+        <app-button-form *ngIf="column.grant" (click)=" column.action(row)" [buttonName]="column.name | translate"   buttonColor="white"></app-button-form>
       </ng-container>
     </tr>
   </ng-container>

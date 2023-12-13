@@ -1,5 +1,4 @@
-body{
-}
+
 .filterButton{
   position: relative;
   display: grid;
@@ -7,28 +6,21 @@ body{
   margin-top: 15px;
   margin-bottom: 20px;
 }
-
 .table{
   position:relative;
   display:flex;
   justify-content: center;
   margin: 20px;
 }
-form {
+.form {
   display: flex;
-  flex-direction: row;
+  position: relative;
   justify-content: center;
   align-items: center;
   margin: 20px;
 }
-mat-form-field {
-  margin: 15px;
-  color: #000000;
-  mat-label, mat-select, {
-    color: #2f2f2f;
-    font-weight: bold;
-  }
 
-}
+
+
 
 

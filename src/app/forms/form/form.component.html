@@ -1,0 +1,35 @@
+<mat-form-field  [formGroup]="form">
+  <div *ngFor="let input of configuration">
+    <div *ngIf="input.type === 'input'">
+      <mat-label>{{ input.header | translate }}</mat-label>
+      <div>
+        <input matInput type="text" [id]="input.field" [formControlName]="input.field">
+      </div>
+    </div>
+  </div>
+
+  <div *ngFor="let select of configuration">
+    <div *ngIf="select.type === 'select'">
+      <mat-label >{{ select.header | translate }}</mat-label>
+      <mat-select [id]="select.field" [formControlName]="select.field">
+        <mat-option *ngFor="let option of select.options" [value]="option.value">{{ option.label | translate }}</mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+
+  <div *ngFor="let date of configuration">
+    <div *ngIf="date.type === 'date'">
+      <mat-label>{{ date.header | translate }}</mat-label>
+      <input matInput type="date" [id]="date.field" [formControlName]="date.field">
+    </div>
+  </div>
+
+
+  <div class="button" *ngFor="let button of configuration">
+    <div *ngIf="button.type === 'action'">
+      <app-button-form *ngIf="!button.hasTicket" buttonName="{{ button.header }}" (click)="onSubmit()"></app-button-form>
+      <app-button-form *ngIf="button.hasTicket" buttonName="{{ button.header }}" (click)="onSubmit()"></app-button-form>
+    </div>
+  </div>
+</mat-form-field>

@@ -1,3 +1,5 @@
+import {Player} from "./player.model";
+
 export interface Ticket {
   id: string;
   playerId: string;
@@ -11,7 +13,6 @@ export interface Ticket {
 
 export interface TicketFilter {
   username?: string;
-
   playerId?: string;
   status?: TicketStatus;
   createdFrom?: string;

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -11,14 +11,14 @@ import { AuthGuard } from './auth.guard';
 
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './childrens/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import {LoginGuard} from "./login.guard";
 import { LoaderComponent } from './loader/loader.component';
 import { LoginFormComponent } from './forms/login-form/login-form.component';
-import { TableFormComponent } from './forms/table-form/table-form.component';
-import { TransactionTableFormComponent } from './forms/transaction-table-form/transaction-table-form.component';
+import { TableFormComponent } from './childrens/table-form/table-form.component';
+import { TransactionTableFormComponent } from './childrens/transaction-table-form/transaction-table-form.component';
 import { LogoutFormComponent } from './forms/logout-form/logout-form.component';
 import { ButtonFormComponent } from './forms/button-form/button-form.component';
 import { SelectInputComponent } from './forms/select-input/select-input.component';
@@ -32,13 +32,14 @@ import {MatCardModule} from "@angular/material/card";
 import { BetsComponent } from './bets/bets.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transaction.component';
-import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
-import { FooterComponent } from './footer/footer.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { HeaderComponent } from './main components/header/header.component';
+import { MainComponent } from './main components/main/main.component';
+import { FooterComponent } from './main components/footer/footer.component';
+import { SidebarComponent } from './main components/sidebar/sidebar.component';
 import {NgOptimizedImage} from "@angular/common";
 import { TableComponent } from './forms/table/table.component';
-import { FormComponent } from './form/form.component';
+import { FormComponent } from './forms/form/form.component';
+import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
 
 @NgModule({
   declarations: [
@@ -62,37 +63,39 @@ import { FormComponent } from './form/form.component';
     SidebarComponent,
     TableComponent,
     FormComponent,
+    PopUpFormComponent,
   ],
-    imports: [
-        RouterModule.forRoot([
-            {
-                path: '', component: MainComponent, children: [
-                    {path: 'tickets', component: TableFormComponent},
-                    {path: 'transactions', component: TransactionTableFormComponent},
-                ],
-            },
-            {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-            {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
-        ]),
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        MatSelectModule,
-        BrowserAnimationsModule,
-        MatInputModule,
-        MatButtonModule,
-        MatTableModule,
-        MatIconModule,
-        MatCardModule,
-        NgOptimizedImage
-    ],
+  imports: [
+    RouterModule.forRoot([
+      {
+        path: '', component: MainComponent, children: [
+          {path: 'tickets', component: TableFormComponent},
+          {path: 'transactions', component: TransactionTableFormComponent},
+        ],
+      },
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+    ]),
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatCardModule,
+    NgOptimizedImage,
+    ReactiveFormsModule
+  ],
   providers:[AuthGuard]
   ,
   bootstrap: [AppComponent]

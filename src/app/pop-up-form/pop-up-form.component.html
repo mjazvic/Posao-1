@@ -1,0 +1,13 @@
+<div class="popup-container"  *ngIf="configuration" [ngClass]="{'active' : configuration}">
+  <div  class="button">
+    <app-button-form buttonColor="white" buttonSize="small" buttonName="{{ 'close' | translate }}" (click)="closePopup()"></app-button-form>
+  </div>
+  <div *ngFor=" let str of data">
+    <div *ngFor=" let conf of configuration ">
+      <strong>{{ conf.name | translate }} ID:</strong> {{ str[conf.field] }}
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="configuration" [ngClass]="{'active' : configuration}" (click)="closePopup()"></div>
+

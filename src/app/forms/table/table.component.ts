@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class TableComponent implements OnInit {
   @Input() configuration: any[]=[];
-  @Input() data: Observable<any[]>;
+  @Input() data: any[]=[];
 
   constructor() { }
 
