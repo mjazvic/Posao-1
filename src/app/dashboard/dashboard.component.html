@@ -17,14 +17,13 @@
 
   <app-form [configuration]="Configuration" (formSubmit)="applyFilter($event)"></app-form>
   <app-table [configuration]="ticketTableConfiguration" [data]="tickets"></app-table>
-  <app-pop-up-form [configuration]="popUpConfiguration" [data]="transaction"></app-pop-up-form>
 
   <div class="tables">
   <div *ngIf="showTicketDetails" >
-    <app-table-form></app-table-form>
+    <app-tickets></app-tickets>
   </div>
 <div *ngIf="showTransactionDetails">
-  <app-transaction-table-form></app-transaction-table-form>
+  <app-transaction></app-transaction>
 </div>
 </div>
 </div>

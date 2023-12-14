@@ -1,0 +1,45 @@
+app-table{
+  position:relative;
+  display:flex;
+  justify-content: center;
+  margin: 30px;
+}
+h2{
+  position:relative;
+  display:flex;
+  justify-content: center;
+  margin: 30px;
+  font-size: 30px;
+}
+div{
+  padding-top: 10px;
+  margin: 5px;
+}
+.profile{
+  margin: 100px;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  padding: 2rem;
+  border-radius: 10px;
+  background: hsla(0, 7%, 3%, 0.94);
+  color: #d7d1d1;
+  z-index: 1000;
+  align-items: center;
+  left: 15%;
+  box-shadow: 0 0 20px 5px rgba(10, 10, 10, 0.74);
+  margin-top: 20px;
+}
+.title{
+  font-size: 25px;
+  justify-content: center;
+  display: flex;
+}
+.container{
+  margin-top: 50px;
+  display: flex;
+  right: 15%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}

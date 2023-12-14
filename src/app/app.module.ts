@@ -17,8 +17,8 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 import {LoginGuard} from "./login.guard";
 import { LoaderComponent } from './loader/loader.component';
 import { LoginFormComponent } from './forms/login-form/login-form.component';
-import { TableFormComponent } from './childrens/table-form/table-form.component';
-import { TransactionTableFormComponent } from './childrens/transaction-table-form/transaction-table-form.component';
+import { TicketComponent } from './childrens/tickets/ticket.component';
+import { TransactionComponent } from './childrens/transactions/transaction.component';
 import { LogoutFormComponent } from './forms/logout-form/logout-form.component';
 import { ButtonFormComponent } from './forms/button-form/button-form.component';
 import { SelectInputComponent } from './forms/select-input/select-input.component';
@@ -30,8 +30,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatCardModule} from "@angular/material/card";
 import { BetsComponent } from './bets/bets.component';
-import { PopUpComponent } from './pop-up/pop-up.component';
-import { PopUpTransactionComponent } from './pop-up-transaction/pop-up-transaction.component';
+import { TicketPopUpComponent } from './ticketPopUp/ticketPopUp.component';
+import { TransactionPopUpComponent } from './transactionPopUp/transactionPopUp.component';
 import { HeaderComponent } from './main components/header/header.component';
 import { MainComponent } from './main components/main/main.component';
 import { FooterComponent } from './main components/footer/footer.component';
@@ -40,6 +40,8 @@ import {NgOptimizedImage} from "@angular/common";
 import { TableComponent } from './forms/table/table.component';
 import { FormComponent } from './forms/form/form.component';
 import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
+import { PlayersComponent } from './childrens/players/players.component';
+import { ProfileComponent } from './childrens/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -49,14 +51,14 @@ import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
     LanguageSwitcherComponent,
     LoaderComponent,
     LoginFormComponent,
-    TableFormComponent,
-    TransactionTableFormComponent,
+    TicketComponent,
+    TransactionComponent,
     LogoutFormComponent,
     ButtonFormComponent,
     SelectInputComponent,
     BetsComponent,
-    PopUpComponent,
-    PopUpTransactionComponent,
+    TicketPopUpComponent,
+    TransactionPopUpComponent,
     HeaderComponent,
     MainComponent,
     FooterComponent,
@@ -64,13 +66,17 @@ import { PopUpFormComponent } from './pop-up-form/pop-up-form.component';
     TableComponent,
     FormComponent,
     PopUpFormComponent,
+    PlayersComponent,
+    ProfileComponent,
   ],
   imports: [
     RouterModule.forRoot([
       {
-        path: '', component: MainComponent, children: [
-          {path: 'tickets', component: TableFormComponent},
-          {path: 'transactions', component: TransactionTableFormComponent},
+        path: '', component: MainComponent,canActivate: [AuthGuard], children: [
+          {path: 'tickets', component: TicketComponent },
+          {path: 'transactions', component: TransactionComponent},
+          {path: 'players',component:PlayersComponent},
+          {path: 'profile',component:ProfileComponent}
         ],
       },
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},

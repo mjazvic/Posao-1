@@ -4,11 +4,11 @@ import {Transaction} from "../models/transaction.model";
 import {players} from "../data/player.data";
 
 @Component({
-  selector: 'app-pop-up-transaction',
-  templateUrl: './pop-up-transaction.component.html',
-  styleUrls: ['./pop-up-transaction.component.scss']
+  selector: 'app-transactionPopUp',
+  templateUrl: './transactionPopUp.component.html',
+  styleUrls: ['./transactionPopUp.component.scss']
 })
-export class PopUpTransactionComponent implements OnInit {
+export class TransactionPopUpComponent implements OnInit {
   @Input() transactions:any;
   minimazedState: { [key: string]: boolean } = {};
 

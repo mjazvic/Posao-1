@@ -1,14 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
+import {Player} from "../models/player.model";
 
 @Component({
-  selector: 'app-pop-up-form',
+  selector: 'app-ticketPopUp-form',
   templateUrl: './pop-up-form.component.html',
   styleUrls: ['./pop-up-form.component.scss']
 })
 export class PopUpFormComponent implements OnInit {
-  @Input() configuration:any[]=[];
-  @Input() data:any;
+  @Input() player:Player;
 
   constructor() { }
 

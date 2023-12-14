@@ -1,17 +1,24 @@
-mat-form-field {
+form {
+  width:auto;
   margin: 15px;
   color: #000000;
   display: flex;
   justify-content: space-evenly ;
   position: relative;
 
-  mat-label, input, mat-select {
+  label, input, select {
     margin: 10px;
+    padding: 10px;
     color: black;
-    border: none;
+    border-radius: 10px;
+
   }
   input{
-    background-color: rgba(173, 169, 169, 0);
+    background-color: rgba(162, 159, 159, 0.92);
+  }
+  select{
+    background-color: rgba(162, 159, 159, 0.92);
+    border: black;
   }
 }
 .button{

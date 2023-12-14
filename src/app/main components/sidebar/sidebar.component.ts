@@ -38,13 +38,16 @@ export class SidebarComponent implements OnInit {
   openTickets(){
     this.router.navigate(['/tickets']);
     this.isOpen=false;
+    this.closeSidebar();
   }
   openTransactions(){
     this.router.navigate(['/transactions']);
     this.isOpen=false;
-
+    this.closeSidebar();
   }
-  preventSidebarClose(event: MouseEvent) {
-    event.stopPropagation();
+  openPlayers() {
+    this.router.navigate(['/players']);
+    this.isOpen=false
+    this.closeSidebar()
   }
 }

@@ -25,11 +25,15 @@ export class HeaderComponent implements OnInit {
   changeTitle() {
     const currentUrl = this.router.url;
     if (currentUrl.includes('/dashboard')) {
-      this.title = 'Dashboard';
+      this.title = 'dashboard';
     } else if (currentUrl.includes('/tickets')) {
-      this.title = 'Tickets';
+      this.title = 'tickets';
     } else if(currentUrl.includes('/transactions')) {
-      this.title = 'Transactions';
+      this.title = 'transactions';
+    } else if(currentUrl.includes('/players')) {
+      this.title = 'players';
+    } else if(currentUrl.includes('/profile')) {
+      this.title = 'profile';
     } else {this.title= 'Main page'}
   }
 }

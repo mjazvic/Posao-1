@@ -3,13 +3,13 @@ import {Ticket} from '../models/ticket.model';
 import {players} from "../data/player.data";
 
 @Component({
-  selector: 'app-pop-up',
-  templateUrl: './pop-up.component.html',
-  styleUrls: ['./pop-up.component.scss'],
+  selector: 'app-ticketPopUp',
+  templateUrl: './ticketPopUp.component.html',
+  styleUrls: ['./ticketPopUp.component.scss'],
 })
-export class PopUpComponent implements OnInit{
+export class TicketPopUpComponent implements OnInit{
   @Input() ticket: Ticket;
-  @Output() onClose: EventEmitter<any>;
+
 
   constructor() {
   }

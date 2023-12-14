@@ -36,9 +36,6 @@ export class TransactionService {
         filteredTransactions = filteredTransactions.filter((t) => t.playerId === player.id);
       }
     }
-
-    console.log('Filtered Transactions:', filteredTransactions);
-
     return WebUtils.mockSuccess('getTransactions', filter, filteredTransactions);
   }
 }

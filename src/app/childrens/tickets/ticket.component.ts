@@ -9,11 +9,11 @@ import {players} from "../../data/player.data";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-table-form',
-  templateUrl: './table-form.component.html',
-  styleUrls: ['./table-form.component.scss']
+  selector: 'app-tickets',
+  templateUrl: './ticket.component.html',
+  styleUrls: ['./ticket.component.scss']
 })
-export class TableFormComponent implements  OnInit{
+export class TicketComponent implements  OnInit{
 
   ngOnInit(): void {
   this.loadTickets(this.filter,this.userName)
@@ -38,12 +38,12 @@ export class TableFormComponent implements  OnInit{
         { label: 'Created', value: 'Created' },
       ] },
     { type: 'date', header: 'Created From', field: 'createdFrom', filterType: 'range' },
-    { type: 'date', header: 'Created To', field: 'createdTo', filterType: 'range' },
     {type:'button',header: 'filter'}
   ];
 
   ticketTableConfiguration =[
     { type: 'column', header: 'ID', field: 'id' },
+
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
     { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true},

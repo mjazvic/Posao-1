@@ -1,0 +1,24 @@
+
+.filterButton{
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: auto;
+}
+app-form {
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+justify-content: center}
+.table{
+  position:relative;
+  display:flex;
+  justify-content: center;
+  margin: 20px;
+}
+

@@ -1,0 +1,54 @@
+<div class="container">
+<div class="profile">
+    <div class="title">
+      <strong>{{ player.username }}</strong>
+    </div>
+    <div>
+      <strong>{{ 'id' | translate }} :</strong> {{ player.id }}
+    </div>
+    <div>
+      <strong>{{ 'playerCode' | translate }}:</strong> {{ player.playerCode }}
+    </div>
+    <div>
+      <strong>{{ 'firstname' | translate }}:</strong> {{ player.firstName }}
+    </div>
+    <div>
+      <strong>{{ 'lastname' | translate }}:</strong> {{ player.lastName}}
+  </div>
+    <div>
+      <strong>{{ 'email' | translate }}:</strong> {{ player.email}}
+    </div>
+</div>
+
+<div class="profile">
+  <div class="title">
+    <strong>{{ 'details' | translate }}</strong>
+  </div>
+  <div>
+    <strong>{{ 'won' | translate }} :</strong> {{ win }}% {{'('}}{{winTickets.length}}{{')'}}
+  </div>
+  <div>
+    <strong>{{ 'created' | translate }} :</strong> {{ created }}% {{'('}}{{createdTickets.length}}{{')'}}
+  </div>
+  <div>
+    <strong>{{ 'lost' | translate }}:</strong> {{ 100-win-created }}% {{'('}}{{tickets.length-winTickets.length-createdTickets.length}}{{')'}}
+  </div>
+  <div>
+    <strong>{{ 'saldo' | translate }}:</strong> {{ saldo }} {{currency}}
+  </div>
+    <div>
+      <strong>{{ 'tickets' | translate }}:</strong> {{ tickets.length }}
+    </div>
+  <div>
+    <strong>{{ 'transactions' | translate }}:</strong> {{ transactions.length }}
+  </div>
+</div>
+</div>
+<div *ngIf="hasGrant('CanViewTickets')">
+<h2>Tickets</h2>
+<app-table [configuration]="ticketTableConfiguration"  [data]="tickets" ></app-table>
+</div>
+<div *ngIf="hasGrant('CanViewTransactions')">
+<h2>Transactions</h2>
+<app-table [configuration]="transactionTableConfiguration"  [data]="transactions" ></app-table>
+</div>

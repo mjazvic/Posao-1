@@ -12,11 +12,11 @@ import {Grant} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 
 @Component({
-  selector: 'app-transaction-table-form',
-  templateUrl: './transaction-table-form.component.html',
-  styleUrls: ['./transaction-table-form.component.scss']
+  selector: 'app-transaction',
+  templateUrl: './transaction.component.html',
+  styleUrls: ['./transaction.component.scss']
 })
-export class TransactionTableFormComponent implements OnInit {
+export class TransactionComponent implements OnInit {
   ngOnInit(): void {
     this.loadTransactions(this.Tfilter,this.userName);
   }
@@ -48,26 +48,20 @@ export class TransactionTableFormComponent implements OnInit {
         { label: 'PaymentProvider', value: 'PaymentProvider' },
         { label: 'Sport', value: 'Sport' },
       ] },
-    { type: 'select', header: 'direction', field: 'direction', filterType: 'exact', options: [
-        { label: 'Withdraw', value: 'Withdraw' },
-        { label: 'PayIn', value: 'PayIn' },
-        { label: 'PayOut', value: 'PayOut' },
-        { label: 'Won', value: 'Won' },
-        { label: 'Lost', value: 'Lost' },
-      ] },
     { type: 'date', header: 'Created From', field: 'createdFrom', filterType: 'range' },
-    { type: 'date', header: 'Created To', field: 'createdTo', filterType: 'range' },
     {type:'button',header: 'filter'}
   ];
 
   transactionTableConfiguration = [
     { type: 'column', header: 'ID', field: 'id', },
+   // { type: 'column', header: 'username', field: this.getPLayer }
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
     { type: 'column', header: 'type', field: 'type' },
     { type: 'column', header: 'provider', field: 'provider' },
     { type: 'column', header: 'direction', field: 'direction' },
     { type: 'column', header: 'amount',field1:'amount',field2:'currency',bind:true},
+    //{ type:'boolean', hasTicket:this.hasTicket }
     { type: 'action',action: value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets') }
   ];
 
