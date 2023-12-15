@@ -1,4 +1,4 @@
-<app-button-form class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button-form>
+<app-button class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button>
 
 <app-form *ngIf="filterShow" [configuration]="filterConfiguration" (formSubmit)="applyFilter($event)"></app-form>
 

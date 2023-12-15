@@ -62,8 +62,6 @@ export class ProfileComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.player = params['player'];
       this.playerId = params['playerId']
-      console.log('playerID je:', this.playerId);
-      console.log('player je', this.player)
       this.loadTickets()
       this.loadTransactions()
       this.getPlayer()
@@ -80,7 +78,7 @@ export class ProfileComponent implements OnInit {
     );
     for (const ticket of this.tickets || []) {
       if (ticket.currency != null) {
-        this.currency=ticket.currency; // Return the ticket if the currency matches
+        this.currency=ticket.currency;
       }
     }
     this.loaderService.hideLoader();

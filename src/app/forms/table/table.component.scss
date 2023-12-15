@@ -1,9 +1,24 @@
-
 th, td {
-  width: fit-content;
+  width: auto;
   text-align: center;
-  padding: 1rem;
   cursor: pointer;
+}
+th{
+  padding: 15px;
+  margin: 0;
+  font-weight: bold;
+  color: #dcd7d7;
+}
+.button{
+  background-color: rgba(173, 169, 169, 0);
+}
+img{
+  height: 40px;
+  width: 40px;
+}
+td{
+  padding: 20px;
+  font-size: 18px;
 }
 tr{
   align-items: center;
@@ -24,17 +39,4 @@ table{
 tr:nth-of-type(2n) {
   background: hsla(0, 0%, 0%, 0.1);
 }
-.ticket-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
 
-  .betovi-container {
-    display: inline-block;
-    text-align: left;
-  }
-  h4 {
-    align-self: flex-start;
-  }
-}

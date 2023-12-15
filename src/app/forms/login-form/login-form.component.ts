@@ -16,19 +16,14 @@ export class LoginFormComponent  {
   constructor(
     private userService: UserService,
     private router: Router,
-    private loaderService: LoaderService
-  ) {}
+    private loaderService: LoaderService) {}
 
   login() {
     this.loaderService.showLoader();
-
     this.userService.login(this.username, this.password).subscribe(
       () => {
-        this.router.navigate(['']);
-      },
+        this.router.navigate(['']);},
       (error) => {
-        this.loginError=true;}
-    );
-    this.loaderService.hideLoader();
-  }
+        this.loginError=true;});
+    this.loaderService.hideLoader();}
 }

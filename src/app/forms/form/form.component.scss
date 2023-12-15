@@ -5,13 +5,11 @@ form {
   display: flex;
   justify-content: space-evenly ;
   position: relative;
-
   label, input, select {
     margin: 10px;
     padding: 10px;
     color: black;
     border-radius: 10px;
-
   }
   input{
     background-color: rgba(162, 159, 159, 0.92);

@@ -4,6 +4,11 @@ app-table{
   justify-content: center;
   margin: 30px;
 }
+img { border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center}
 h2{
   position:relative;
   display:flex;
@@ -30,8 +35,7 @@ div{
   box-shadow: 0 0 20px 5px rgba(10, 10, 10, 0.74);
   margin-top: 20px;
 }
-.title{
-  font-size: 25px;
+.img{
   justify-content: center;
   display: flex;
 }

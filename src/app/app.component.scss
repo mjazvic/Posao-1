@@ -1,6 +1,7 @@
 body {
   max-width: 100%;
-
+  overflow: auto;
+  background-color: #ada9a9;
   router-outlet {
     .container {
       display: flex;

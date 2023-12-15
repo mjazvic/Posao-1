@@ -2,8 +2,7 @@
   <thead class="header">
   <tr>
     <ng-container *ngFor="let column of configuration">
-      <th *ngIf="column.type === 'column'">
-      <th>{{ column.header | translate }}</th>
+      <th *ngIf="column.type === 'column'">{{ column.header | translate }}</th>
       <td *ngIf="column.type === 'action'">{{ column.header | translate }}</td>
     </ng-container>
   </tr>
@@ -12,14 +11,12 @@
   <ng-container *ngFor="let row of data">
     <tr>
       <ng-container *ngFor="let column of configuration">
-        <th *ngIf="column.type === 'column'">
-        <td *ngIf="column.date">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
-        <td *ngIf="column.bind">{{ row[column.field1] }} {{ row[column.field2] }}</td>
-        <td *ngIf="!column.date && !column.bind">{{ row[column.field] }}</td>
+        <td *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
+        <td *ngIf="column.bind && column.type === 'column'">{{ row[column.field1] }} {{ row[column.field2]}}</td>
+        <td *ngIf="!column.date && !column.bind && column.type === 'column'">{{ row[column.field]  }}</td>
       </ng-container>
-      <ng-container *ngFor="let column of configuration">
-        <th *ngIf="column.type === 'action'">
-        <app-button-form *ngIf="column.grant" (click)=" column.action(row)" [buttonName]="column.name | translate"   buttonColor="white"></app-button-form>
+      <ng-container  *ngFor="let column of configuration">
+        <td class="button" *ngIf="column.grant && column.type === 'action'" (click)=" column.action(row)"><img src="{{column.image}}" alt="picture"></td>
       </ng-container>
     </tr>
   </ng-container>

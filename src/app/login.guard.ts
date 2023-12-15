@@ -10,12 +10,10 @@ export class LoginGuard implements CanActivate {
   constructor(private router: Router, private userService: UserService) {}
   canActivate(): boolean {
     const currentUser = this.userService.getCurrentUser();
-
     if (currentUser) {
       this.router.navigate(['']);
       return false;
     } else {
       return true;
-    }
-  }
+    }}
 }

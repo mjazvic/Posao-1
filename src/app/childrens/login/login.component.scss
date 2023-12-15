@@ -1,8 +1,7 @@
 body {
-    background: url('https://wallpapertag.com/wallpaper/full/b/5/4/449750-popular-cool-nature-backgrounds-2262x1504-for-phones.jpg') no-repeat center center fixed;
+  background-image: url('/assets/branding/login.png');
+  background-size: cover;
 }
-
-
   .container {
     display: flex;
     align-items: center;
@@ -10,12 +9,10 @@ body {
     height: 90vh;
     width: 99vw;
     min-height: 100vh;
-
     .error-message {
       color: #ea3e3e;
       margin-top: 10px;
     }
-
     .title-container {
       display: flex;
       align-items: center;
@@ -43,7 +40,7 @@ body {
     }
 
     .title {
-      color: darkred;
+      color: #d9d5d5;
     }
   }
 

@@ -2,19 +2,21 @@
   <button class="sidebar-btn">
     <span class="icon">&#x2630;</span>
   </button>
-<div class="userDiv">
+  <img *ngIf="imageUrl" [src]="imageUrl" alt="Profile Picture" />
+  <div class="userDiv">
   <div *ngIf="isOpen" class="user">
     {{user.username}}
   </div>
+    <div class="welcome">{{'welcome' | translate}} {{user.username}}</div>
   </div>
   <div class="buttons">
-    <app-button-form *ngIf="hasGrant('CanViewTickets')" (click)="openTickets()" buttonName="{{ 'tickets' | translate }}" buttonColor="white"></app-button-form>
+    <div  *ngIf="hasGrant('CanViewTickets')" (click)="openTickets()">{{'tickets'| translate}}</div>
   </div>
   <div class="buttons">
-  <app-button-form *ngIf="hasGrant('CanViewTransactions')" (click)="openTransactions()" buttonName="{{ 'transactions' | translate }}" buttonColor="white"></app-button-form>
+    <div  *ngIf="hasGrant('CanViewTransactions')" (click)="openTransactions()">{{'transactions'| translate}}</div>
   </div>
   <div class="buttons">
-    <app-button-form (click)="openPlayers()" buttonName="{{ 'players' | translate }}" buttonColor="white"></app-button-form>
+    <div  (click)="openPlayers()">{{'players' | translate}}</div>
   </div>
 <div class="tables">
   <div *ngIf="showTicketDetails" >

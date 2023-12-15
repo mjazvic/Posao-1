@@ -28,8 +28,8 @@
 
   <div class="button" *ngFor="let button of configuration">
     <div *ngIf="button.type === 'action'">
-      <app-button-form *ngIf="!button.hasTicket" buttonName="{{ button.header }}" (click)="onSubmit()"></app-button-form>
-      <app-button-form *ngIf="button.hasTicket" buttonName="{{ button.header }}" (click)="onSubmit()"></app-button-form>
+      <app-button *ngIf="!button.hasTicket" buttonName="{{ button.header }}" (click)="onSubmit()"></app-button>
+      <app-button *ngIf="button.hasTicket" buttonName="{{ button.header }}" (click)="onSubmit()"></app-button>
     </div>
   </div>
 </form>

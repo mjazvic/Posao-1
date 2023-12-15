@@ -14,10 +14,6 @@ import {Observable} from "rxjs";
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements  OnInit{
-
-  ngOnInit(): void {
-  this.loadTickets(this.filter,this.userName)
-  }
   filterShow: boolean = false;
   userName:string;
   filter: TicketFilter = {};
@@ -26,8 +22,12 @@ export class TicketComponent implements  OnInit{
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   protected readonly players = players;
-  selectedTicket: Ticket;
+  selectedTicket: Ticket
 
+
+  ngOnInit(): void {
+  this.loadTickets(this.filter,this.userName)
+  }
 
   filterConfiguration = [
     { type: 'input', header: 'Username', field: 'username', filterType: 'exact' },
@@ -43,14 +43,13 @@ export class TicketComponent implements  OnInit{
 
   ticketTableConfiguration =[
     { type: 'column', header: 'ID', field: 'id' },
-
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
     { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true},
     { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true},
     { type: 'column', header: 'status', field: 'status' },
-    { type: 'action',action: value =>this.getTicket(value),name:'bets', grant:true},
-    { type: 'action',action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions')},
+    { type: 'action',action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
+    { type: 'action',action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
   ];
 
   constructor(
@@ -65,10 +64,7 @@ export class TicketComponent implements  OnInit{
   loadTickets(filter?,username?) {
     this.ticketService.getTickets(filter,username).subscribe(
       (tickets) => {
-        this.tickets = tickets;
-      },
-    );
-  }
+        this.tickets = tickets;})}
   applyFilter(formValues: any) {
     const ticketFilter: TicketFilter = {
       username: formValues.username,
@@ -89,19 +85,8 @@ export class TicketComponent implements  OnInit{
     return currentUser.grants.includes(grantToCheck);
   }
 
-  showFilter(){
-    this.filterShow = !this.filterShow;
-  }
+  showFilter(){this.filterShow = !this.filterShow;}
   getTransactions(ticket:Ticket){
     console.log(ticket)
-    this.selectedTransactions = this.transactionService.getTransactions({ externalId: ticket.id });
-  }
-
-getPlayer(id):string{
-    const foundPlayer = this.players.find(player => player.id===id)
-  return foundPlayer.username;
-
-}
-
-  protected readonly close = close;
+    this.selectedTransactions = this.transactionService.getTransactions({ externalId: ticket.id });}
 }

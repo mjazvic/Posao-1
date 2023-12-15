@@ -1,6 +1,3 @@
-<app-button-form class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button-form>
-
-<app-form *ngIf="filterShow" [configuration]="filterConfiguration" (formSubmit)="applyFilter($event)"></app-form>
 
 <app-table [configuration]="playerTableConfiguration" [data]="players"></app-table>
 

@@ -2,12 +2,8 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LoaderService} from "../../services/loader.service";
 import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {TransactionService} from "../../services/transaction.service";
-import {
-  Transaction,
-  TransactionFilter,
-} from "../../models/transaction.model";
+import {TransactionFilter,} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
-import { Observable} from "rxjs";
 import {Grant} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 
@@ -17,10 +13,7 @@ import {UserService} from "../../services/user.service";
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
-  ngOnInit(): void {
-    this.loadTransactions(this.Tfilter,this.userName);
-  }
-
+  protected readonly players = players;
   userName:string;
   tickets: Ticket [][]= [];
   Tfilter: TransactionFilter = {};
@@ -31,40 +24,36 @@ export class TransactionComponent implements OnInit {
   filterShow: boolean = false;
   ticket: Ticket;
   selectedTicket:Ticket;
-  selectedTransactions:Observable<Transaction[]> ;
 
   filterConfiguration = [
-    { type: 'input', header: 'Username', field: 'username', filterType: 'exact' },
-    { type: 'input', header: 'Player ID', field: 'playerId', filterType: 'exact' },
-    { type: 'select', header: 'type', field: 'type', filterType: 'exact', options: [
+    { type: 'input',  header: 'Username',   field: 'username',   filterType: 'exact' },
+    { type: 'input',  header: 'Player ID',  field: 'playerId',   filterType: 'exact' },
+    { type: 'select', header: 'type',       field: 'type',       filterType: 'exact', options: [
         { label: 'PaymentProviderWithdraw', value: 'PaymentProviderWithdraw' },
         { label: 'PaymentProviderDeposit', value: 'PaymentProviderDeposit' },
         { label: 'SportPayIn', value: 'SportPayIn' },
         { label: 'SportPayOut', value: 'SportPayOut' },
         { label: 'SportWon', value: 'SportWon' },
-        { label: 'SportLost', value: 'SportLost' },
-      ] },
-    { type: 'select', header: 'provider', field: 'provider', filterType: 'exact', options: [
+        { label: 'SportLost', value: 'SportLost' }]},
+    { type: 'select', header: 'provider',   field: 'provider',    filterType: 'exact', options: [
         { label: 'PaymentProvider', value: 'PaymentProvider' },
         { label: 'Sport', value: 'Sport' },
       ] },
     { type: 'date', header: 'Created From', field: 'createdFrom', filterType: 'range' },
-    {type:'button',header: 'filter'}
+    { type:'button',header: 'filter'}
   ];
 
   transactionTableConfiguration = [
-    { type: 'column', header: 'ID', field: 'id', },
-   // { type: 'column', header: 'username', field: this.getPLayer }
-    { type: 'column', header: 'player_id', field: 'playerId' },
+    { type: 'column', header: 'ID',         field: 'id', },
+    { type: 'column', header: 'player_id',  field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
-    { type: 'column', header: 'type', field: 'type' },
-    { type: 'column', header: 'provider', field: 'provider' },
-    { type: 'column', header: 'direction', field: 'direction' },
-    { type: 'column', header: 'amount',field1:'amount',field2:'currency',bind:true},
-    //{ type:'boolean', hasTicket:this.hasTicket }
-    { type: 'action',action: value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets') }
+    { type: 'column', header: 'type',       field: 'type' },
+    { type: 'column', header: 'provider',   field: 'provider' },
+    { type: 'column', header: 'direction',  field: 'direction' },
+    { type: 'column', header: 'amount',     field1:'amount',field2:'currency',bind:true},
+    { type: 'action', action:  value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'}
   ];
-
+  ngOnInit(): void { this.loadTransactions(this.Tfilter,this.userName); }
 
   constructor(
     private userService:UserService,
@@ -77,38 +66,27 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getTransactions(filter,username).subscribe(
       (transactions) => {
         this.transactions = transactions;
-       this.loaderService.hideLoader();
-      },
-    );
-  }
+       this.loaderService.hideLoader();});}
   getTicket(ticket:Ticket):void{
-    this.selectedTicket=ticket;
-  }
-
-    applyFilter(formValues: any) {
-      const transactionFilter: TransactionFilter = {
+    this.selectedTicket=ticket; }
+  applyFilter(formValues: any) {
+        const transactionFilter: TransactionFilter = {
         username: formValues.username,
         playerId: formValues.playerId,
         type: formValues.type,
         provider: formValues.provider,
         direction:formValues.direction,
         createdFrom: formValues.createdFrom,
-        createdTo: formValues.createdTo,
-      };
-      const username:string=formValues.username;
-    this.loadTransactions(transactionFilter,username);
-  }
-
+        createdTo: formValues.createdTo};
+        const username:string=formValues.username;
+        this.loadTransactions(transactionFilter,username);}
   public hasGrant(grant: Grant | string): boolean {
     const currentUser = this.userService.getCurrentUser();
-    if (!currentUser) {
-      return false;
-    }
+    if (!currentUser) {return false;}
     const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
   showFilter(){
-    this.filterShow = !this.filterShow;
-  }
-  protected readonly players = players;
+    this.filterShow = !this.filterShow; }
+
 }
