@@ -70,9 +70,11 @@ export class TransactionComponent implements OnInit {
        this.loaderService.hideLoader();});}
 
   getTicket(transaction:Transaction):void{
+    this.loaderService.showLoader();
     this.ticketService.getTicket(transaction.externalId).subscribe(
       ticket=>this.selectedTicket=ticket
-    )}
+    )
+  this.loaderService.hideLoader();}
 
   applyFilter(formValues: any) {
         const transactionFilter: TransactionFilter = {

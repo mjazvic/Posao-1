@@ -8,6 +8,7 @@ import {Transaction} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
 import {Observable} from "rxjs";
 import {LoaderService} from "../../services/loader.service";
+import {transactions} from "../../data/transaction.data";
 
 @Component({
   selector: 'app-tickets',
@@ -19,7 +20,7 @@ export class TicketComponent implements  OnInit{
   userName:string;
   filter: TicketFilter = {};
   tickets: Ticket[];
-  selectedTransactions:Observable<Transaction[]>;
+  selectedTransactions:Transaction[];
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   protected readonly players = players;
@@ -92,6 +93,9 @@ export class TicketComponent implements  OnInit{
 
   showFilter(){this.filterShow = !this.filterShow;}
   getTransactions(ticket:Ticket){
-    console.log(ticket)
-    this.selectedTransactions = this.transactionService.getTransactions({ externalId: ticket.id });}
+    this.loaderService.showLoader();
+    this.transactionService.getTransactions({ externalId: ticket.id }).subscribe(
+      transaction => this.selectedTransactions=transaction);
+   this.loaderService.hideLoader();}
+
 }

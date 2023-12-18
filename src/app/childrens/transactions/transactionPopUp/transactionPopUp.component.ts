@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {players} from "../../../data/player.data";
+import {Transaction} from "../../../models/transaction.model";
 
 @Component({
   selector: 'app-transactionPopUp',
@@ -7,7 +8,7 @@ import {players} from "../../../data/player.data";
   styleUrls: ['./transactionPopUp.component.scss']
 })
 export class TransactionPopUpComponent implements OnInit {
-  @Input() transactions:any;
+  @Input() transactions:Transaction [];
   minimizedState: { [key: string]: boolean } = {};
 
   constructor() { }

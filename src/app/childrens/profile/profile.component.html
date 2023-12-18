@@ -44,7 +44,7 @@
   </div>
 </div>
 </div>
-<div *ngIf="hasGrant('CanViewTickets')">
+<div  *ngIf="hasGrant('CanViewTickets')">
 <h2>Tickets</h2>
 <app-table [configuration]="ticketTableConfiguration"  [data]="tickets" ></app-table>
 </div>
