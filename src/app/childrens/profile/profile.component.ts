@@ -37,8 +37,8 @@ export class ProfileComponent implements OnInit {
     { type: 'column', header: 'ID', field: 'id' },
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
-    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true},
-    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true},
+    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
+    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
     { type: 'column', header: 'status', field: 'status' },
   ];
 
@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
     { type: 'column', header: 'type', field: 'type' },
     { type: 'column', header: 'provider', field: 'provider' },
     { type: 'column', header: 'direction', field: 'direction' },
-    { type: 'column', header: 'amount',field1:'amount',field2:'currency',bind:true},
+    { type: 'column', header: 'amount',field1:'amount',field2:'currency',bind:true,font:'number'},
   ];
 
   constructor(

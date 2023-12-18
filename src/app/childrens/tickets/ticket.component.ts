@@ -50,8 +50,8 @@ export class TicketComponent implements  OnInit{
     { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
     { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
     { type: 'column', header: 'status', field: 'status' },
-    { type: 'action',action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
-    { type: 'action',action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
+    { type: 'action', header: 'tickets',action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
+    { type: 'action', header: 'transactions',action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
   ];
 
   constructor(
@@ -72,15 +72,16 @@ export class TicketComponent implements  OnInit{
     this.loaderService.hideLoader();
   }
   applyFilter(formValues: any) {
+    this.loaderService.showLoader();
     const ticketFilter: TicketFilter = {
       username: formValues.username,
       playerId: formValues.playerId,
       status: formValues.status,
       createdFrom: formValues.createdFrom,
-      createdTo: formValues.createdTo,
-    };
+      createdTo: formValues.createdTo,};
     const username:string=formValues.username;
     this.loadTickets(ticketFilter,username)
+    this.loaderService.hideLoader();
   }
   public hasGrant(grant: Grant | string): boolean {
     const currentUser = this.userService.getCurrentUser();

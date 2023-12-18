@@ -2,8 +2,8 @@
   <thead class="header">
   <tr>
     <ng-container *ngFor="let column of configuration">
-      <th *ngIf="column.type === 'column'">{{ column.header | translate }}</th>
-      <td *ngIf="column.type === 'action'">{{ column.header | translate }}</td>
+      <th class="{{column.font}}" *ngIf="column.type === 'column'">{{ column.header | translate }}</th>
+      <th class="{{column.font}}" *ngIf="column.type === 'action'">{{ column.header | translate }}</th>
     </ng-container>
   </tr>
   </thead>
@@ -11,8 +11,8 @@
   <ng-container *ngFor="let row of data">
     <tr>
       <ng-container  *ngFor="let column of configuration">
-        <td *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
-        <td class="{{column.font}}"  *ngIf="column.bind && column.type === 'column'">{{ row[column.field1] }} {{ row[column.field2]}}</td>
+        <td class="{{column.font}}" *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
+        <td class="{{column.font}}" *ngIf="column.bind && column.type === 'column'">{{ row[column.field1] }} {{ row[column.field2]}}</td>
         <td class="{{column.font}}" *ngIf="!column.date && !column.bind && column.type === 'column'">{{ row[column.field]  }}</td>
       </ng-container>
       <ng-container  *ngFor="let column of configuration">

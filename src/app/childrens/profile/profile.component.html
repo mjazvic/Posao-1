@@ -45,10 +45,10 @@
 </div>
 </div>
 <div  *ngIf="hasGrant('CanViewTickets')">
-<h2>Tickets</h2>
+<h2>{{'tickets' | translate }}</h2>
 <app-table [configuration]="ticketTableConfiguration"  [data]="tickets" ></app-table>
 </div>
 <div *ngIf="hasGrant('CanViewTransactions')">
-<h2>Transactions</h2>
+<h2>{{ 'transactions' | translate }}</h2>
 <app-table [configuration]="transactionTableConfiguration"  [data]="transactions" ></app-table>
 </div>
