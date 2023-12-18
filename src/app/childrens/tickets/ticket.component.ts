@@ -44,11 +44,11 @@ export class TicketComponent implements  OnInit{
   ];
 
   ticketTableConfiguration =[
-    { type: 'column', header: 'ID', field: 'id' },
+    { type: 'column', header: 'ID', field: 'id'},
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
-    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true},
-    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true},
+    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
+    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
     { type: 'column', header: 'status', field: 'status' },
     { type: 'action',action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
     { type: 'action',action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },

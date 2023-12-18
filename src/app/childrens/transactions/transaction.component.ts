@@ -49,7 +49,7 @@ export class TransactionComponent implements OnInit {
     { type: 'column', header: 'type',       field: 'type' },
     { type: 'column', header: 'provider',   field: 'provider' },
     { type: 'column', header: 'direction',  field: 'direction' },
-    { type: 'column', header: 'amount',     field1:'amount',field2:'currency',bind:true},
+    { type: 'column', header: 'amount',     field1:'amount',field2:'currency',bind:true,font:'number'},
     { type: 'action', action:  value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'}
   ];
   ngOnInit(): void { this.loadTransactions(this.Tfilter,this.userName); }

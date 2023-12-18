@@ -7,7 +7,8 @@ export const players: Player[] = [
     email: 'johndoe@playnirvana.com',
     username: 'johndoe',
     firstName: 'John',
-    lastName: 'Doe'
+    lastName: 'Doe',
+    image:'/assets/branding/small-logo.png'
   },
   {
     id: '2',
@@ -15,7 +16,9 @@ export const players: Player[] = [
     email: 'janedoe@playnirvana.com',
     username: 'janedoe',
     firstName: 'Jane',
-    lastName: 'Doe'
+    lastName: 'Doe',
+    image:'/assets/branding/login.png'
+
   },
   {
     id: '3',
@@ -23,6 +26,8 @@ export const players: Player[] = [
     email: 'adamsmith@playnirvana.com',
     username: 'adamsmith',
     firstName: 'Adam',
-    lastName: 'Smith'
+    lastName: 'Smith',
+    image:'/assets/branding/large-logo.png'
+
   }
 ]

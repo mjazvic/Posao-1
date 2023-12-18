@@ -5,4 +5,5 @@ export interface Player {
   lastName: string;
   playerCode: number;
   email: string;
+  image:string
 }

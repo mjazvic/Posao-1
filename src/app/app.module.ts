@@ -13,7 +13,7 @@ import { LoginComponent } from './childrens/login/login.component';
 import { LanguageSwitcherComponent } from './forms/language-switcher/language-switcher.component';
 import { LoginGuard} from "./login.guard";
 import { LoaderComponent } from './forms/loader/loader.component';
-import { LoginFormComponent } from './forms/login-form/login-form.component';
+import { LoginFormComponent } from './childrens/login/login-form/login-form.component';
 import { TicketComponent } from './childrens/tickets/ticket.component';
 import { TransactionComponent } from './childrens/transactions/transaction.component';
 import { Button } from './forms/button/button';
