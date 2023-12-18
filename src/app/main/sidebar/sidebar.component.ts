@@ -18,22 +18,22 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {}
 
 
-  closeSidebar() { this.isOpen = !this.isOpen; }
-  openSidebar(){ this.isOpen = this.isOpen == false; }
+  public closeSidebar():void { this.isOpen = !this.isOpen; }
+  public openSidebar():void{ this.isOpen = this.isOpen == false; }
   public hasGrant(grant: Grant | string): boolean {
     const currentUser = this.userService.getCurrentUser();
     if ( !currentUser ) { return false; }
     const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes( grantToCheck ); }
-  openTickets(){
+  public openTickets():void{
     this.router.navigate(['/tickets']);
     this.isOpen=false;
     this.closeSidebar(); }
-  openTransactions(){
+  public openTransactions():void{
     this.router.navigate(['/transactions']);
     this.isOpen=false;
     this.closeSidebar(); }
-  openPlayers() {
+  public openPlayers():void {
     this.router.navigate(['/players']);
     this.isOpen=false
     this.closeSidebar(); }

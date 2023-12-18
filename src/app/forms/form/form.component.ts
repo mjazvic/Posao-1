@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit():void {
     const formControls = {};
     this.configuration.forEach(field => {
       const validators = field.type !== 'button' && field.required ? [Validators.required] : [];
@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
     this.form = this.fb.group(formControls);
   }
 
-  onSubmit() {
+  onSubmit():void {
     this.formSubmit.emit(this.form.value);
   }
 }

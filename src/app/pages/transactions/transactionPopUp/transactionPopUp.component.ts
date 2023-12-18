@@ -15,15 +15,15 @@ export class TransactionPopUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  closePopup() {
+  public closePopup() {
     document.querySelector('.popup-container')?.classList.remove('active');
     document.querySelector('.overlay')?.classList.remove('active');
   }
 
-  findPlayerById(playerId: string): string {
+  public findPlayerById(playerId: string): string {
     const player=players.find(player => player.id === playerId);
     return player.username;}
-  minMax(transactionId){
+  public minMax(transactionId){
     Object.keys(this.minimizedState).forEach((id) => {
       this.minimizedState[id] = false;});
       this.minimizedState[transactionId] = !this.minimizedState[transactionId];}

@@ -15,13 +15,13 @@ export class TicketPopUpComponent implements OnInit{
 
   ngOnInit() {}
 
-  closePopup() {
+  public closePopup():void {
     document.querySelector('.popup-container')?.classList.remove('active');
     document.querySelector('.overlay')?.classList.remove('active');
     this.ticket=null;
   }
 
-  findPlayerById(playerId: string): string {
+  public findPlayerById(playerId: string): string {
     const player = players.find(player => player.id === playerId);
     return player.username;
   }

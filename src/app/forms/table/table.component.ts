@@ -12,4 +12,7 @@ export class TableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {}
+  getRowId(index: number, row: any): any {
+    return row.id;
+  }
 }

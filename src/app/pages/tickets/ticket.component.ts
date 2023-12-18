@@ -50,8 +50,8 @@ export class TicketComponent implements  OnInit{
     { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
     { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
     { type: 'column', header: 'status', field: 'status' },
-    { type: 'action', header: 'tickets',action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
-    { type: 'action', header: 'transactions',action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
+    { type: 'action', header: 'tickets',value: true, action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
+    { type: 'action', header: 'transactions',value:true,  action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
   ];
 
   constructor(
@@ -61,17 +61,17 @@ export class TicketComponent implements  OnInit{
     private ticketService: TicketService)
   {}
 
-  getTicket(ticket:Ticket):void{
+  public getTicket(ticket:Ticket):void{
     this.selectedTicket=ticket;
   }
-  loadTickets(filter?,username?) {
+  public  loadTickets(filter?,username?):void {
     this.loaderService.showLoader();
     this.ticketService.getTickets(filter,username).subscribe(
       (tickets) => {
         this.tickets = tickets;})
     this.loaderService.hideLoader();
   }
-  applyFilter(formValues: any) {
+  public applyFilter(formValues: any):void {
     this.loaderService.showLoader();
     const ticketFilter: TicketFilter = {
       username: formValues.username,
@@ -92,11 +92,10 @@ export class TicketComponent implements  OnInit{
     return currentUser.grants.includes(grantToCheck);
   }
 
-  showFilter(){this.filterShow = !this.filterShow;}
-  getTransactions(ticket:Ticket){
+  public showFilter():void{this.filterShow = !this.filterShow;}
+  public getTransactions(ticket:Ticket){
     this.loaderService.showLoader();
     this.transactionService.getTransactions({ externalId: ticket.id }).subscribe(
       transaction => this.selectedTransactions=transaction);
    this.loaderService.hideLoader();}
-
 }

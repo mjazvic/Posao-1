@@ -10,7 +10,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 10,
     currency: 'EUR',
-    createdAt: '2023-04-03T14:28:17.285Z'
+    createdAt: '2023-04-03T14:28:17.285Z',
+    hasTicket:true
   },
   {
     id: '2',
@@ -21,7 +22,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 290,
     currency: 'EUR',
-    createdAt: '2023-04-03T20:00:00.000Z'
+    createdAt: '2023-04-03T20:00:00.000Z',
+    hasTicket:true
   },
   {
     id: '3',
@@ -32,7 +34,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 290,
     currency: 'EUR',
-    createdAt: '2023-04-03T20:00:00.000Z'
+    createdAt: '2023-04-03T20:00:00.000Z',
+    hasTicket:true
   },
   {
     id: '4',
@@ -43,7 +46,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 20,
     currency: 'EUR',
-    createdAt: '2023-02-01T16:35:22.341Z'
+    createdAt: '2023-02-01T16:35:22.341Z',
+    hasTicket:true
   },
   {
     id: '5',
@@ -54,7 +58,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 52.2,
     currency: 'EUR',
-    createdAt: '2023-02-01T22:00:00.000Z'
+    createdAt: '2023-02-01T22:00:00.000Z',
+    hasTicket:true
   },
   {
     id: '6',
@@ -65,7 +70,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 52.2,
     currency: 'EUR',
-    createdAt: '2023-02-01T22:00:00.000Z'
+    createdAt: '2023-02-01T22:00:00.000Z',
+    hasTicket:true
   },
   {
     id: '7',
@@ -76,7 +82,9 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 30,
     currency: 'EUR',
-    createdAt: '2023-01-12T22:47:11.656Z'
+    createdAt: '2023-01-12T22:47:11.656Z',
+    hasTicket:true
+
   },
   {
     id: '8',
@@ -87,7 +95,9 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 0,
     currency: 'EUR',
-    createdAt: '2023-01-13T02:00:00.000Z'
+    createdAt: '2023-01-13T02:00:00.000Z',
+    hasTicket:true
+
   },
   {
     id: '9',
@@ -98,7 +108,9 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 6,
     currency: 'EUR',
-    createdAt: '2023-08-12T13:15:23.222Z'
+    createdAt: '2023-08-12T13:15:23.222Z',
+    hasTicket:true
+
   },
   {
     id: '10',
@@ -109,7 +121,9 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 0,
     currency: 'EUR',
-    createdAt: '2023-08-14T02:00:00.000Z'
+    createdAt: '2023-08-14T02:00:00.000Z',
+    hasTicket:true
+
   },
   {
     id: '11',
@@ -120,7 +134,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.Sport,
     amount: 50,
     currency: 'EUR',
-    createdAt: '2023-09-14T09:22:11.628Z'
+    createdAt: '2023-09-14T09:22:11.628Z',
+    hasTicket:true
   },
   {
     id: '12',
@@ -131,7 +146,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.PaymentProvider,
     amount: 150,
     currency: 'EUR',
-    createdAt: '2023-06-07T19:12:34.634Z'
+    createdAt: '2023-06-07T19:12:34.634Z',
+    hasTicket:false
   },
   {
     id: '13',
@@ -142,7 +158,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.PaymentProvider,
     amount: 10,
     currency: 'EUR',
-    createdAt: '2023-03-11T12:00:03.112Z'
+    createdAt: '2023-03-11T12:00:03.112Z',
+    hasTicket:false
   },
   {
     id: '14',
@@ -153,7 +170,8 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.PaymentProvider,
     amount: 72,
     currency: 'EUR',
-    createdAt: '2023-09-23T10:32:15.333Z'
+    createdAt: '2023-09-23T10:32:15.333Z',
+    hasTicket:false
   },
   {
     id: '15',
@@ -164,6 +182,7 @@ export const transactions: Transaction[] = [
     provider: TransactionProvider.PaymentProvider,
     amount: 12,
     currency: 'EUR',
-    createdAt: '2023-10-03T15:17:44.123Z'
+    createdAt: '2023-10-03T15:17:44.123Z',
+    hasTicket:false
   }
 ];

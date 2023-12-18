@@ -20,6 +20,7 @@ export interface TransactionFilter {
   createdFrom?: string;
   createdTo?: string;
   username?: string;
+  hasTicket?: boolean;
 }
 
 export enum TransactionType {

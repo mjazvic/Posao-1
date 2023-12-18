@@ -6,16 +6,16 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './childrens/login/login.component';
-import { LanguageSwitcherComponent } from './forms/language-switcher/language-switcher.component';
-import { LoginGuard} from "./login.guard";
+import { LoginComponent } from './pages/login/login.component';
+import { LanguageComponent } from './forms/language/language.component';
+import { LoginGuard} from "./guards/login.guard";
 import { LoaderComponent } from './forms/loader/loader.component';
-import { LoginFormComponent } from './childrens/login/login-form/login-form.component';
-import { TicketComponent } from './childrens/tickets/ticket.component';
-import { TransactionComponent } from './childrens/transactions/transaction.component';
+import { LoginFormComponent } from './pages/login/login-form/login-form.component';
+import { TicketComponent } from './pages/tickets/ticket.component';
+import { TransactionComponent } from './pages/transactions/transaction.component';
 import { Button } from './forms/button/button';
 import { MatSelectModule} from "@angular/material/select";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,8 +25,8 @@ import { MatTableModule} from "@angular/material/table";
 import { MatIconModule} from "@angular/material/icon";
 import { MatCardModule} from "@angular/material/card";
 import { BetsComponent } from './forms/bets/bets.component';
-import { TicketPopUpComponent } from './childrens/tickets/ticketPopUp/ticketPopUp.component';
-import { TransactionPopUpComponent } from './childrens/transactions/transactionPopUp/transactionPopUp.component';
+import { TicketPopUpComponent } from './pages/tickets/ticketPopUp/ticketPopUp.component';
+import { TransactionPopUpComponent } from './pages/transactions/transactionPopUp/transactionPopUp.component';
 import { HeaderComponent } from './main/header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './main/footer/footer.component';
@@ -34,14 +34,14 @@ import { SidebarComponent } from './main/sidebar/sidebar.component';
 import { NgOptimizedImage } from "@angular/common";
 import { TableComponent } from './forms/table/table.component';
 import { FormComponent } from './forms/form/form.component';
-import { PlayersComponent } from './childrens/players/players.component';
-import { ProfileComponent } from './childrens/profile/profile.component';
+import { PlayersComponent } from './pages/players/players.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LanguageSwitcherComponent,
+    LanguageComponent,
     LoaderComponent,
     LoginFormComponent,
     TicketComponent,

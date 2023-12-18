@@ -50,7 +50,7 @@ export class TransactionComponent implements OnInit {
     { type: 'column', header: 'provider',   field: 'provider' },
     { type: 'column', header: 'direction',  field: 'direction' },
     { type: 'column', header: 'amount',     field1:'amount',field2:'currency',bind:true,font:'number'},
-    { type: 'action', header: 'tickets',    action:  value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'}
+    { type: 'action', header: 'tickets',    value:'hasTicket', action:  value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'}
   ];
   ngOnInit(): void { this.loadTransactions(this.Tfilter,this.userName); }
 
@@ -62,21 +62,21 @@ export class TransactionComponent implements OnInit {
 
 
 
-  loadTransactions(filter,username) {
+  public loadTransactions(filter,username):void {
     this.loaderService.showLoader();
     this.transactionService.getTransactions(filter,username).subscribe(
       (transactions) => {
         this.transactions = transactions;
        this.loaderService.hideLoader();});}
 
-  getTicket(transaction:Transaction):void{
+  public getTicket(transaction:Transaction):void{
     this.loaderService.showLoader();
     this.ticketService.getTicket(transaction.externalId).subscribe(
       ticket=>this.selectedTicket=ticket
     )
   this.loaderService.hideLoader();}
 
-  applyFilter(formValues: any) {
+  public applyFilter(formValues: any):void {
         const transactionFilter: TransactionFilter = {
         username: formValues.username,
         playerId: formValues.playerId,
@@ -93,6 +93,6 @@ export class TransactionComponent implements OnInit {
     const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
-  showFilter(){
+  public showFilter():void{
     this.filterShow = !this.filterShow; }
 }

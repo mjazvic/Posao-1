@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.changeTitle();}})}
 
-  changeTitle() {
+  private changeTitle():void {
     this.loaderService.showLoader()
     const currentUrl = this.router.url;
     if (currentUrl.includes('/dashboard')) {
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
   private getPlayer(playerId: string | null): void {
    this.player=players.find(player=>player.id===playerId)
   }
-  logout(): void {
+  public logout(): void {
     this.loaderService.showLoader();
     this.userService.logout().subscribe(() => {
       this.router.navigate(['login']);})}

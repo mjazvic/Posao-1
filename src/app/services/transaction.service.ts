@@ -27,7 +27,8 @@ export class TransactionService {
         (!filter.provider || t.provider === filter.provider) &&
         (!filter.direction || t.direction === filter.direction) &&
         (!filter.createdFrom || t.createdAt >= filter.createdFrom) &&
-        (!filter.createdTo || t.createdAt <= filter.createdTo)
+        (!filter.createdTo || t.createdAt <= filter.createdTo) &&
+        (!filter.hasTicket || t.hasTicket <= filter.hasTicket)
     );
 
     if (username) {

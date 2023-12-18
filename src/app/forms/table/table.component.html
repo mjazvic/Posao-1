@@ -8,7 +8,7 @@
   </tr>
   </thead>
   <tbody>
-  <ng-container *ngFor="let row of data">
+  <ng-container *ngFor="let row of data trackBy: getRowId">
     <tr>
       <ng-container  *ngFor="let column of configuration">
         <td class="{{column.font}}" *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
@@ -16,7 +16,7 @@
         <td class="{{column.font}}" *ngIf="!column.date && !column.bind && column.type === 'column'">{{ row[column.field]  }}</td>
       </ng-container>
       <ng-container  *ngFor="let column of configuration">
-        <td class="button" *ngIf="column.grant && column.type === 'action'" (click)=" column.action(row)"><img src="{{column.image}}" alt="picture"></td>
+        <td class="button" *ngIf="column.grant && column.type === 'action'" (click)=" column.action(row)"><img *ngIf="row[column.value]" src="{{column.image}}" alt="picture"></td>
       </ng-container>
     </tr>
   </ng-container>

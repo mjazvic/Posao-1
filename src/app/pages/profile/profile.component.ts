@@ -61,8 +61,8 @@ export class ProfileComponent implements OnInit {
     private playerService:PlayerService ) { }
 
   ngOnInit(): void {
-    this.loaderService.showLoader();
-    this.route.queryParams.subscribe(params => {
+      this.loaderService.showLoader();
+      this.route.queryParams.subscribe(params => {
       this.player = params['player'];
       this.playerId = params['playerId']
       this.loadTickets()
@@ -72,7 +72,7 @@ export class ProfileComponent implements OnInit {
       this.loaderService.hideLoader()
     });
   }
-  loadTickets() {
+  private loadTickets():void {
     this.loaderService.showLoader();
     this.ticktetFilter.playerId=this.playerId
     this.ticketService.getTickets(this.ticktetFilter).subscribe(
@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  loadTransactions() {
+  private loadTransactions():void {
     this.loaderService.showLoader();
     this.transactionFilter.playerId=this.playerId
     this.transactionService.getTransactions(this.transactionFilter).subscribe(
@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit {
     this.loaderService.hideLoader();
 
   }
-  getPlayer() {
+  private getPlayer():void {
     this.loaderService.showLoader();
     this.playerService.getPlayers().subscribe(players => {
       for (const player of players) {
@@ -110,14 +110,14 @@ export class ProfileComponent implements OnInit {
     });
     this.loaderService.hideLoader();
   }
-  get(){
+  private get():void{
     this.loaderService.showLoader();
     for(let player of players){
       if(player.id===this.playerId){
         this.player=player;}}
     this.loaderService.hideLoader();}
 
-  getDetails() {
+  private  getDetails():void {
     this.loaderService.showLoader();
     this.ticktetFilter.status = TicketStatus.Won;
     this.tickets = [];
@@ -141,7 +141,6 @@ export class ProfileComponent implements OnInit {
         this.created = 0;
       }
     this.loaderService.hideLoader();});
-
   }
 
   public hasGrant(grant: Grant | string): boolean {

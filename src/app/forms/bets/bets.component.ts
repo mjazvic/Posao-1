@@ -17,7 +17,7 @@ export class BetsComponent implements OnInit,OnChanges{
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges):void {
     this.loaderService.showLoader();
     this.toggle()
     this.betsId=null;
@@ -25,7 +25,7 @@ export class BetsComponent implements OnInit,OnChanges{
   }
 
 
-  toggle(){
+  public toggle():void{
     this.loaderService.showLoader();
     this.ticketService.getTicket(this.betsId).subscribe(
     (tickets) => {

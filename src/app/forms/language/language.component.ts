@@ -4,11 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import {LoaderService} from "../../services/loader.service";
 
 @Component({
-  selector: 'app-language-switcher',
-  templateUrl:'language-switcher.component.html' ,
-  styleUrls: ['./language-switcher.component.scss'],
+  selector: 'app-language',
+  templateUrl:'language.component.html' ,
+  styleUrls: ['./language.component.scss'],
 })
-export class LanguageSwitcherComponent implements OnInit{
+export class LanguageComponent implements OnInit{
   @Input() color:string='white';
   langColor:string='black';
   choice:string="black";

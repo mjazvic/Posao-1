@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, } from '@angular/router';
-import {UserService} from "./services/user.service";
+import {UserService} from "../services/user.service";
 import {Observable, tap} from "rxjs";
 
 @Injectable({
@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
     private router: Router,
     private userService: UserService) {}
 
-  canActivate():  Observable<boolean> {
+  public canActivate():  Observable<boolean> {
     return this.userService.isAuthorized().pipe(
       tap((isAuthorized) => {
         if (isAuthorized) {
