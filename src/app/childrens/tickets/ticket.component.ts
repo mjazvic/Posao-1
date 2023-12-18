@@ -7,6 +7,7 @@ import {TransactionService} from '../../services/transaction.service';
 import {Transaction} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
 import {Observable} from "rxjs";
+import {LoaderService} from "../../services/loader.service";
 
 @Component({
   selector: 'app-tickets',
@@ -22,7 +23,7 @@ export class TicketComponent implements  OnInit{
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
   protected readonly players = players;
-  selectedTicket: Ticket
+  selectedTicket:Ticket;
 
 
   ngOnInit(): void {
@@ -53,6 +54,7 @@ export class TicketComponent implements  OnInit{
   ];
 
   constructor(
+    private loaderService:LoaderService,
     private transactionService:TransactionService,
     private userService: UserService,
     private ticketService: TicketService)
@@ -62,9 +64,12 @@ export class TicketComponent implements  OnInit{
     this.selectedTicket=ticket;
   }
   loadTickets(filter?,username?) {
+    this.loaderService.showLoader();
     this.ticketService.getTickets(filter,username).subscribe(
       (tickets) => {
-        this.tickets = tickets;})}
+        this.tickets = tickets;})
+    this.loaderService.hideLoader();
+  }
   applyFilter(formValues: any) {
     const ticketFilter: TicketFilter = {
       username: formValues.username,

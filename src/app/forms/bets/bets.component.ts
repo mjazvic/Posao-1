@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TicketService} from "../../services/ticket.service";
 import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {LoaderService} from "../../services/loader.service";
@@ -8,16 +8,23 @@ import {LoaderService} from "../../services/loader.service";
   templateUrl: './bets.component.html',
   styleUrls: ['./bets.component.scss']
 })
-export class BetsComponent implements OnInit {
+export class BetsComponent implements OnInit,OnChanges{
   ticket:Ticket;
-  filter: TicketFilter = {};
  @Input() betsId:string;
 
   constructor(private ticketService :TicketService,private loaderService:LoaderService) { }
 
   ngOnInit(): void {
-    this.toggle()
   }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.loaderService.showLoader();
+    this.toggle()
+    this.betsId=null;
+    this.loaderService.hideLoader();
+  }
+
+
   toggle(){
     this.loaderService.showLoader();
     this.ticketService.getTicket(this.betsId).subscribe(

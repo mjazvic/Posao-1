@@ -4,7 +4,11 @@ app-table{
   justify-content: center;
   margin: 30px;
 }
-img { border-radius: 50%;
+.title{
+  font-size: 20px;
+}
+img {
+  border-radius: 50%;
   width: 45px;
   height: 45px;
   display: flex;

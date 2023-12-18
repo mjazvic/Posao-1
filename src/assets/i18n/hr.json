@@ -1,4 +1,5 @@
 {
+      "created": "Kreirano",
       "profile": "Profil",
       "players": "Igrači",
       "email": "Email",
@@ -8,7 +9,7 @@
       "playerCode": "Kod Igrača",
       "lastname": "Prezime",
       "firstname": "Ime",
-      "saldo":"Balance",
+      "saldo":"Saldo",
       "details": "Detalji",
       "transactions": "Transakcije",
       "ticket": "Listić",

@@ -1,6 +1,7 @@
 import {Component,Input, OnInit} from '@angular/core';
 import {Ticket} from '../../../models/ticket.model';
 import {players} from "../../../data/player.data";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-ticketPopUp',
@@ -8,7 +9,7 @@ import {players} from "../../../data/player.data";
   styleUrls: ['./ticketPopUp.component.scss'],
 })
 export class TicketPopUpComponent implements OnInit{
-  @Input() ticket: Ticket;
+  @Input() ticket:Ticket;
 
   constructor() {}
 
@@ -17,6 +18,7 @@ export class TicketPopUpComponent implements OnInit{
   closePopup() {
     document.querySelector('.popup-container')?.classList.remove('active');
     document.querySelector('.overlay')?.classList.remove('active');
+    this.ticket=null;
   }
 
   findPlayerById(playerId: string): string {

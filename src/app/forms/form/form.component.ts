@@ -20,12 +20,10 @@ export class FormComponent implements OnInit {
       const validators = field.type !== 'button' && field.required ? [Validators.required] : [];
       formControls[field.field] = [field.initialValue || '', validators];
     });
-
     this.form = this.fb.group(formControls);
   }
 
   onSubmit() {
     this.formSubmit.emit(this.form.value);
-
   }
 }

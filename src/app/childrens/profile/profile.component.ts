@@ -9,6 +9,8 @@ import {PlayerService} from "../../services/player.service";
 import {LoaderService} from "../../services/loader.service";
 import {Grant} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
+import {players} from "../../data/player.data";
+import {tickets} from "../../data/ticket.data";
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +19,7 @@ import {UserService} from "../../services/user.service";
 })
 export class ProfileComponent implements OnInit {
   ticket:Ticket;
-  player:Player;
+  player: Player ;
   playerId:string;
   tickets:Ticket[];
   winTickets:Ticket[];
@@ -59,13 +61,15 @@ export class ProfileComponent implements OnInit {
     private playerService:PlayerService ) { }
 
   ngOnInit(): void {
+    this.loaderService.showLoader();
     this.route.queryParams.subscribe(params => {
       this.player = params['player'];
       this.playerId = params['playerId']
       this.loadTickets()
       this.loadTransactions()
-      this.getPlayer()
+      this.get()
       this.getDetails()
+      this.loaderService.hideLoader()
     });
   }
   loadTickets() {
@@ -105,8 +109,13 @@ export class ProfileComponent implements OnInit {
           break;}}
     });
     this.loaderService.hideLoader();
-
   }
+  get(){
+    this.loaderService.showLoader();
+    for(let player of players){
+      if(player.id===this.playerId){
+        this.player=player;}}
+    this.loaderService.hideLoader();}
 
   getDetails() {
     this.loaderService.showLoader();
@@ -143,6 +152,7 @@ export class ProfileComponent implements OnInit {
     const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
+
 
 }
 

@@ -2,10 +2,11 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {LoaderService} from "../../services/loader.service";
 import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {TransactionService} from "../../services/transaction.service";
-import {TransactionFilter,} from "../../models/transaction.model";
+import {Transaction, TransactionFilter,} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
 import {Grant} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
+import {TicketService} from "../../services/ticket.service";
 
 @Component({
   selector: 'app-transaction',
@@ -19,8 +20,6 @@ export class TransactionComponent implements OnInit {
   Tfilter: TransactionFilter = {};
   filter: TicketFilter = {};
   transactions:any=this.transactionService.getTransactions(this.Tfilter)
-  @ViewChild('ticketSection') transactionSection: ElementRef;
-  @ViewChild('ticketSection') ticketSection: ElementRef;
   filterShow: boolean = false;
   ticket: Ticket;
   selectedTicket:Ticket;
@@ -56,9 +55,11 @@ export class TransactionComponent implements OnInit {
   ngOnInit(): void { this.loadTransactions(this.Tfilter,this.userName); }
 
   constructor(
+    private ticketService:TicketService,
     private userService:UserService,
     private loaderService:LoaderService,
     private transactionService: TransactionService) {}
+
 
 
   loadTransactions(filter,username) {
@@ -67,8 +68,12 @@ export class TransactionComponent implements OnInit {
       (transactions) => {
         this.transactions = transactions;
        this.loaderService.hideLoader();});}
-  getTicket(ticket:Ticket):void{
-    this.selectedTicket=ticket; }
+
+  getTicket(transaction:Transaction):void{
+    this.ticketService.getTicket(transaction.externalId).subscribe(
+      ticket=>this.selectedTicket=ticket
+    )}
+
   applyFilter(formValues: any) {
         const transactionFilter: TransactionFilter = {
         username: formValues.username,
@@ -88,5 +93,4 @@ export class TransactionComponent implements OnInit {
   }
   showFilter(){
     this.filterShow = !this.filterShow; }
-
 }

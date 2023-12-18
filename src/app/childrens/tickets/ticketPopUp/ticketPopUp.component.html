@@ -1,11 +1,11 @@
-<div class="popup-container"  *ngIf="ticket" [ngClass]="{'active' : ticket}">
+<div class="popup-container"  *ngIf="ticket " [ngClass]="{'active' : ticket}">
   <div >
     <h1>{{ 'ticket' | translate }}</h1>
   <app-button class="button" buttonColor="white" buttonSize="small" buttonName="{{ 'close' | translate }}" (click)="closePopup()"></app-button>
   </div>
   <div class="ticketDetails">
     <div>
-      <strong>{{ 'player' | translate }} ID:</strong> {{ ticket.playerId }}
+      <strong>{{ 'player' | translate }} ID:</strong> {{ ticket.playerId  }}
     </div>
     <div>
       <strong>{{ 'username' | translate }} :</strong> {{ findPlayerById(ticket.playerId) }}
