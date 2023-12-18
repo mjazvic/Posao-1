@@ -21,7 +21,7 @@ export class PlayersComponent implements OnInit {
     {type: 'column', header: 'lastname',    field: 'lastName'},
     {type: 'column', header: 'playerCode',  field: 'playerCode'},
     {type: 'column', header: 'email',       field: 'email'},
-    {type: 'action', action: value => this.getProfile(value), name: 'Profile', grant: true,image:'/assets/branding/profile.png'},
+    {type: 'action', header: 'profile', action: value => this.getProfile(value), name: 'Profile', grant: true,image:'/assets/branding/profile.png'},
   ];
 
   constructor(private router: Router) {}
