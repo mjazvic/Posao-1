@@ -2,6 +2,7 @@ import {Component,Input, OnInit} from '@angular/core';
 import {Ticket} from '../../../models/ticket.model';
 import {players} from "../../../data/player.data";
 import {Observable} from "rxjs";
+import {Player} from "../../../models/player.model";
 
 @Component({
   selector: 'app-ticketPopUp',
@@ -13,7 +14,7 @@ export class TicketPopUpComponent implements OnInit{
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit():void {}
 
   public closePopup():void {
     document.querySelector('.popup-container')?.classList.remove('active');
@@ -22,7 +23,7 @@ export class TicketPopUpComponent implements OnInit{
   }
 
   public findPlayerById(playerId: string): string {
-    const player = players.find(player => player.id === playerId);
+    const player:Player = players.find(player   => player.id === playerId);
     return player.username;
   }
 }

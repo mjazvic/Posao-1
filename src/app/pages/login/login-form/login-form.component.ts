@@ -9,9 +9,9 @@ import {LoaderService} from "../../../services/loader.service";
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent  {
-  username: string = '';
-  password: string = '';
-  loginError: boolean = false;
+  public username: string = '';
+  public password: string = '';
+  public loginError: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -21,9 +21,9 @@ export class LoginFormComponent  {
   public login():void {
     this.loaderService.showLoader();
     this.userService.login(this.username, this.password).subscribe(
-      () => {
+      ():void => {
         this.router.navigate(['']);},
-      (error) => {
+      (error):void => {
         this.loginError=true;});
     this.loaderService.hideLoader();}
 }

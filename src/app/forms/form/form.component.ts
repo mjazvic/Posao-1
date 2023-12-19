@@ -10,7 +10,7 @@ import {players} from "../../data/player.data";
 export class FormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<any> = new EventEmitter<any>();
   @Input() configuration:any;
-  form: FormGroup;
+  public form: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 

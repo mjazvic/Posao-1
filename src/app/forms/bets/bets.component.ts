@@ -9,7 +9,7 @@ import {LoaderService} from "../../services/loader.service";
   styleUrls: ['./bets.component.scss']
 })
 export class BetsComponent implements OnInit,OnChanges{
-  ticket:Ticket;
+  public ticket:Ticket;
  @Input() betsId:string;
 
   constructor(private ticketService :TicketService,private loaderService:LoaderService) { }

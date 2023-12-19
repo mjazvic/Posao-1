@@ -4,7 +4,7 @@ import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {TransactionService} from "../../services/transaction.service";
 import {Transaction, TransactionFilter,} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
-import {Grant} from "../../models/user.model";
+import {Grant, User} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 import {TicketService} from "../../services/ticket.service";
 
@@ -15,16 +15,16 @@ import {TicketService} from "../../services/ticket.service";
 })
 export class TransactionComponent implements OnInit {
   protected readonly players = players;
-  userName:string;
-  tickets: Ticket [][]= [];
-  Tfilter: TransactionFilter = {};
-  filter: TicketFilter = {};
-  transactions:any=this.transactionService.getTransactions(this.Tfilter)
-  filterShow: boolean = false;
-  ticket: Ticket;
-  selectedTicket:Ticket;
+  public userName:string;
+  public tickets: Ticket [][]= [];
+  public Tfilter: TransactionFilter = {};
+  public filter: TicketFilter = {};
+  public transactions:any=this.transactionService.getTransactions(this.Tfilter)
+  public filterShow: boolean = false;
+  public ticket: Ticket;
+  public selectedTicket:Ticket;
 
-  filterConfiguration = [
+  public filterConfiguration = [
     { type: 'input',  header: 'Username',   field: 'username',   filterType: 'exact' },
     { type: 'input',  header: 'Player ID',  field: 'playerId',   filterType: 'exact' },
     { type: 'select', header: 'type',       field: 'type',       filterType: 'exact', options: [
@@ -42,7 +42,7 @@ export class TransactionComponent implements OnInit {
     { type:'button',header: 'filter'}
   ];
 
-  transactionTableConfiguration = [
+  public transactionTableConfiguration = [
     { type: 'column', header: 'ID',         field: 'id', },
     { type: 'column', header: 'player_id',  field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
@@ -65,7 +65,7 @@ export class TransactionComponent implements OnInit {
   public loadTransactions(filter,username):void {
     this.loaderService.showLoader();
     this.transactionService.getTransactions(filter,username).subscribe(
-      (transactions) => {
+      (transactions):void => {
         this.transactions = transactions;
        this.loaderService.hideLoader();});}
 
@@ -88,9 +88,9 @@ export class TransactionComponent implements OnInit {
         const username:string=formValues.username;
         this.loadTransactions(transactionFilter,username);}
   public hasGrant(grant: Grant | string): boolean {
-    const currentUser = this.userService.getCurrentUser();
+    const currentUser:User = this.userService.getCurrentUser();
     if (!currentUser) {return false;}
-    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
+    const grantToCheck:Grant = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
   public showFilter():void{

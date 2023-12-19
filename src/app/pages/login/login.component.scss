@@ -1,8 +1,6 @@
-body {
-background-color: #8F1A1D;
-  background-size: cover;
-}
-  .container {
+.container {
+    background:url('/assets/branding/login.png');
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;

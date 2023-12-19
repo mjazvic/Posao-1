@@ -14,16 +14,16 @@ export class SidebarComponent implements OnInit {
   showTransactionDetails:boolean=false;
   imageUrl:any='/assets/branding/small-logo.png'
   constructor(private userService:UserService,private router:Router) { }
-  isOpen = false;
+  public isOpen:boolean = false;
   ngOnInit(): void {}
 
 
   public closeSidebar():void { this.isOpen = !this.isOpen; }
   public openSidebar():void{ this.isOpen = this.isOpen == false; }
   public hasGrant(grant: Grant | string): boolean {
-    const currentUser = this.userService.getCurrentUser();
+    const currentUser:User = this.userService.getCurrentUser();
     if ( !currentUser ) { return false; }
-    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
+    const grantToCheck:Grant = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes( grantToCheck ); }
   public openTickets():void{
     this.router.navigate(['/tickets']);

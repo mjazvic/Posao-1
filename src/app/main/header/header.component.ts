@@ -12,9 +12,9 @@ import {players} from "../../data/player.data";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
- title:string;
- imageUrl:string='/assets/branding/logout.png';
- player:Player;
+  public title:string;
+  public imageUrl:string='/assets/branding/logout.png';
+  public player:Player;
 
   constructor(
     private playerService:PlayerService,
@@ -25,13 +25,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.changeTitle();
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe((event):void => {
       if (event instanceof NavigationEnd) {
         this.changeTitle();}})}
 
   private changeTitle():void {
     this.loaderService.showLoader()
-    const currentUrl = this.router.url;
+    const currentUrl:string = this.router.url;
     if (currentUrl.includes('/dashboard')) {
       this.title = 'dashboard';
     } else if (currentUrl.includes('/tickets')) {
@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
       this.title = 'players';
     } else if(currentUrl.includes('/profile')) {
       this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
-        const playerId = params.get('playerId');
+        const playerId:string = params.get('playerId');
         this.getPlayer(playerId);
       });
       this.title = this.player.username;
@@ -55,6 +55,6 @@ export class HeaderComponent implements OnInit {
   }
   public logout(): void {
     this.loaderService.showLoader();
-    this.userService.logout().subscribe(() => {
+    this.userService.logout().subscribe(():void => {
       this.router.navigate(['login']);})}
 }

@@ -1,7 +1,6 @@
 
 import {Component, Input, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {LoaderService} from "../../services/loader.service";
 
 @Component({
   selector: 'app-language',
@@ -10,13 +9,13 @@ import {LoaderService} from "../../services/loader.service";
 })
 export class LanguageComponent implements OnInit{
   @Input() color:string='white';
-  langColor:string='black';
-  choice:string="black";
-  selectedLanguage: string = 'en';
+  public langColor:string='black';
+  public choice:string="black";
+  public selectedLanguage: string = 'en';
   constructor(private translate: TranslateService) {}
   ngOnInit(): void {if (this.color=="white"){this.choice="white";this.langColor="white"}}
 
-  changeLang(selectedValue: string): void {
+  public changeLang(selectedValue: string): void {
     this.translate.use(selectedValue);
   }
 }

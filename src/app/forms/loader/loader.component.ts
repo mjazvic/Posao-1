@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from "../../services/loader.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-loader',
@@ -7,9 +8,9 @@ import { LoaderService } from "../../services/loader.service";
   styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnInit {
-  isLoading$ = this.loaderService.isLoading$;
+  public isLoading$:Observable<boolean> = this.loaderService.isLoading$;
 
   constructor(private loaderService: LoaderService) {}
 
-  ngOnInit() {}
+  ngOnInit():void {}
 }

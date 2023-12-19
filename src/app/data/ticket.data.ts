@@ -9,6 +9,7 @@ export const tickets: Ticket[] = [
     payOutAmount: 290,
     currency: 'EUR',
     status: TicketStatus.Won,
+    hasTransaction:true,
     bets: [
       {
         id: '1',
@@ -42,6 +43,7 @@ export const tickets: Ticket[] = [
     payOutAmount: 52.2,
     currency: 'EUR',
     status: TicketStatus.Won,
+    hasTransaction:true,
     bets: [
       {
         id: '1',
@@ -75,6 +77,7 @@ export const tickets: Ticket[] = [
     payOutAmount: 54,
     currency: 'EUR',
     status: TicketStatus.Lost,
+    hasTransaction:true,
     bets: [
       {
         id: '1',
@@ -97,6 +100,7 @@ export const tickets: Ticket[] = [
     payOutAmount: 18,
     currency: 'EUR',
     status: TicketStatus.Lost,
+    hasTransaction:true,
     bets: [
       {
         id: '1',
@@ -119,6 +123,7 @@ export const tickets: Ticket[] = [
     payOutAmount: 200,
     currency: 'EUR',
     status: TicketStatus.Created,
+    hasTransaction:true,
     bets: [
       {
         id: 'over',

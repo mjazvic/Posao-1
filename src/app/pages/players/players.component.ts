@@ -12,16 +12,16 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./players.component.scss']
 })
 export class PlayersComponent implements OnInit {
-  protected readonly players = players;  tickets: Ticket[];
-  transactions: Transaction[];
-  playerTableConfiguration = [
+  protected readonly players:Player[] = players;  tickets: Ticket[];
+  public transactions: Transaction[];
+  public playerTableConfiguration = [
     {type: 'column', header: 'ID',          field: 'id'},
     {type: 'column', header: 'username',    field: 'username'},
     {type: 'column', header: 'firstname',   field: 'firstName'},
     {type: 'column', header: 'lastname',    field: 'lastName'},
     {type: 'column', header: 'playerCode',  field: 'playerCode'},
     {type: 'column', header: 'email',       field: 'email'},
-    {type: 'action', header: 'profile',     value:  true, action: value => this.getProfile(value), name: 'Profile', grant: true,image:'/assets/branding/profile.png'},
+    {type: 'action', header: 'profile',     value: 'profile', action: value => this.getProfile(value), name: 'Profile', grant: true,image:'/assets/branding/profile.png'},
   ];
 
   constructor(private router: Router) {}
@@ -30,7 +30,7 @@ export class PlayersComponent implements OnInit {
   }
 
   private getProfile(player: Player):void {
-    const playerId=player.id;
+    const playerId:string =player.id;
     this.router.navigate(['/profile'], { queryParams:{ playerId : playerId }});
   }
 }

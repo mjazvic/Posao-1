@@ -9,6 +9,7 @@ export interface Ticket {
   currency: string;
   status: TicketStatus;
   bets: TicketBet[];
+  hasTransaction:boolean;
 }
 
 export interface TicketFilter {

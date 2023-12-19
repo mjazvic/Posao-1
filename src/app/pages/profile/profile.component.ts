@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Player} from "../../models/player.model";
 import {PlayerService} from "../../services/player.service";
 import {LoaderService} from "../../services/loader.service";
-import {Grant} from "../../models/user.model";
+import {Grant, User} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 import {players} from "../../data/player.data";
 import {tickets} from "../../data/ticket.data";
@@ -18,22 +18,21 @@ import {tickets} from "../../data/ticket.data";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  ticket:Ticket;
-  player: Player ;
-  playerId:string;
-  tickets:Ticket[];
-  winTickets:Ticket[];
-  transactions:Transaction[];
-  ticktetFilter:TicketFilter={};
-  transactionFilter:TransactionFilter={};
-  createdTickets:Ticket[];
-  currency:string;
-  win:number;
-  created:number;
-  saldo:number=0;
+  public ticket:Ticket;
+  public player: Player ;
+  public playerId:string;
+  public tickets:Ticket[];
+  public winTickets:Ticket[];
+  public transactions:Transaction[];
+  public ticktetFilter:TicketFilter={};
+  public transactionFilter:TransactionFilter={};
+  public createdTickets:Ticket[];
+  public currency:string;
+  public win:number;
+  public created:number;
+  public saldo:number=0;
 
-
-  ticketTableConfiguration =[
+  public ticketTableConfiguration =[
     { type: 'column', header: 'ID', field: 'id' },
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
@@ -42,7 +41,7 @@ export class ProfileComponent implements OnInit {
     { type: 'column', header: 'status', field: 'status' },
   ];
 
-  transactionTableConfiguration = [
+  public transactionTableConfiguration = [
     { type: 'column', header: 'ID', field: 'id', },
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
@@ -76,7 +75,7 @@ export class ProfileComponent implements OnInit {
     this.loaderService.showLoader();
     this.ticktetFilter.playerId=this.playerId
     this.ticketService.getTickets(this.ticktetFilter).subscribe(
-      (tickets) => {
+      (tickets:Ticket[]):void => {
         this.tickets = tickets;
       },
     );
@@ -93,7 +92,7 @@ export class ProfileComponent implements OnInit {
     this.loaderService.showLoader();
     this.transactionFilter.playerId=this.playerId
     this.transactionService.getTransactions(this.transactionFilter).subscribe(
-      (transactions) => {
+      (transactions:Transaction[]):void => {
         this.transactions = transactions;
       },
     );
@@ -121,7 +120,7 @@ export class ProfileComponent implements OnInit {
     this.loaderService.showLoader();
     this.ticktetFilter.status = TicketStatus.Won;
     this.tickets = [];
-    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets) => {
+    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets:Ticket[]):void => {
       this.winTickets = tickets;
       if (this.tickets && this.tickets.length !== 0) {
         this.win = (this.winTickets.length / this.tickets.length) * 100;
@@ -133,7 +132,7 @@ export class ProfileComponent implements OnInit {
       }
     });
     this.ticktetFilter.status = TicketStatus.Created;
-    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets) => {
+    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets:Ticket[]) => {
       this.createdTickets = tickets;
       if (this.tickets && this.tickets.length !== 0) {
         this.created = (this.createdTickets.length / this.tickets.length) * 100;
@@ -144,11 +143,11 @@ export class ProfileComponent implements OnInit {
   }
 
   public hasGrant(grant: Grant | string): boolean {
-    const currentUser = this.userService.getCurrentUser();
+    const currentUser:User = this.userService.getCurrentUser();
     if (!currentUser) {
       return false;
     }
-    const grantToCheck = typeof grant === 'string' ? grant as Grant : grant;
+    const grantToCheck:Grant = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
 

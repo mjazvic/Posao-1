@@ -8,7 +8,8 @@ export const players: Player[] = [
     username: 'johndoe',
     firstName: 'John',
     lastName: 'Doe',
-    image:'/assets/branding/small-logo.png'
+    image:'/assets/branding/small-logo.png',
+    profile:true
   },
   {
     id: '2',
@@ -17,8 +18,8 @@ export const players: Player[] = [
     username: 'janedoe',
     firstName: 'Jane',
     lastName: 'Doe',
-    image:'/assets/branding/login.png'
-
+    image:'/assets/branding/login.png',
+    profile:true
   },
   {
     id: '3',
@@ -27,7 +28,7 @@ export const players: Player[] = [
     username: 'adamsmith',
     firstName: 'Adam',
     lastName: 'Smith',
-    image:'/assets/branding/large-logo.png'
-
+    image:'/assets/branding/large-logo.png',
+    profile:true
   }
 ]

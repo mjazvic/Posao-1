@@ -9,7 +9,7 @@ import {Transaction} from "../../../models/transaction.model";
 })
 export class TransactionPopUpComponent implements OnInit {
   @Input() transactions:Transaction [];
-  minimizedState: { [key: string]: boolean } = {};
+  public minimizedState: { [key: string]: boolean } = {};
 
   constructor() { }
 
