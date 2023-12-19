@@ -15,7 +15,7 @@ export class FormComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit():void {
-    const formControls = {};
+    const formControls:{} = {};
     this.configuration.forEach(field => {
       const validators = field.type !== 'button' && field.required ? [Validators.required] : [];
       formControls[field.field] = [field.initialValue || '', validators];

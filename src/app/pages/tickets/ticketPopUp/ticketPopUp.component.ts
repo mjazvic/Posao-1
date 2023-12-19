@@ -1,7 +1,6 @@
 import {Component,Input, OnInit} from '@angular/core';
 import {Ticket} from '../../../models/ticket.model';
 import {players} from "../../../data/player.data";
-import {Observable} from "rxjs";
 import {Player} from "../../../models/player.model";
 
 @Component({

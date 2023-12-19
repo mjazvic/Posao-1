@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     } else if(currentUrl.includes('/players')) {
       this.title = 'players';
     } else if(currentUrl.includes('/profile')) {
-      this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
+      this.activatedRoute.queryParamMap.subscribe((params: ParamMap):void => {
         const playerId:string = params.get('playerId');
         this.getPlayer(playerId);
       });
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private getPlayer(playerId: string | null): void {
-   this.player=players.find(player=>player.id===playerId)
+   this.player=players.find(player =>player.id===playerId)
   }
   public logout(): void {
     this.loaderService.showLoader();

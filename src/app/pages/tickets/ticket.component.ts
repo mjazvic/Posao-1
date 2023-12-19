@@ -6,9 +6,8 @@ import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {TransactionService} from '../../services/transaction.service';
 import {Transaction} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
-import {Observable} from "rxjs";
 import {LoaderService} from "../../services/loader.service";
-import {transactions} from "../../data/transaction.data";
+import {Player} from "../../models/player.model";
 
 @Component({
   selector: 'app-tickets',
@@ -23,7 +22,7 @@ export class TicketComponent implements  OnInit{
   public selectedTransactions:Transaction[];
   @ViewChild('ticketSection') transactionSection: ElementRef;
   @ViewChild('ticketSection') ticketSection: ElementRef;
-  protected readonly players = players;
+  protected readonly players:Player[] = players;
   public selectedTicket:Ticket;
 
   public filterConfiguration = [
@@ -67,7 +66,7 @@ export class TicketComponent implements  OnInit{
     this.loaderService.showLoader();
     this.ticketService.getTickets(filter,username).subscribe(
       (tickets:Ticket[]):void => {
-        this.tickets = tickets;})
+        this.tickets = tickets;});
     this.loaderService.hideLoader();
   }
   public applyFilter(formValues: any):void {
@@ -79,7 +78,7 @@ export class TicketComponent implements  OnInit{
       createdFrom: formValues.createdFrom,
       createdTo: formValues.createdTo,};
     const username:string=formValues.username;
-    this.loadTickets(ticketFilter,username)
+    this.loadTickets(ticketFilter,username);
     this.loaderService.hideLoader();
   }
   public hasGrant(grant: Grant | string): boolean {

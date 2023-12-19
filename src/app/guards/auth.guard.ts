@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   public canActivate():  Observable<boolean> {
     return this.userService.isAuthorized().pipe(
-      tap((isAuthorized) => {
+      tap((isAuthorized:boolean):boolean => {
         if (isAuthorized) {
           return true;
         } else {

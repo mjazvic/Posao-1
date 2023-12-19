@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoaderService} from "../../services/loader.service";
 import {Ticket, TicketFilter} from "../../models/ticket.model";
 import {TransactionService} from "../../services/transaction.service";
@@ -7,6 +7,7 @@ import {players} from "../../data/player.data";
 import {Grant, User} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 import {TicketService} from "../../services/ticket.service";
+import {Player} from "../../models/player.model";
 
 @Component({
   selector: 'app-transaction',
@@ -14,12 +15,11 @@ import {TicketService} from "../../services/ticket.service";
   styleUrls: ['./transaction.component.scss']
 })
 export class TransactionComponent implements OnInit {
-  protected readonly players = players;
+  protected readonly players:Player[] = players;
   public userName:string;
   public tickets: Ticket [][]= [];
-  public Tfilter: TransactionFilter = {};
-  public filter: TicketFilter = {};
-  public transactions:any=this.transactionService.getTransactions(this.Tfilter)
+  public filter: TransactionFilter = {};
+  public transactions:any=this.transactionService.getTransactions(this.filter)
   public filterShow: boolean = false;
   public ticket: Ticket;
   public selectedTicket:Ticket;
@@ -52,7 +52,7 @@ export class TransactionComponent implements OnInit {
     { type: 'column', header: 'amount',     field1:'amount',field2:'currency',bind:true,font:'number'},
     { type: 'action', header: 'tickets',    value:'hasTicket', action:  value=> this.getTicket(value),name:'ticket',grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'}
   ];
-  ngOnInit(): void { this.loadTransactions(this.Tfilter,this.userName); }
+  ngOnInit(): void { this.loadTransactions(this.filter,this.userName); }
 
   constructor(
     private ticketService:TicketService,
@@ -72,8 +72,7 @@ export class TransactionComponent implements OnInit {
   public getTicket(transaction:Transaction):void{
     this.loaderService.showLoader();
     this.ticketService.getTicket(transaction.externalId).subscribe(
-      ticket=>this.selectedTicket=ticket
-    )
+      ticket=>this.selectedTicket=ticket);
   this.loaderService.hideLoader();}
 
   public applyFilter(formValues: any):void {

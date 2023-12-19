@@ -10,7 +10,7 @@ import {LoaderService} from "../../services/loader.service";
 })
 export class BetsComponent implements OnInit,OnChanges{
   public ticket:Ticket;
- @Input() betsId:string;
+  @Input() betsId:string;
 
   constructor(private ticketService :TicketService,private loaderService:LoaderService) { }
 
@@ -19,7 +19,7 @@ export class BetsComponent implements OnInit,OnChanges{
 
   ngOnChanges(changes: SimpleChanges):void {
     this.loaderService.showLoader();
-    this.toggle()
+    this.toggle();
     this.betsId=null;
     this.loaderService.hideLoader();
   }
@@ -28,9 +28,9 @@ export class BetsComponent implements OnInit,OnChanges{
   public toggle():void{
     this.loaderService.showLoader();
     this.ticketService.getTicket(this.betsId).subscribe(
-    (tickets) => {
+    (tickets:Ticket):void => {
       this.ticket = tickets;
-    })
+    });
     this.loaderService.hideLoader();
   }
 }

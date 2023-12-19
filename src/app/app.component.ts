@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private loaderService: LoaderService) {}
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe((event):void => {
       if (event instanceof NavigationStart) {
         this.loaderService.showLoader();
       } else if (

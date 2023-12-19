@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class Button implements OnInit {
   @Input() buttonName: string = '';
   @Input() buttonSize: string = 'medium';
-  @Input() buttonColor: string = ' ';
+  @Input() buttonColor: string = '';
 
   get buttonClasses(): string {
     return `${this.buttonSize} ${this.buttonColor}`;}

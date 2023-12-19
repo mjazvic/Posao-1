@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {players} from "../../../data/player.data";
 import {Transaction} from "../../../models/transaction.model";
+import {Player} from "../../../models/player.model";
 
 @Component({
   selector: 'app-transactionPopUp',
@@ -15,16 +16,16 @@ export class TransactionPopUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public closePopup() {
+  public closePopup():void {
     document.querySelector('.popup-container')?.classList.remove('active');
     document.querySelector('.overlay')?.classList.remove('active');
   }
 
   public findPlayerById(playerId: string): string {
-    const player=players.find(player => player.id === playerId);
+    const player:Player=players.find(player => player.id === playerId);
     return player.username;}
-  public minMax(transactionId){
-    Object.keys(this.minimizedState).forEach((id) => {
+  public minMax(transactionId):void{
+    Object.keys(this.minimizedState).forEach((id:string):void => {
       this.minimizedState[id] = false;});
       this.minimizedState[transactionId] = !this.minimizedState[transactionId];}
 

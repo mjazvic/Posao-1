@@ -1,5 +1,4 @@
-
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,12 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./language.component.scss'],
 })
 export class LanguageComponent implements OnInit{
-  @Input() color:string='white';
-  public langColor:string='black';
-  public choice:string="black";
   public selectedLanguage: string = 'en';
+  public croImg:string='/assets/branding/lang-cro.png';
+  public engImg:string='/assets/branding/lang-eng.png';
   constructor(private translate: TranslateService) {}
-  ngOnInit(): void {if (this.color=="white"){this.choice="white";this.langColor="white"}}
+  ngOnInit(): void {}
 
   public changeLang(selectedValue: string): void {
     this.translate.use(selectedValue);

@@ -10,7 +10,6 @@ import {LoaderService} from "../../services/loader.service";
 import {Grant, User} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 import {players} from "../../data/player.data";
-import {tickets} from "../../data/ticket.data";
 
 @Component({
   selector: 'app-profile',
@@ -79,7 +78,7 @@ export class ProfileComponent implements OnInit {
         this.tickets = tickets;
       },
     );
-    for (const ticket of this.tickets || []) {
+    for (let ticket of this.tickets || []) {
       if (ticket.currency != null) {
         this.currency=ticket.currency;
       }
@@ -102,7 +101,7 @@ export class ProfileComponent implements OnInit {
   private getPlayer():void {
     this.loaderService.showLoader();
     this.playerService.getPlayers().subscribe(players => {
-      for (const player of players) {
+      for (let player of players) {
         if (player.id === this.playerId) {
           this.player = player;
           break;}}
@@ -128,11 +127,11 @@ export class ProfileComponent implements OnInit {
         this.win = 0;
       }
       for(let ticket of this.winTickets){
-        this.saldo += ticket.payOutAmount - ticket.payInAmount
+        this.saldo += ticket.payOutAmount - ticket.payInAmount;
       }
     });
     this.ticktetFilter.status = TicketStatus.Created;
-    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets:Ticket[]) => {
+    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets:Ticket[]):void => {
       this.createdTickets = tickets;
       if (this.tickets && this.tickets.length !== 0) {
         this.created = (this.createdTickets.length / this.tickets.length) * 100;
@@ -150,8 +149,6 @@ export class ProfileComponent implements OnInit {
     const grantToCheck:Grant = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
-
-
 }
 
 

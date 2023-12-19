@@ -16,19 +16,16 @@
       align-items: center;
       justify-content: center;
     }
-
     input[name="username"] {
       width: 100px;
       background-color: rgba(236, 230, 230, 0);
       border-color: rgba(2, 0, 0, 0.52);
     }
-
     input[name="password"] {
       width: 100px;
       border-color: rgba(0, 0, 0, 0.52);
       background-color: rgba(80, 174, 236, 0);
     }
-
     button {
       font-size: 15px;
       margin-left: 10px;
@@ -36,7 +33,6 @@
       background-color: rgba(80, 174, 236, 0);
       border-color: rgba(0, 0, 0, 0.52);
     }
-
     .title {
       color: #d9d5d5;
     }

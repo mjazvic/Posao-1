@@ -9,12 +9,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  user:User = this.userService.getCurrentUser();
-  showTicketDetails:boolean=false;
-  showTransactionDetails:boolean=false;
-  imageUrl:any='/assets/branding/small-logo.png'
-  constructor(private userService:UserService,private router:Router) { }
+  public user:User = this.userService.getCurrentUser();
+  public showTicketDetails:boolean=false;
+  public showTransactionDetails:boolean=false;
+  public imageUrl:any='/assets/branding/small-logo.png';
   public isOpen:boolean = false;
+  constructor(private userService:UserService,private router:Router) { }
+
   ngOnInit(): void {}
 
 
