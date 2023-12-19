@@ -10,6 +10,7 @@ import {LoaderService} from "../../services/loader.service";
 import {Grant, User} from "../../models/user.model";
 import {UserService} from "../../services/user.service";
 import {players} from "../../data/player.data";
+import {TableColumn} from "../../forms/table/table.component";
 
 @Component({
   selector: 'app-profile',
@@ -30,17 +31,18 @@ export class ProfileComponent implements OnInit {
   public win:number;
   public created:number;
   public saldo:number=0;
+  public selectedTicket:Ticket;
 
-  public ticketTableConfiguration =[
+  public ticketTableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID', field: 'id' },
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
-    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
-    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
+    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true},
+    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true},
     { type: 'column', header: 'status', field: 'status' },
+    { type: 'action', header: 'bets',value: 'hasTransaction', action: value =>this.getBets(value), grant:true,image:'/assets/branding/ticket.png'},
   ];
-
-  public transactionTableConfiguration = [
+  public transactionTableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID', field: 'id', },
     { type: 'column', header: 'player_id', field: 'playerId' },
     { type: 'column', header: 'created_at', field: 'createdAt',date:true},
@@ -149,6 +151,11 @@ export class ProfileComponent implements OnInit {
     const grantToCheck:Grant = typeof grant === 'string' ? grant as Grant : grant;
     return currentUser.grants.includes(grantToCheck);
   }
+
+  public getBets(ticket:Ticket):void{
+    this.selectedTicket=ticket;
+  }
+
 }
 
 

@@ -1,7 +1,19 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {players} from "../../data/player.data";
 
+
+export interface FormField {
+  type: 'input' | 'select' | 'date' | 'button';
+  header: string;
+  field?: string;
+  options?: SelectOption[];
+  hasTicket?: boolean;
+}
+
+export interface SelectOption {
+  value: any;
+  label: string;
+}
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',

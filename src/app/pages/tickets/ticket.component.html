@@ -2,7 +2,7 @@
 
 <app-form *ngIf="filterShow" [configuration]="filterConfiguration" (formSubmit)="applyFilter($event)"></app-form>
 
- <app-table  class="table" [configuration]="ticketTableConfiguration" [data]="tickets"></app-table>
+<app-table  class="table" [configuration]="tableConfiguration" [data]="tickets"></app-table>
 
 <app-transactionPopUp [transactions]="selectedTransactions"></app-transactionPopUp>
 

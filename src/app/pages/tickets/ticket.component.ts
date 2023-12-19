@@ -8,6 +8,8 @@ import {Transaction} from "../../models/transaction.model";
 import {players} from "../../data/player.data";
 import {LoaderService} from "../../services/loader.service";
 import {Player} from "../../models/player.model";
+import {TableColumn} from "../../forms/table/table.component";
+import {FormField} from "../../forms/form/form.component";
 
 @Component({
   selector: 'app-tickets',
@@ -25,31 +27,32 @@ export class TicketComponent implements  OnInit{
   protected readonly players:Player[] = players;
   public selectedTicket:Ticket;
 
-  public filterConfiguration = [
-    { type: 'input', header: 'Username', field: 'username', filterType: 'exact' },
-    { type: 'input', header: 'Player ID', field: 'playerId', filterType: 'exact' },
-    { type: 'select', header: 'Status', field: 'status', filterType: 'exact', options: [
+  public filterConfiguration: FormField[] = [
+    { type: 'input', header: 'Username', field: 'username'},
+    { type: 'input', header: 'Player ID', field: 'playerId'},
+    { type: 'select', header: 'Status', field: 'status', options: [
         { label: 'Won', value: 'Won' },
         { label: 'Lost', value: 'Lost' },
         { label: 'Created', value: 'Created' },
       ] },
-    { type: 'date', header: 'Created From', field: 'createdFrom', filterType: 'range' },
-    {type:'button',header: 'filter'}
+    { type: 'date', header: 'Created From', field: 'createdFrom'},
+    {type:'button',header: 'filter',}
   ];
 
-  public ticketTableConfiguration =[
-    { type: 'column', header: 'ID', field: 'id'},
-    { type: 'column', header: 'player_id', field: 'playerId' },
-    { type: 'column', header: 'created_at', field: 'createdAt',date:true},
-    { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
-    { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
-    { type: 'column', header: 'status', field: 'status' },
-    { type: 'action', header: 'tickets',value: 'hasTransaction', action: value =>this.getTicket(value),name:'bets', grant:true,image:'/assets/branding/ticket.png'},
-    { type: 'action', header: 'transactions',value:'hasTransaction',  action: value => this.getTransactions(value),name:'transactions',grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
-  ];
+    public tableConfiguration: TableColumn[] = [
+      { type: 'column', header: 'ID', field: 'id'},
+      { type: 'column', header: 'player_id', field: 'playerId' },
+      { type: 'column', header: 'username',   action: value=> this.findPlayerById(value), source:true },
+      { type: 'column', header: 'created_at', field: 'createdAt',date:true},
+      { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
+      { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
+      { type: 'column', header: 'status', field: 'status' },
+      { type: 'action', header: 'bets',value: 'hasTransaction', action: value =>this.getTicket(value),grant:true,image:'/assets/branding/ticket.png'},
+      { type: 'action', header: 'transactions',value:'hasTransaction',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
+    ];
 
   ngOnInit(): void {
-  this.loadTickets(this.filter,this.userName)
+  this.loadTickets(this.filter,this.userName);
   }
 
   constructor(
@@ -96,4 +99,8 @@ export class TicketComponent implements  OnInit{
     this.transactionService.getTransactions({ externalId: ticket.id }).subscribe(
       transaction => this.selectedTransactions=transaction);
    this.loaderService.hideLoader();}
+  public findPlayerById(transaction:Transaction): string {
+    const player: Player = players.find(player => player.id === transaction.playerId);
+    return player.username;
+  }
 }

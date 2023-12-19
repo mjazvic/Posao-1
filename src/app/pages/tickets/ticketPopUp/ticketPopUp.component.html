@@ -1,5 +1,5 @@
 <div class="popup-container"  *ngIf="ticket " [ngClass]="{'active' : ticket}">
-  <div >
+  <div>
     <h1>{{ 'ticket' | translate }}</h1>
   <app-button class="button" buttonColor="white" buttonSize="small" buttonName="{{ 'close' | translate }}" (click)="closePopup()"></app-button>
   </div>

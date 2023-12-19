@@ -16,6 +16,10 @@ th{
 .number{
   text-align: right;
 }
+.email{
+  padding: 0;
+  width: 90px;
+}
 .date{
 width:fit-content
 }
@@ -38,7 +42,7 @@ table{
   position:relative;
   color: #d7d1d1;
   border-collapse: collapse;
-  width: 1200px;
+  width: 1300px;
 }
 .header{
   background: #000000;
