@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'date'
 })
 export class DatePipe implements PipeTransform {
-  transform(value: string | Date): string {
+ public transform(value: string | Date): string {
     const options: Intl.DateTimeFormatOptions = {
       year: 'numeric',
       month: 'short',
