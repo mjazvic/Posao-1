@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {Grant, User} from '../../models/user.model';
 import {TicketService} from "../../services/ticket.service";
@@ -22,11 +22,8 @@ export class TicketComponent implements  OnInit{
   public filter: TicketFilter = {};
   public tickets: Ticket[];
   public selectedTransactions:Transaction[];
-  @ViewChild('ticketSection') transactionSection: ElementRef;
-  @ViewChild('ticketSection') ticketSection: ElementRef;
   protected readonly players:Player[] = players;
   public selectedTicket:Ticket;
-
   public filterConfiguration: FormField[] = [
     { type: 'input', header: 'Username', field: 'username'},
     { type: 'input', header: 'Player ID', field: 'playerId'},
@@ -38,8 +35,7 @@ export class TicketComponent implements  OnInit{
     { type: 'date', header: 'Created From', field: 'createdFrom'},
     {type:'button',header: 'filter',}
   ];
-
-    public tableConfiguration: TableColumn[] = [
+  public tableConfiguration: TableColumn[] = [
       { type: 'column', header: 'ID', field: 'id'},
       { type: 'column', header: 'player_id', field: 'playerId' },
       { type: 'column', header: 'username',   action: value=> this.findPlayerById(value), source:true },

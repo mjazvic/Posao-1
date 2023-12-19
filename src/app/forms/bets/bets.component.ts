@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TicketService} from "../../services/ticket.service";
-import {Ticket, TicketFilter} from "../../models/ticket.model";
+import {Ticket} from "../../models/ticket.model";
 import {LoaderService} from "../../services/loader.service";
 
 @Component({
@@ -23,7 +23,6 @@ export class BetsComponent implements OnInit,OnChanges{
     this.betsId=null;
     this.loaderService.hideLoader();
   }
-
 
   public toggle():void{
     this.loaderService.showLoader();

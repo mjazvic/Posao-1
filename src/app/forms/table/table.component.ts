@@ -16,7 +16,6 @@ export interface TableColumn {
   image?: string;
 }
 
-
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',

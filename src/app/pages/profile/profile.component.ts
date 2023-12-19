@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   public tickets:Ticket[];
   public winTickets:Ticket[];
   public transactions:Transaction[];
-  public ticktetFilter:TicketFilter={};
+  public ticketFilter:TicketFilter={};
   public transactionFilter:TransactionFilter={};
   public createdTickets:Ticket[];
   public currency:string;
@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
   public created:number;
   public saldo:number=0;
   public selectedTicket:Ticket;
-
   public ticketTableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID', field: 'id' },
     { type: 'column', header: 'player_id', field: 'playerId' },
@@ -74,8 +73,8 @@ export class ProfileComponent implements OnInit {
   }
   private loadTickets():void {
     this.loaderService.showLoader();
-    this.ticktetFilter.playerId=this.playerId
-    this.ticketService.getTickets(this.ticktetFilter).subscribe(
+    this.ticketFilter.playerId=this.playerId
+    this.ticketService.getTickets(this.ticketFilter).subscribe(
       (tickets:Ticket[]):void => {
         this.tickets = tickets;
       },
@@ -119,9 +118,9 @@ export class ProfileComponent implements OnInit {
 
   private  getDetails():void {
     this.loaderService.showLoader();
-    this.ticktetFilter.status = TicketStatus.Won;
+    this.ticketFilter.status = TicketStatus.Won;
     this.tickets = [];
-    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets:Ticket[]):void => {
+    this.ticketService.getTickets(this.ticketFilter).subscribe((tickets:Ticket[]):void => {
       this.winTickets = tickets;
       if (this.tickets && this.tickets.length !== 0) {
         this.win = (this.winTickets.length / this.tickets.length) * 100;
@@ -132,8 +131,8 @@ export class ProfileComponent implements OnInit {
         this.saldo += ticket.payOutAmount - ticket.payInAmount;
       }
     });
-    this.ticktetFilter.status = TicketStatus.Created;
-    this.ticketService.getTickets(this.ticktetFilter).subscribe((tickets:Ticket[]):void => {
+    this.ticketFilter.status = TicketStatus.Created;
+    this.ticketService.getTickets(this.ticketFilter).subscribe((tickets:Ticket[]):void => {
       this.createdTickets = tickets;
       if (this.tickets && this.tickets.length !== 0) {
         this.created = (this.createdTickets.length / this.tickets.length) * 100;

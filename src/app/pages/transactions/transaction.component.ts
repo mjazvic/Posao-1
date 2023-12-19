@@ -25,8 +25,7 @@ export class TransactionComponent implements OnInit {
   public filterShow: boolean = false;
   public ticket: Ticket;
   public selectedTicket:Ticket;
-
-  filterConfiguration: FormField[] =[
+  public filterConfiguration: FormField[] =[
     { type: 'input',  header: 'Username',   field: 'username'},
     { type: 'input',  header: 'Player ID',  field: 'playerId'},
     { type: 'select', header: 'type',       field: 'type', options: [
@@ -43,8 +42,7 @@ export class TransactionComponent implements OnInit {
     { type: 'date', header: 'Created From', field: 'createdFrom'},
     { type:'button',header: 'filter'}
   ];
-
-  tableConfiguration: TableColumn[] = [
+  public tableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID',         field: 'id' },
     { type: 'column', header: 'player_id',  field: 'playerId' },
     { type: 'column', header: 'username',   action: value=> this.findPlayerById(value), source:true },

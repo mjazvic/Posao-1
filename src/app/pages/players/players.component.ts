@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Ticket} from "../../models/ticket.model";
-import {players} from "../../data/player.data";
-import {Player} from "../../models/player.model";
-import {Transaction} from "../../models/transaction.model";
-import { Router} from "@angular/router";
-import {TableColumn} from "../../forms/table/table.component";
-
+import { Ticket } from "../../models/ticket.model";
+import { players } from "../../data/player.data";
+import { Player } from "../../models/player.model";
+import { Transaction } from "../../models/transaction.model";
+import { Router } from "@angular/router";
+import { TableColumn } from "../../forms/table/table.component";
 
 @Component({
   selector: 'app-players',
