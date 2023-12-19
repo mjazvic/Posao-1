@@ -34,7 +34,7 @@
     <strong>{{ 'lost' | translate }}:</strong> {{ 100-win-created }}% {{'('}}{{tickets.length-winTickets.length-createdTickets.length}}{{')'}}
   </div>
   <div>
-    <strong>{{ 'saldo' | translate }}:</strong> {{ saldo }} {{currency}}
+    <strong>{{ 'saldo' | translate }}:</strong> {{ saldo | numberFormat  }} {{currency}}
   </div>
     <div>
       <strong>{{ 'tickets' | translate }}:</strong> {{ tickets.length }}

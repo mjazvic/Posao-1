@@ -10,7 +10,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LanguageComponent } from './core/services/language/language.component';
+import { LanguageComponent } from './core/pipes/language/language.component';
 import { LoginGuard} from "./core/guards/login.guard";
 import { LoaderComponent } from './core/services/loader/loader.component';
 import { LoginFormComponent } from './pages/login/login-form/login-form.component';
@@ -36,6 +36,8 @@ import { TableComponent } from './shared/table/table.component';
 import { FormComponent } from './shared/form/form.component';
 import { PlayersComponent } from './pages/players/players.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import {FormatPipe} from "./core/pipes/numberPipe";
+import {DatePipe} from "./core/pipes/datePipe";
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     FormComponent,
     PlayersComponent,
     ProfileComponent,
+    FormatPipe,
+    DatePipe,
   ],
   imports: [
     RouterModule.forRoot([

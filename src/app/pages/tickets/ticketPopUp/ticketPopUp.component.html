@@ -11,13 +11,13 @@
       <strong>{{ 'username' | translate }} :</strong> {{ findPlayerById(ticket.playerId) }}
     </div>
     <div>
-      <strong>{{ 'created_at' | translate }}:</strong> {{ ticket.createdAt | date: 'medium' }}
+      <strong>{{ 'created_at' | translate }}:</strong> {{ ticket.createdAt | date }}
     </div>
     <div>
-      <strong>{{ 'pay_in_amount' | translate }}:</strong> {{ ticket.payInAmount }} {{ ticket.currency }}
+      <strong>{{ 'pay_in_amount' | translate }}:</strong> {{ ticket.payInAmount | numberFormat }} {{ ticket.currency }}
     </div>
     <div>
-      <strong>{{ 'pay_out_amount' | translate }}:</strong> {{ ticket.payOutAmount }} {{ ticket.currency }}
+      <strong>{{ 'pay_out_amount' | translate }}:</strong> {{ ticket.payOutAmount | numberFormat }} {{ ticket.currency }}
     </div>
     <div>
       <strong>{{ 'status' | translate }}:</strong> {{ ticket.status }}

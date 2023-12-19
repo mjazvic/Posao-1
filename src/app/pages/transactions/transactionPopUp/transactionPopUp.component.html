@@ -16,8 +16,8 @@
         <div><strong>{{ 'type' | translate }}:</strong> {{ transactionDetails.type }}</div>
         <div><strong>{{ 'direction' | translate }}:</strong> {{ transactionDetails.direction }}</div>
         <div><strong>{{ 'provider' | translate }}:</strong> {{ transactionDetails.provider }}</div>
-        <div><strong>{{ 'amount' | translate }}:</strong> {{ transactionDetails.amount }} {{ transactionDetails.currency }}</div>
-        <div><strong>{{ 'created_at' | translate }}:</strong> {{ transactionDetails.createdAt |date :'medium' }}</div>
+        <div><strong>{{ 'amount' | translate }}:</strong> {{ transactionDetails.amount | numberFormat }} {{ transactionDetails.currency }}</div>
+        <div><strong>{{ 'created_at' | translate }}:</strong> {{ transactionDetails.createdAt | date  }}</div>
         </div>
         </div>
       </mat-card-content>

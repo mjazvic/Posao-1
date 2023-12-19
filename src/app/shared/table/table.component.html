@@ -11,8 +11,8 @@
   <ng-container *ngFor="let row of data trackBy: getRowId">
     <tr>
       <ng-container  *ngFor="let column of configuration">
-        <td class="{{column.font}}" *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date: 'dd/MM/yyyy' }}</td>
-        <td class="{{column.font}}" *ngIf="column.bind && column.type === 'column'">{{ row[column.field1] }} {{ row[column.field2] | translate}}</td>
+        <td class="{{column.font}}" *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date }}</td>
+        <td class="{{column.font}}" *ngIf="column.bind && column.type === 'column'">{{ row[column.field1] | numberFormat }} {{ row[column.field2] | translate}}</td>
          <td class="{{column.font}}" *ngIf="column.source && column.type === 'column'" >{{ column.action(row)  }}</td>
         <td class="{{column.font}}" *ngIf="!column.date && !column.source && !column.bind && column.type === 'column'">{{ row[column.field]  }}</td>
       </ng-container>

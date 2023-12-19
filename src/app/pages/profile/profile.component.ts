@@ -63,13 +63,12 @@ export class ProfileComponent implements OnInit {
       this.loaderService.showLoader();
       this.route.queryParams.subscribe(params => {
       this.player = params['player'];
-      this.playerId = params['playerId']
-      this.loadTickets()
-      this.loadTransactions()
-      this.get()
-      this.getDetails()
+      this.playerId = params['playerId'] });
+      this.loadTickets();
+      this.loadTransactions();
+      this.get();
+      this.getDetails();
       this.loaderService.hideLoader()
-    });
   }
   private loadTickets():void {
     this.loaderService.showLoader();
@@ -129,6 +128,7 @@ export class ProfileComponent implements OnInit {
       }
       for(let ticket of this.winTickets){
         this.saldo += ticket.payOutAmount - ticket.payInAmount;
+        this.currency=ticket.currency;
       }
     });
     this.ticketFilter.status = TicketStatus.Created;
