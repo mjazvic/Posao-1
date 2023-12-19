@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, ParamMap, Router} from "@angular/router";
-import {LoaderService} from "../../services/loader.service";
+import {LoaderService} from "../../services/loader/loader.service";
 import {UserService} from "../../services/user.service";
 import {Player} from "../../models/player.model";
 import {PlayerService} from "../../services/player.service";
-import {players} from "../../data/player.data";
+import {players} from "../../../data/player.data";
 
 @Component({
   selector: 'app-header',

@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {Ticket, TicketFilter, TicketStatus} from "../../models/ticket.model";
-import {Transaction, TransactionFilter} from "../../models/transaction.model";
-import {TicketService} from "../../services/ticket.service";
-import {TransactionService} from "../../services/transaction.service";
+import {Ticket, TicketFilter, TicketStatus} from "../../core/models/ticket.model";
+import {Transaction, TransactionFilter} from "../../core/models/transaction.model";
+import {TicketService} from "../../core/services/ticket.service";
+import {TransactionService} from "../../core/services/transaction.service";
 import {ActivatedRoute} from "@angular/router";
-import {Player} from "../../models/player.model";
-import {PlayerService} from "../../services/player.service";
-import {LoaderService} from "../../services/loader.service";
-import {Grant, User} from "../../models/user.model";
-import {UserService} from "../../services/user.service";
+import {Player} from "../../core/models/player.model";
+import {PlayerService} from "../../core/services/player.service";
+import {LoaderService} from "../../core/services/loader/loader.service";
+import {Grant, User} from "../../core/models/user.model";
+import {UserService} from "../../core/services/user.service";
 import {players} from "../../data/player.data";
-import {TableColumn} from "../../forms/table/table.component";
+import {TableColumn} from "../../shared/table/table.component";
 
 @Component({
   selector: 'app-profile',

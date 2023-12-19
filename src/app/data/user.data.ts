@@ -1,4 +1,4 @@
-import {Grant, User} from '../models/user.model';
+import {Grant, User} from '../core/models/user.model';
 
 export const users: User[] = [
   {

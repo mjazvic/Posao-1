@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Ticket} from '../../../models/ticket.model';
+import {Ticket} from '../../../core/models/ticket.model';
 import {players} from "../../../data/player.data";
-import {Player} from "../../../models/player.model";
+import {Player} from "../../../core/models/player.model";
 
 @Component({
   selector: 'app-ticketPopUp',

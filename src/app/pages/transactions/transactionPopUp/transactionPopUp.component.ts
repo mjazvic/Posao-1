@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {players} from "../../../data/player.data";
-import {Transaction} from "../../../models/transaction.model";
-import {Player} from "../../../models/player.model";
+import {Transaction} from "../../../core/models/transaction.model";
+import {Player} from "../../../core/models/player.model";
 
 @Component({
   selector: 'app-transactionPopUp',

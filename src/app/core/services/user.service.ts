@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {User} from '../models/user.model';
-import {users} from '../data/user.data';
+import {users} from '../../data/user.data';
 import {WebUtils} from '../utils/web.utils';
 
 export enum StorageKey {

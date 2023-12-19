@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {LoaderService} from "../../services/loader.service";
-import {Ticket} from "../../models/ticket.model";
-import {TransactionService} from "../../services/transaction.service";
-import {Transaction, TransactionFilter,} from "../../models/transaction.model";
+import {LoaderService} from "../../core/services/loader/loader.service";
+import {Ticket} from "../../core/models/ticket.model";
+import {TransactionService} from "../../core/services/transaction.service";
+import {Transaction, TransactionFilter,} from "../../core/models/transaction.model";
 import {players} from "../../data/player.data";
-import {Grant, User} from "../../models/user.model";
-import {UserService} from "../../services/user.service";
-import {TicketService} from "../../services/ticket.service";
-import {Player} from "../../models/player.model";
-import {FormField} from "../../forms/form/form.component";
-import {TableColumn} from "../../forms/table/table.component";
+import {Grant, User} from "../../core/models/user.model";
+import {UserService} from "../../core/services/user.service";
+import {TicketService} from "../../core/services/ticket.service";
+import {Player} from "../../core/models/player.model";
+import {FormField} from "../../shared/form/form.component";
+import {TableColumn} from "../../shared/table/table.component";
 
 @Component({
   selector: 'app-transaction',

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Ticket, TicketFilter} from '../models/ticket.model';
-import {tickets} from '../data/ticket.data';
+import {tickets} from '../../data/ticket.data';
 import {WebUtils} from '../utils/web.utils';
-import {players} from "../data/player.data";
+import {players} from "../../data/player.data";
 
 @Injectable({
   providedIn: 'root'

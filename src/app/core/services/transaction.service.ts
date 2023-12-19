@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Transaction, TransactionFilter} from '../models/transaction.model';
-import {transactions} from '../data/transaction.data';
+import {transactions} from '../../data/transaction.data';
 import {WebUtils} from '../utils/web.utils';
-import { players } from '../data/player.data';
+import { players } from '../../data/player.data';
 
 
 @Injectable({

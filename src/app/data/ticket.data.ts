@@ -1,4 +1,4 @@
-import {Ticket, TicketBetStatus, TicketStatus} from '../models/ticket.model';
+import {Ticket, TicketBetStatus, TicketStatus} from '../core/models/ticket.model';
 
 export const tickets: Ticket[] = [
   {

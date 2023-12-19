@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../services/user.service";
-import {Grant, User} from '../../models/user.model';
-import {TicketService} from "../../services/ticket.service";
-import {Ticket, TicketFilter} from "../../models/ticket.model";
-import {TransactionService} from '../../services/transaction.service';
-import {Transaction} from "../../models/transaction.model";
+import {UserService} from "../../core/services/user.service";
+import {Grant, User} from '../../core/models/user.model';
+import {TicketService} from "../../core/services/ticket.service";
+import {Ticket, TicketFilter} from "../../core/models/ticket.model";
+import {TransactionService} from '../../core/services/transaction.service';
+import {Transaction} from "../../core/models/transaction.model";
 import {players} from "../../data/player.data";
-import {LoaderService} from "../../services/loader.service";
-import {Player} from "../../models/player.model";
-import {TableColumn} from "../../forms/table/table.component";
-import {FormField} from "../../forms/form/form.component";
+import {LoaderService} from "../../core/services/loader/loader.service";
+import {Player} from "../../core/models/player.model";
+import {TableColumn} from "../../shared/table/table.component";
+import {FormField} from "../../shared/form/form.component";
 
 @Component({
   selector: 'app-tickets',

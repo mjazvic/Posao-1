@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoaderService} from "./services/loader.service";
+import {LoaderService} from "./core/services/loader/loader.service";
 import { Router,NavigationEnd,NavigationStart,NavigationCancel,NavigationError} from "@angular/router";
 
 

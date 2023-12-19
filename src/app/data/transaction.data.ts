@@ -1,4 +1,4 @@
-import {Transaction, TransactionDirection, TransactionProvider, TransactionType} from '../models/transaction.model';
+import {Transaction, TransactionDirection, TransactionProvider, TransactionType} from '../core/models/transaction.model';
 
 export const transactions: Transaction[] = [
   {

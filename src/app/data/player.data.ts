@@ -1,4 +1,4 @@
-import {Player} from '../models/player.model';
+import {Player} from '../core/models/player.model';
 
 export const players: Player[] = [
   {
