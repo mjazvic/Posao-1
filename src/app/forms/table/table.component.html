@@ -2,8 +2,8 @@
   <thead class="header">
   <tr>
     <ng-container *ngFor="let column of configuration">
-      <th class="{{column.font}}" *ngIf="column.type === 'column'">{{ column.header | translate }}</th>
-      <th class="{{column.font}}" *ngIf="column.type === 'action'">{{ column.header | translate }}</th>
+      <th *ngIf="column.type === 'column'">{{ column.header | translate }}</th>
+      <th class="{{column.font}}" *ngIf="column.grant && column.type === 'action'">{{ column.header | translate }}</th>
     </ng-container>
   </tr>
   </thead>

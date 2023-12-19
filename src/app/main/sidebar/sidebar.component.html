@@ -7,10 +7,10 @@
   <div *ngIf="isOpen" class="user">
     {{user.username}}
   </div>
-    <div class="welcome">{{'welcome' | translate}} {{user.username}}</div>
+    <div *ngIf="showUser" class="welcome">{{'welcome' | translate}} {{user.username}}</div>
   </div>
   <div class="buttons">
-    <div  *ngIf="hasGrant('CanViewTickets')" (click)="openTickets()">{{'tickets'| translate}}</div>
+    <div  *ngIf="hasGrant('CanViewTickets') " (click)="openTickets()">{{'tickets'| translate}}</div>
   </div>
   <div class="buttons">
     <div  *ngIf="hasGrant('CanViewTransactions')" (click)="openTransactions()">{{'transactions'| translate}}</div>
