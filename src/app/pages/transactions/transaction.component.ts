@@ -51,7 +51,7 @@ export class TransactionComponent implements OnInit {
     { type: 'column', header: 'provider',   field: 'provider' },
     { type: 'column', header: 'direction',  field: 'direction' },
     { type: 'bind',   header: 'amount',     field1:'amount',field2:'currency',font:'number',format:'number' },
-    { type: 'action', header: 'tickets',    font:'button', value:'hasTicket', action:value=> this.getTicket(value),grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png' }
+    { type: 'action', header: 'tickets',    font:'button', checkField:'hasTicket', action:value=> this.getTicket(value),grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png' }
   ];
   ngOnInit(): void { this.loadTransactions(this.filter,this.userName); }
 

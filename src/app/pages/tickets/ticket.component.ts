@@ -43,8 +43,8 @@ export class TicketComponent implements  OnInit{
       { type: 'bind'  , header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',font:'number',format:'number'},
       { type: 'bind'  , header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',font:'number',format:'number'},
       { type: 'column', header: 'status', field: 'status' },
-      { type: 'action', header: 'bets',value: 'hasTransaction',font:'button', action: value =>this.getTicket(value),grant:true,image:'/assets/branding/ticket.png'},
-      { type: 'action', header: 'transactions',value:'hasTransaction',font:'button',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
+      { type: 'action', header: 'bets',font:'button', action: value =>this.getTicket(value),image:'/assets/branding/ticket.png'},
+      { type: 'action', header: 'transactions',font:'button',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
     ];
 
   ngOnInit(): void {

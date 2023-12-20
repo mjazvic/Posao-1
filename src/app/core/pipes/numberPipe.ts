@@ -5,11 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatPipe implements PipeTransform {
   public transform(value: number, format: string = '1.0-2'): string {
-    const formatValue = new Intl.NumberFormat('en-US', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+    const formatValue:string = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2
     }).format(value);
-
     return formatValue;
   }
 }

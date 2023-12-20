@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
     { type: 'bind',   header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',format:'number'},
     { type: 'bind',   header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',format:'number'},
     { type: 'column', header: 'status', field: 'status' },
-    { type: 'action', header: 'bets',font:'button', value: 'hasTransaction', action: value =>this.getBets(value), grant:true,image:'/assets/branding/ticket.png'},
+    { type: 'action', header: 'bets',font:'button',action: value =>this.getBets(value), grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'},
   ];
   public transactionTableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID', field: 'id', },
@@ -96,7 +96,6 @@ export class ProfileComponent implements OnInit {
       },
     );
     this.loaderService.hideLoader();
-
   }
   private getPlayer():void {
     this.loaderService.showLoader();

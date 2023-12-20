@@ -10,7 +10,7 @@ export interface TableColumn {
   format?:string;
   font?: string;
   grant?: boolean;
-  value?: string;
+  checkField?: string;
   action?: (row: any) => void;
   image?: string;
 }
