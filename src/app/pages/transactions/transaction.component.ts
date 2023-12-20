@@ -43,14 +43,14 @@ export class TransactionComponent implements OnInit {
     { type:'button',header: 'filter'}
   ];
   public tableConfiguration: TableColumn[] = [
-    { type: 'column', header: 'ID',         field: 'id',format:'string'},
+    { type: 'column', header: 'ID',         field: 'id',format:'string',tableWidth:1500},
     { type: 'column', header: 'player_id',  field: 'playerId',format:'string' },
     { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value),format:'string'},
     { type: 'column', header: 'created_at', field: 'createdAt', format:'date' },
     { type: 'column', header: 'type',       field: 'type',format:'string'},
     { type: 'column', header: 'provider',   field: 'provider',format:'string'},
     { type: 'column', header: 'direction',  field: 'direction',format:'string'},
-    { type: 'bind'  , header: 'amount',     field1:'amount',field2:'currency',font:'number',format:'number'},
+    { type: 'bind'  , header: 'amount',     field1:'amount',field2:'currency',format:'number'},
     { type: 'action', header: 'tickets',    format:'button', checkField:'hasTicket', action:value=> this.getTicket(value),grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png' }
   ];
   ngOnInit(): void { this.loadTransactions(this.filter,this.userName); }

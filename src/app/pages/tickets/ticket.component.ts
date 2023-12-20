@@ -36,15 +36,15 @@ export class TicketComponent implements  OnInit{
     {type:'button',header: 'filter',}
   ];
   public tableConfiguration: TableColumn[] = [
-      { type: 'column', header: 'ID', field: 'id',format:'string'},
+      { type: 'column', header: 'ID', field: 'id',format:'string',tableWidth:1200},
       { type: 'column', header: 'player_id', field: 'playerId',format:'string'},
       { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value),format:'string'},
       { type: 'column', header: 'created_at', field: 'createdAt',format:'date'},
-      { type: 'bind'  , header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',font:'number',format:'number'},
-      { type: 'bind'  , header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',font:'number',format:'number'},
+      { type: 'bind'  , header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',format:'number'},
+      { type: 'bind'  , header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',format:'number'},
       { type: 'column', header: 'status', field: 'status',format:'string'},
-      { type: 'action', header: 'bets',font:'button', action: value =>this.getTicket(value),image:'/assets/branding/ticket.png'},
-      { type: 'action', header: 'transactions',font:'button',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
+      { type: 'action', header: 'bets',format:'button', action: value =>this.getTicket(value),image:'/assets/branding/ticket.png'},
+      { type: 'action', header: 'transactions',format:'button',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
     ];
 
   ngOnInit(): void {
@@ -99,4 +99,19 @@ export class TicketComponent implements  OnInit{
     const player: Player = players.find(player => player.id === transaction.playerId);
     return player.username;
   }
+
+  public sortTicketsByPayIn(): void {
+    this.tickets= this.tickets.slice().sort((a, b) => b.payInAmount - a.payInAmount);
+  }
+  public sortTicketsByPayOut(): void {
+    let change:boolean=false;
+    change=!change
+    if(change)  { this.tickets= this.tickets.slice().sort((a, b) => b.payOutAmount - a.payOutAmount); }
+    else  { this.tickets= this.tickets.slice().sort((a, b) => a.payOutAmount - b.payOutAmount);}
+  }
+
+  public showSort():boolean{
+    return true;
+  }
+
 }

@@ -4,15 +4,15 @@ export interface TableColumn {
   type: 'column' | 'action' | 'exData' | 'bind';
   header: string;
   field?: string;
-  field3?: string[];
+  field3?: string;
   field1?: string;
   field2?: string;
   format?:string;
-  font?: string;
   grant?: boolean;
   checkField?: string;
   action?: (row: any) => void;
   image?: string;
+  tableWidth?:number;
 }
 
 @Component({
