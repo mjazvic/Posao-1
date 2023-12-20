@@ -2,8 +2,7 @@
   <thead class="header">
   <tr>
     <ng-container *ngFor="let column of configuration">
-      <th *ngIf="column.type === 'column'">{{ column.header | translate }}</th>
-      <th class="{{column.font}}" *ngIf="column.grant && column.type === 'action'">{{ column.header | translate }}</th>
+      <th *ngIf="column.type === 'column' || column.type ==='action' || column.type ==='exData' || column.type ==='bind'">{{ column.header | translate }}</th>
     </ng-container>
   </tr>
   </thead>
@@ -11,13 +10,10 @@
   <ng-container *ngFor="let row of data trackBy: getRowId">
     <tr>
       <ng-container  *ngFor="let column of configuration">
-        <td class="{{column.font}}" *ngIf="column.date && column.type === 'column'">{{ row[column.field] | date }}</td>
-        <td class="{{column.font}}" *ngIf="column.bind && column.type === 'column'">{{ row[column.field1] | numberFormat }} {{ row[column.field2] | translate}}</td>
-         <td class="{{column.font}}" *ngIf="column.source && column.type === 'column'" >{{ column.action(row)  }}</td>
-        <td class="{{column.font}}" *ngIf="!column.date && !column.source && !column.bind && column.type === 'column'">{{ row[column.field]  }}</td>
-      </ng-container>
-      <ng-container  *ngFor="let column of configuration">
-        <td class="button" *ngIf="column.grant && column.type === 'action'" (click)=" column.action(row)"><img *ngIf="row[column.value]" src="{{column.image}}" alt="picture"></td>
+        <td class= "{{column.font}}"  *ngIf="column.type === 'bind'">{{ row[column.field1] | dynamicFormat: column.format }} {{ row[column.field2] | translate}}</td>
+        <td class= "{{column.font}}"  *ngIf="column.type === 'exData'">{{ column.action(row) | translate }}</td>
+        <td class= "{{column.font}}"  *ngIf="column.type === 'column'">{{ row[column.field] | dynamicFormat: column.format  }}</td>
+        <td class= "{{column.font}}"  *ngIf="column.type === 'action'"><img *ngIf="column.grant && row[column.value]" (click)=" column.action(row)" src="{{column.image}}" alt="picture"></td>
       </ng-container>
     </tr>
   </ng-container>

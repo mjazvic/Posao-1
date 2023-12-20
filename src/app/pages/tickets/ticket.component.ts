@@ -38,13 +38,13 @@ export class TicketComponent implements  OnInit{
   public tableConfiguration: TableColumn[] = [
       { type: 'column', header: 'ID', field: 'id'},
       { type: 'column', header: 'player_id', field: 'playerId' },
-      { type: 'column', header: 'username',   action: value=> this.findPlayerById(value), source:true },
-      { type: 'column', header: 'created_at', field: 'createdAt',date:true},
-      { type: 'column', header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency', bind:true,font:'number'},
-      { type: 'column', header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',bind:true,font:'number'},
+      { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value)},
+      { type: 'column', header: 'created_at', field: 'createdAt',format:'date'},
+      { type: 'bind'  , header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',font:'number',format:'number'},
+      { type: 'bind'  , header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',font:'number',format:'number'},
       { type: 'column', header: 'status', field: 'status' },
-      { type: 'action', header: 'bets',value: 'hasTransaction', action: value =>this.getTicket(value),grant:true,image:'/assets/branding/ticket.png'},
-      { type: 'action', header: 'transactions',value:'hasTransaction',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
+      { type: 'action', header: 'bets',value: 'hasTransaction',font:'button', action: value =>this.getTicket(value),grant:true,image:'/assets/branding/ticket.png'},
+      { type: 'action', header: 'transactions',value:'hasTransaction',font:'button',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
     ];
 
   ngOnInit(): void {

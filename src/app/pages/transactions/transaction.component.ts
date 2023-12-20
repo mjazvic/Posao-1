@@ -45,13 +45,13 @@ export class TransactionComponent implements OnInit {
   public tableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID',         field: 'id' },
     { type: 'column', header: 'player_id',  field: 'playerId' },
-    { type: 'column', header: 'username',   action: value=> this.findPlayerById(value), source:true },
-    { type: 'column', header: 'created_at', field: 'createdAt',date:true },
+    { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value)},
+    { type: 'column', header: 'created_at', field: 'createdAt',format:'date' },
     { type: 'column', header: 'type',       field: 'type' },
     { type: 'column', header: 'provider',   field: 'provider' },
     { type: 'column', header: 'direction',  field: 'direction' },
-    { type: 'column', header: 'amount',     field1:'amount',field2:'currency',bind:true,font:'number' },
-    { type: 'action', header: 'tickets',    value:'hasTicket', action:  value=> this.getTicket(value),grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png' }
+    { type: 'bind',   header: 'amount',     field1:'amount',field2:'currency',font:'number',format:'number' },
+    { type: 'action', header: 'tickets',    font:'button', value:'hasTicket', action:value=> this.getTicket(value),grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png' }
   ];
   ngOnInit(): void { this.loadTransactions(this.filter,this.userName); }
 

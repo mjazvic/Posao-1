@@ -7,7 +7,28 @@
       <h1 class="title">Backoffice</h1>
     </div>
     <div class="login">
-      <app-login-form></app-login-form>
-    </div>
+      <div class="loginForm">
+        <div class="container">
+          <div class="login-container">
+            <div class="login-header">
+              <h2>{{ 'login' | translate }}</h2>
+            </div>
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+              <label for="username">
+                <span class="label-text">{{ 'username' | translate }}</span>
+              </label>
+              <input type="text" id="username" name="username" [(ngModel)]="username" required>
+
+              <label for="password">
+                <span class="label-text">{{ 'password' | translate }}</span>
+              </label>
+              <input type="password" id="password" name="password" [(ngModel)]="password" required>
+
+              <button type="submit" [disabled]="!loginForm.valid">{{ 'login' | translate }}</button>
+            </form>
+            <div mat-class="error" *ngIf="loginError">{{ 'loginError' | translate }}</div>
+          </div>
+        </div>
+      </div>    </div>
   </div>
 </div>

@@ -1,14 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 export interface TableColumn {
-  type: 'column' | 'action';
+  type: 'column' | 'action' | 'exData' | 'bind';
   header: string;
   field?: string;
+  field3?: string[];
   field1?: string;
   field2?: string;
-  bind?: boolean;
-  date?: boolean;
-  source?: boolean;
+  format?:string;
   font?: string;
   grant?: boolean;
   value?: string;

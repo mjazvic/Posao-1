@@ -4,7 +4,7 @@
       <img src="{{player.image}}" alt="profile">
     </div>
     <div>
-      <strong>{{ 'id' | translate }} :</strong> {{ player.id }}
+      <strong>{{ 'ID' | translate }} :</strong> {{ player.id }}
     </div>
     <div>
       <strong>{{ 'playerCode' | translate }}:</strong> {{ player.playerCode }}
@@ -34,7 +34,7 @@
     <strong>{{ 'lost' | translate }}:</strong> {{ 100-win-created }}% {{'('}}{{tickets.length-winTickets.length-createdTickets.length}}{{')'}}
   </div>
   <div>
-    <strong>{{ 'saldo' | translate }}:</strong> {{ saldo | numberFormat  }} {{currency}}
+    <strong>{{ 'saldo' | translate }}:</strong> {{ saldo | number  }} {{currency}}
   </div>
     <div>
       <strong>{{ 'tickets' | translate }}:</strong> {{ tickets.length }}

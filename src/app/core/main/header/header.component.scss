@@ -1,7 +1,7 @@
 div{
   position: relative;
   display: flex;
-  height: 80px;
+  height: 60px;
   width: 100%;
   background-color: #111111;
   color: #ada9a9;
@@ -11,8 +11,10 @@ div{
   z-index: 1;
 }
 h1{
-font-size: 23px;
+  font-size: 23px;
   color: #dcd7d7;
+  position: relative;
+  top:8px
 }
 app-language-switcher{
   top:15%;
@@ -28,7 +30,7 @@ img{
   font-size: 15px;
   height: 45px;
   width:60px;
-  top: 10px;
+  top: 0;
   right: 10px;
   padding: 10px;
   background-color: rgba(236, 16, 16, 0);

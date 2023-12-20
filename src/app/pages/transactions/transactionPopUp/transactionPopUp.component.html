@@ -8,7 +8,7 @@
     <mat-card *ngFor="let transactionDetails of transactions " (click)="minMax(transactionDetails.id)" class="transaction-details" >
       <mat-card-content >
         <div>
-        <div><strong>ID:</strong> {{ transactionDetails.id }}</div>
+        <div><strong>{{'ID' | translate }}:</strong> {{ transactionDetails.id }}</div>
         <div *ngIf="minimizedState[transactionDetails.id]">
         <div><strong>{{ 'username' | translate }}:</strong> {{ findPlayerById(transactionDetails.playerId) }}</div>
         <div><strong>{{ 'external_id' | translate }}:</strong> {{ transactionDetails.externalId }}</div>
@@ -16,7 +16,7 @@
         <div><strong>{{ 'type' | translate }}:</strong> {{ transactionDetails.type }}</div>
         <div><strong>{{ 'direction' | translate }}:</strong> {{ transactionDetails.direction }}</div>
         <div><strong>{{ 'provider' | translate }}:</strong> {{ transactionDetails.provider }}</div>
-        <div><strong>{{ 'amount' | translate }}:</strong> {{ transactionDetails.amount | numberFormat }} {{ transactionDetails.currency }}</div>
+        <div><strong>{{ 'amount' | translate }}:</strong> {{ transactionDetails.amount | number }} {{ transactionDetails.currency }}</div>
         <div><strong>{{ 'created_at' | translate }}:</strong> {{ transactionDetails.createdAt | date  }}</div>
         </div>
         </div>

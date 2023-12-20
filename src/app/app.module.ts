@@ -13,7 +13,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { LanguageComponent } from './core/pipes/language/language.component';
 import { LoginGuard} from "./core/guards/login.guard";
 import { LoaderComponent } from './core/services/loader/loader.component';
-import { LoginFormComponent } from './pages/login/login-form/login-form.component';
 import { TicketComponent } from './pages/tickets/ticket.component';
 import { TransactionComponent } from './pages/transactions/transaction.component';
 import { Button } from './shared/button/button';
@@ -36,8 +35,9 @@ import { TableComponent } from './shared/table/table.component';
 import { FormComponent } from './shared/form/form.component';
 import { PlayersComponent } from './pages/players/players.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import {FormatPipe} from "./core/pipes/numberPipe";
-import {DatePipe} from "./core/pipes/datePipe";
+import { FormatPipe } from "./core/pipes/numberPipe";
+import { DatePipe } from "./core/pipes/datePipe";
+import { DynamicFormatPipe } from "./core/pipes/mainPipe";
 
 @NgModule({
   declarations: [
@@ -45,7 +45,6 @@ import {DatePipe} from "./core/pipes/datePipe";
     LoginComponent,
     LanguageComponent,
     LoaderComponent,
-    LoginFormComponent,
     TicketComponent,
     TransactionComponent,
     Button,
@@ -62,6 +61,7 @@ import {DatePipe} from "./core/pipes/datePipe";
     ProfileComponent,
     FormatPipe,
     DatePipe,
+    DynamicFormatPipe,
   ],
   imports: [
     RouterModule.forRoot([
@@ -95,7 +95,7 @@ import {DatePipe} from "./core/pipes/datePipe";
     NgOptimizedImage,
     ReactiveFormsModule
   ],
-  providers:[AuthGuard]
+  providers:[AuthGuard,DatePipe,FormatPipe]
   ,
   bootstrap: [AppComponent]
 })
