@@ -10,10 +10,10 @@
   <ng-container *ngFor="let row of data trackBy: getRowId">
     <tr>
       <ng-container  *ngFor="let column of configuration">
-        <td class= "{{column.font}}"  *ngIf="column.type === 'bind'">{{ row[column.field1] | dynamicFormat: column.format }} {{ row[column.field2] | translate}}</td>
-        <td class= "{{column.font}}"  *ngIf="column.type === 'exData'">{{ column.action(row) | translate }}</td>
-        <td class= "{{column.font}}"  *ngIf="column.type === 'column'">{{ row[column.field] | dynamicFormat: column.format  }}</td>
-        <td class= "{{column.font}}"  *ngIf="column.type === 'action'"><img *ngIf="column.grant !== false && row[column.value] !== false" (click)=" column.action(row)" src="{{column.image}}" alt="picture"></td>
+        <td class= "{{column.format}}"  *ngIf="column.type === 'bind'">{{ row[column.field1] | dynamicFormat: column.format }} {{ row[column.field2] | translate}}</td>
+        <td class= "{{column.format}}"  *ngIf="column.type === 'exData'">{{ column.action(row) | translate }}</td>
+        <td class= "{{column.format}}"  *ngIf="column.type === 'column'">{{ row[column.field] | dynamicFormat: column.format | translate }}</td>
+        <td class= "{{column.format}}"  *ngIf="column.type === 'action'"><img *ngIf="column.grant !== false && row[column.checkField] !== false" (click)=" column.action(row)" src="{{column.image}}" alt="picture"></td>
       </ng-container>
     </tr>
   </ng-container>

@@ -10,7 +10,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LanguageComponent } from './core/pipes/language/language.component';
+import { LanguageComponent } from './core/main/header/language/language.component';
 import { LoginGuard} from "./core/guards/login.guard";
 import { LoaderComponent } from './core/services/loader/loader.component';
 import { TicketComponent } from './pages/tickets/ticket.component';
@@ -35,9 +35,11 @@ import { TableComponent } from './shared/table/table.component';
 import { FormComponent } from './shared/form/form.component';
 import { PlayersComponent } from './pages/players/players.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { FormatPipe } from "./core/pipes/numberPipe";
-import { DatePipe } from "./core/pipes/datePipe";
-import { DynamicFormatPipe } from "./core/pipes/mainPipe";
+import { FormatPipe } from "./core/pipes/number.pipe";
+import { DatePipe } from "./core/pipes/date.pipe";
+import { DynamicFormatPipe } from "./core/pipes/main.pipe";
+import {EmailPipe} from "./core/pipes/email.pipe";
+import { StringPipe } from './core/pipes/string.pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { DynamicFormatPipe } from "./core/pipes/mainPipe";
     FormatPipe,
     DatePipe,
     DynamicFormatPipe,
+    EmailPipe,
+    StringPipe,
   ],
   imports: [
     RouterModule.forRoot([
@@ -95,7 +99,7 @@ import { DynamicFormatPipe } from "./core/pipes/mainPipe";
     NgOptimizedImage,
     ReactiveFormsModule
   ],
-  providers:[AuthGuard,DatePipe,FormatPipe]
+  providers:[AuthGuard,DatePipe,FormatPipe,EmailPipe,StringPipe]
   ,
   bootstrap: [AppComponent]
 })

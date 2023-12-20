@@ -16,12 +16,12 @@ export class PlayersComponent implements OnInit {
   public transactions: Transaction[];
 
   public tableConfiguration: TableColumn[] = [
-    {type: 'column', header: 'ID',          field: 'id'},
-    {type: 'column', header: 'username',    field: 'username'},
-    {type: 'column', header: 'firstname',   field: 'firstName'},
-    {type: 'column', header: 'lastname',    field: 'lastName'},
-    {type: 'column', header: 'playerCode',  field: 'playerCode'},
-    {type: 'column', header: 'email',       field: 'email', font:'email'},
+    {type: 'column', header: 'ID',          field: 'id',format:'string'},
+    {type: 'column', header: 'username',    field: 'username',format:'string'},
+    {type: 'column', header: 'firstname',   field: 'firstName',format:'string'},
+    {type: 'column', header: 'lastname',    field: 'lastName',format:'string'},
+    {type: 'column', header: 'playerCode',  field: 'playerCode',format:'string'},
+    {type: 'column', header: 'email',       field: 'email', font:'email',format:'email'},
     {type: 'action', header: 'profile',     font:'button',action: value => this.getProfile(value), grant: true,image:'/assets/branding/profile.png'},
   ];
 

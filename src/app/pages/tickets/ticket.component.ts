@@ -36,13 +36,13 @@ export class TicketComponent implements  OnInit{
     {type:'button',header: 'filter',}
   ];
   public tableConfiguration: TableColumn[] = [
-      { type: 'column', header: 'ID', field: 'id'},
-      { type: 'column', header: 'player_id', field: 'playerId' },
-      { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value)},
+      { type: 'column', header: 'ID', field: 'id',format:'string'},
+      { type: 'column', header: 'player_id', field: 'playerId',format:'string'},
+      { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value),format:'string'},
       { type: 'column', header: 'created_at', field: 'createdAt',format:'date'},
       { type: 'bind'  , header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',font:'number',format:'number'},
       { type: 'bind'  , header: 'pay_out_amount', field1: 'payOutAmount', field2: 'currency',font:'number',format:'number'},
-      { type: 'column', header: 'status', field: 'status' },
+      { type: 'column', header: 'status', field: 'status',format:'string'},
       { type: 'action', header: 'bets',font:'button', action: value =>this.getTicket(value),image:'/assets/branding/ticket.png'},
       { type: 'action', header: 'transactions',font:'button',  action: value => this.getTransactions(value),grant:this.hasGrant('CanViewTransactions'),image:'/assets/branding/transactions.png' },
     ];
