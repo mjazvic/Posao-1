@@ -26,21 +26,21 @@ export class TicketComponent implements  OnInit{
   protected readonly players:Player[] = players;
   public selectedTicket:Ticket;
   public sortSwitch:boolean=false;
-  public sortattConfiguration:sortAttConfiguration[]=[
+  public sortAttConfiguration:sortAttConfiguration[]=[
     {label:'Sort by'}]
   public sortConfiguration: sortConfiguration[]=[
     {name:'pay in', value:'payInAmount', action: value=>this.sortTickets(value)},
     {name:'pay out', value:'payOutAmount', action: value=>this.sortTickets(value) },
     {name:'date', value:'date', action: value=>this.sortTickets(value) }];
   public filterConfiguration: FormField[] = [
-    { type: 'input', header: 'Username', field: 'username'},
-    { type: 'input', header: 'Player ID', field: 'playerId'},
-    { type: 'select', header: 'Status', field: 'status', options: [
-        { label: 'Won', value: 'Won' },
-        { label: 'Lost', value: 'Lost' },
-        { label: 'Created', value: 'Created' },
+    { type: 'input', header: 'username', field: 'username'},
+    { type: 'input', header: 'player_id', field: 'playerId'},
+    { type: 'select', header: 'status', field: 'status', options: [
+        { label: 'won', value: 'Won' },
+        { label: 'lost', value: 'Lost' },
+        { label: 'created', value: 'Created' },
       ] },
-    { type: 'date', header: 'Created From', field: 'createdFrom'},
+    { type: 'date', header: 'created_from', field: 'createdFrom'},
     {type:'button',header: 'filter',}];
   public tableAttConfiguration:TableAttribute[]=[
     {width:1200}

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 export interface sortAttConfiguration {
   label?:string;
 }
-
 export interface sortConfiguration {
   name:string;
   action: (row: any) => void;
@@ -22,8 +21,7 @@ export class SortComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   public showSort():void{
     this.sort=!this.sort;
   }

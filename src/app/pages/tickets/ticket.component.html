@@ -1,7 +1,7 @@
 
 <app-button *ngIf="!filterShow" class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button>
 <div>
-  <app-sort *ngIf="filterShow" [attconfiguration]="sortattConfiguration" [configuration]="sortConfiguration"></app-sort>
+  <app-sort *ngIf="filterShow" [attconfiguration]="sortAttConfiguration" [configuration]="sortConfiguration"></app-sort>
 
   <app-form *ngIf="filterShow" [configuration]="filterConfiguration" (formSubmit)="applyFilter($event)"></app-form>
 </div>

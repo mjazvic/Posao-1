@@ -19,10 +19,6 @@
   align-items: center;
   margin: 20px;
 }
-app-sort{
-  position: relative;
-  left: 10%;
-}
 div {
   margin-top: 50px;
   display: flex;
@@ -30,6 +26,8 @@ div {
   gap: 16px;
   app-sort{
     margin-top: 25px;
+    position: relative;
+    left: 10%;
   }
   app-form{
     position: fixed;

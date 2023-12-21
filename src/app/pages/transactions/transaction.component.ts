@@ -36,8 +36,8 @@ export class TransactionComponent implements OnInit {
     {name:'date', value:'date', action: value=>this.sortTransactions(value) }];
 
   public filterConfiguration: FormField[] =[
-    { type: 'input',  header: 'Username',   field: 'username'},
-    { type: 'input',  header: 'Player ID',  field: 'playerId'},
+    { type: 'input',  header: 'username',   field: 'username'},
+    { type: 'input',  header: 'player_id',  field: 'playerId'},
     { type: 'select', header: 'type',       field: 'type', options: [
         { label: 'PaymentProviderWithdraw', value: 'PaymentProviderWithdraw' },
         { label: 'PaymentProviderDeposit', value: 'PaymentProviderDeposit' },
@@ -49,7 +49,7 @@ export class TransactionComponent implements OnInit {
         { label: 'PaymentProvider', value: 'PaymentProvider' },
         { label: 'Sport', value: 'Sport' },
       ] },
-    { type: 'date', header: 'Created From', field: 'createdFrom'},
+    { type: 'date', header: 'created_from', field: 'createdFrom'},
     { type:'button',header: 'filter'}
   ];
   public tableAttConfiguration:TableAttribute[]=[

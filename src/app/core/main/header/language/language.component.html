@@ -1,11 +1,4 @@
 <div>
-  <mat-label class="label">{{ 'language' | translate }}</mat-label>
-  <mat-select class="select" [(ngModel)]="selectedLanguage" (selectionChange)="changeLang(selectedLanguage)">
-    <mat-option  class="option" [value]="'en'">
-      {{ 'English' }}
-    </mat-option>
-    <mat-option  class="option" [value]="'hr'">
-      {{ 'Croatian' }}
-    </mat-option>
-  </mat-select>
+  <img src="/assets/branding/lang-eng.png" alt="English" (click)="changeLang('en')" [style.cursor]="'pointer'"/>
+  <img src="/assets/branding/lang-cro.png" alt="Croatian" (click)="changeLang('hr')" [style.cursor]="'pointer'"/>
 </div>

@@ -49,7 +49,6 @@ export class HeaderComponent implements OnInit {
     } else {this.title= 'Main page'}
     this.loaderService.hideLoader()
   }
-
   private getPlayer(playerId: string | null): void {
    this.player=players.find(player =>player.id===playerId)
   }
