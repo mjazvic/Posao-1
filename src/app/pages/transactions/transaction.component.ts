@@ -10,6 +10,8 @@ import {TicketService} from "../../core/services/ticket.service";
 import {Player} from "../../core/models/player.model";
 import {FormField} from "../../shared/form/form.component";
 import {TableColumn} from "../../shared/table/table.component";
+import {sortConfiguration} from "../../sort/sort.component";
+
 
 @Component({
   selector: 'app-transaction',
@@ -24,7 +26,13 @@ export class TransactionComponent implements OnInit {
   public transactions:any=this.transactionService.getTransactions(this.filter)
   public filterShow: boolean = false;
   public ticket: Ticket;
+  public sortSwitch:boolean=false;
   public selectedTicket:Ticket;
+  public sortConfiguration: sortConfiguration[]=[
+    {name:'amount', value:'amount', action: value=>this.sortTransactions(value),label:'Sort by'},
+    {name:'id', value:'id', action: value=>this.sortTransactions(value) },
+    {name:'date', value:'date', action: value=>this.sortTransactions(value) }];
+
   public filterConfiguration: FormField[] =[
     { type: 'input',  header: 'Username',   field: 'username'},
     { type: 'input',  header: 'Player ID',  field: 'playerId'},
@@ -99,4 +107,23 @@ export class TransactionComponent implements OnInit {
     const player: Player = players.find(player => player.id === transaction.playerId);
     return player.username;
   }
+
+  public sortTransactions(formatType: string): void {
+    this.sortSwitch=!this.sortSwitch;
+    switch (formatType) {
+      case 'amount':
+        if(this.sortSwitch){ this.transactions = this.transactions.slice().sort((a, b) => a.amount - b.amount);}
+        else { this.transactions = this.transactions.slice().sort((a, b) => b.amount - a.amount);}
+        break;
+      case 'id':
+        if(this.sortSwitch){ this.transactions = this.transactions.slice().sort((a, b) => a.id - b.id); }
+        else {this.transactions = this.transactions.slice().sort((a, b) => b.id - a.id); }
+        break;
+      case 'date':
+        if(this.sortSwitch){ this.transactions = this.transactions.slice().sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());}
+        else {this.transactions = this.transactions.slice().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());}
+        break;
+    }
+  }
+
 }

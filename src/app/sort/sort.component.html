@@ -1,0 +1,8 @@
+<div class="sort" *ngIf="!sort">
+  <app-button buttonName="{{configuration[0]?.label | translate }}" (click)="showSort()">Sort by:</app-button>
+</div>
+<div *ngIf="sort" class="sort">
+  <ng-container *ngFor="let item of configuration">
+  <app-button buttonName="{{item.name | translate }}" (click)="item.action(item.value)"></app-button>
+  </ng-container>
+</div>

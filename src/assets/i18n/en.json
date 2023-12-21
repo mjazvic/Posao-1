@@ -1,5 +1,9 @@
 {
-      "Pay in": "Pay ",
+      "Sort by": "Sort by",
+      "date": "Date",
+      "pay in": "Pay in",
+      "pay out": "Pay in",
+      "Pay in": "Pay in",
       "ID": "ID",
       "EUR": "€",
       "created": "Created",

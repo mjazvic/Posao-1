@@ -46,10 +46,12 @@
 </div>
 <div  *ngIf="hasGrant('CanViewTickets')">
 <h2>{{'tickets' | translate }}</h2>
+  <app-sort [configuration]="ticketSortConfiguration"></app-sort>
 <app-table [configuration]="ticketTableConfiguration"  [data]="tickets" ></app-table>
 </div>
 <app-ticketPopUp [ticket]="selectedTicket"></app-ticketPopUp>
 <div *ngIf="hasGrant('CanViewTransactions')">
 <h2>{{ 'transactions' | translate }}</h2>
+  <app-sort [configuration]="transactionSortConfiguration"></app-sort>
 <app-table [configuration]="transactionTableConfiguration"  [data]="transactions" ></app-table>
 </div>

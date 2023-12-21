@@ -10,6 +10,7 @@ import {LoaderService} from "../../core/services/loader/loader.service";
 import {Player} from "../../core/models/player.model";
 import {TableColumn} from "../../shared/table/table.component";
 import {FormField} from "../../shared/form/form.component";
+import {sortConfiguration} from "../../sort/sort.component";
 
 @Component({
   selector: 'app-tickets',
@@ -24,6 +25,11 @@ export class TicketComponent implements  OnInit{
   public selectedTransactions:Transaction[];
   protected readonly players:Player[] = players;
   public selectedTicket:Ticket;
+  public sortSwitch:boolean=false;
+  public sortConfiguration: sortConfiguration[]=[
+    {name:'pay in', value:'payInAmount', action: value=>this.sortTickets(value),label:'Sort by'},
+    {name:'pay out', value:'payOutAmount', action: value=>this.sortTickets(value) },
+    {name:'date', value:'date', action: value=>this.sortTickets(value) }];
   public filterConfiguration: FormField[] = [
     { type: 'input', header: 'Username', field: 'username'},
     { type: 'input', header: 'Player ID', field: 'playerId'},
@@ -33,8 +39,7 @@ export class TicketComponent implements  OnInit{
         { label: 'Created', value: 'Created' },
       ] },
     { type: 'date', header: 'Created From', field: 'createdFrom'},
-    {type:'button',header: 'filter',}
-  ];
+    {type:'button',header: 'filter',}];
   public tableConfiguration: TableColumn[] = [
       { type: 'column', header: 'ID', field: 'id',format:'string',tableWidth:1200},
       { type: 'column', header: 'player_id', field: 'playerId',format:'string'},
@@ -100,18 +105,23 @@ export class TicketComponent implements  OnInit{
     return player.username;
   }
 
-  public sortTicketsByPayIn(): void {
-    this.tickets= this.tickets.slice().sort((a, b) => b.payInAmount - a.payInAmount);
+  sortTickets(formatType: string): void {
+    this.sortSwitch=!this.sortSwitch;
+    switch (formatType) {
+      case 'payInAmount':
+        if(this.sortSwitch){ this.tickets = this.tickets.slice().sort((a, b) => a.payInAmount - b.payInAmount);}
+        else { this.tickets = this.tickets.slice().sort((a, b) => b.payInAmount - a.payInAmount);}
+        break;
+      case 'payOutAmount':
+        if(this.sortSwitch){ this.tickets = this.tickets.slice().sort((a, b) => a.payOutAmount - b.payOutAmount); }
+        else {this.tickets = this.tickets.slice().sort((a, b) => b.payOutAmount - a.payOutAmount); }
+        break;
+      case 'date':
+        if(this.sortSwitch){ this.tickets = this.tickets.slice().sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());}
+        else {this.tickets = this.tickets.slice().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());}
+        break;
+    }
   }
-  public sortTicketsByPayOut(): void {
-    let change:boolean=false;
-    change=!change
-    if(change)  { this.tickets= this.tickets.slice().sort((a, b) => b.payOutAmount - a.payOutAmount); }
-    else  { this.tickets= this.tickets.slice().sort((a, b) => a.payOutAmount - b.payOutAmount);}
-  }
-
-  public showSort():boolean{
-    return true;
-  }
-
 }
+
+

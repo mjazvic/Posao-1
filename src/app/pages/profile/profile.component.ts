@@ -11,6 +11,7 @@ import {Grant, User} from "../../core/models/user.model";
 import {UserService} from "../../core/services/user.service";
 import {players} from "../../data/player.data";
 import {TableColumn} from "../../shared/table/table.component";
+import {sortConfiguration} from "../../sort/sort.component";
 
 @Component({
   selector: 'app-profile',
@@ -32,6 +33,14 @@ export class ProfileComponent implements OnInit {
   public created:number;
   public saldo:number=0;
   public selectedTicket:Ticket;
+  public sortSwitch:boolean=false;
+  public ticketSortConfiguration: sortConfiguration[]=[
+    {name:'pay in', value:'payInAmount', action: value=>this.sortTickets(value),label:'Sort by'},
+    {name:'pay out', value:'payOutAmount', action: value=>this.sortTickets(value) },
+    {name:'date', value:'date', action: value=>this.sortTickets(value) }];
+  public transactionSortConfiguration: sortConfiguration[]=[
+    {name:'amount', value:'amount', action: value=>this.sortTransactions(value),label:'Sort by'},
+    {name:'date', value:'date', action: value=>this.sortTransactions(value) }];
   public ticketTableConfiguration: TableColumn[] = [
     { type: 'column', header: 'ID', field: 'id',format:'string',tableWidth:1100 },
     { type: 'column', header: 'player_id', field: 'playerId',format:'string' },
@@ -66,7 +75,7 @@ export class ProfileComponent implements OnInit {
       this.playerId = params['playerId'] });
       this.loadTickets();
       this.loadTransactions();
-      this.get();
+      this.getPlayer();
       this.getDetails();
       this.loaderService.hideLoader()
   }
@@ -107,13 +116,6 @@ export class ProfileComponent implements OnInit {
     });
     this.loaderService.hideLoader();
   }
-  private get():void{
-    this.loaderService.showLoader();
-    for(let player of players){
-      if(player.id===this.playerId){
-        this.player=player;}}
-    this.loaderService.hideLoader();}
-
   private  getDetails():void {
     this.loaderService.showLoader();
     this.ticketFilter.status = TicketStatus.Won;
@@ -152,6 +154,38 @@ export class ProfileComponent implements OnInit {
 
   public getBets(ticket:Ticket):void{
     this.selectedTicket=ticket;
+  }
+
+  sortTickets(formatType: string): void {
+    this.sortSwitch=!this.sortSwitch;
+    switch (formatType) {
+      case 'payInAmount':
+        if(this.sortSwitch){ this.tickets = this.tickets.slice().sort((a:Ticket, b:Ticket) => a.payInAmount - b.payInAmount);}
+        else { this.tickets = this.tickets.slice().sort((a:Ticket, b:Ticket) => b.payInAmount - a.payInAmount);}
+        break;
+      case 'payOutAmount':
+        if(this.sortSwitch){ this.tickets = this.tickets.slice().sort((a:Ticket, b:Ticket) => a.payOutAmount - b.payOutAmount); }
+        else {this.tickets = this.tickets.slice().sort((a:Ticket, b:Ticket) => b.payOutAmount - a.payOutAmount); }
+        break;
+      case 'date':
+        if(this.sortSwitch){ this.tickets = this.tickets.slice().sort((a:Ticket, b:Ticket) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());}
+        else {this.tickets = this.tickets.slice().sort((a:Ticket, b:Ticket) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());}
+        break;
+    }
+  }
+
+  public sortTransactions(formatType: string): void {
+    this.sortSwitch=!this.sortSwitch;
+    switch (formatType) {
+      case 'amount':
+        if(this.sortSwitch){ this.transactions = this.transactions.slice().sort((a:Transaction, b:Transaction) => a.amount - b.amount);}
+        else { this.transactions = this.transactions.slice().sort((a:Transaction, b:Transaction) => b.amount - a.amount);}
+        break;
+      case 'date':
+        if(this.sortSwitch){ this.transactions = this.transactions.slice().sort((a:Transaction, b:Transaction) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());}
+        else {this.transactions = this.transactions.slice().sort((a:Transaction, b:Transaction) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());}
+        break;
+    }
   }
 
 }

@@ -40,6 +40,7 @@ import { DatePipe } from "./core/pipes/date.pipe";
 import { DynamicFormatPipe } from "./core/pipes/main.pipe";
 import {EmailPipe} from "./core/pipes/email.pipe";
 import { StringPipe } from './core/pipes/string.pipe';
+import { SortComponent } from './sort/sort.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { StringPipe } from './core/pipes/string.pipe';
     DynamicFormatPipe,
     EmailPipe,
     StringPipe,
+    SortComponent,
   ],
   imports: [
     RouterModule.forRoot([
