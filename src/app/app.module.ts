@@ -40,7 +40,7 @@ import { DatePipe } from "./core/pipes/date.pipe";
 import { DynamicFormatPipe } from "./core/pipes/main.pipe";
 import {EmailPipe} from "./core/pipes/email.pipe";
 import { StringPipe } from './core/pipes/string.pipe';
-import { SortComponent } from './sort/sort.component';
+import { SortComponent } from './shared/sort/sort.component';
 
 @NgModule({
   declarations: [

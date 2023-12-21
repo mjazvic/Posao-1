@@ -11,7 +11,7 @@ import {Grant, User} from "../../core/models/user.model";
 import {UserService} from "../../core/services/user.service";
 import {players} from "../../data/player.data";
 import {TableColumn} from "../../shared/table/table.component";
-import {sortConfiguration} from "../../sort/sort.component";
+import {sortConfiguration} from "../../shared/sort/sort.component";
 
 @Component({
   selector: 'app-profile',

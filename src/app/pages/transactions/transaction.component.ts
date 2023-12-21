@@ -10,7 +10,7 @@ import {TicketService} from "../../core/services/ticket.service";
 import {Player} from "../../core/models/player.model";
 import {FormField} from "../../shared/form/form.component";
 import {TableColumn} from "../../shared/table/table.component";
-import {sortConfiguration} from "../../sort/sort.component";
+import {sortConfiguration} from "../../shared/sort/sort.component";
 
 
 @Component({

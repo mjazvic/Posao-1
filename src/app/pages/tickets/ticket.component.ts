@@ -10,7 +10,7 @@ import {LoaderService} from "../../core/services/loader/loader.service";
 import {Player} from "../../core/models/player.model";
 import {TableColumn} from "../../shared/table/table.component";
 import {FormField} from "../../shared/form/form.component";
-import {sortConfiguration} from "../../sort/sort.component";
+import {sortConfiguration} from "../../shared/sort/sort.component";
 
 @Component({
   selector: 'app-tickets',
