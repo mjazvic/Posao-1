@@ -9,8 +9,8 @@ import {UserService} from "../../core/services/user.service";
 import {TicketService} from "../../core/services/ticket.service";
 import {Player} from "../../core/models/player.model";
 import {FormField} from "../../shared/form/form.component";
-import {TableColumn} from "../../shared/table/table.component";
-import {sortConfiguration} from "../../shared/sort/sort.component";
+import {TableAttribute, TableColumn} from "../../shared/table/table.component";
+import {sortAttConfiguration, sortConfiguration} from "../../shared/sort/sort.component";
 
 
 @Component({
@@ -28,6 +28,8 @@ export class TransactionComponent implements OnInit {
   public ticket: Ticket;
   public sortSwitch:boolean=false;
   public selectedTicket:Ticket;
+  public sortattConfiguration:sortAttConfiguration[]=[
+    {label:'Sort by'}]
   public sortConfiguration: sortConfiguration[]=[
     {name:'amount', value:'amount', action: value=>this.sortTransactions(value),label:'Sort by'},
     {name:'id', value:'id', action: value=>this.sortTransactions(value) },
@@ -50,8 +52,11 @@ export class TransactionComponent implements OnInit {
     { type: 'date', header: 'Created From', field: 'createdFrom'},
     { type:'button',header: 'filter'}
   ];
+  public tableAttConfiguration:TableAttribute[]=[
+    {width:1500}
+  ]
   public tableConfiguration: TableColumn[] = [
-    { type: 'column', header: 'ID',         field: 'id',format:'string',tableWidth:1500},
+    { type: 'column', header: 'ID',         field: 'id',format:'string'},
     { type: 'column', header: 'player_id',  field: 'playerId',format:'string' },
     { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value),format:'string'},
     { type: 'column', header: 'created_at', field: 'createdAt', format:'date' },

@@ -10,8 +10,8 @@ import {LoaderService} from "../../core/services/loader/loader.service";
 import {Grant, User} from "../../core/models/user.model";
 import {UserService} from "../../core/services/user.service";
 import {players} from "../../data/player.data";
-import {TableColumn} from "../../shared/table/table.component";
-import {sortConfiguration} from "../../shared/sort/sort.component";
+import {TableAttribute, TableColumn} from "../../shared/table/table.component";
+import {sortAttConfiguration, sortConfiguration} from "../../shared/sort/sort.component";
 
 @Component({
   selector: 'app-profile',
@@ -34,6 +34,8 @@ export class ProfileComponent implements OnInit {
   public saldo:number=0;
   public selectedTicket:Ticket;
   public sortSwitch:boolean=false;
+  public sortattConfiguration:sortAttConfiguration[]=[
+    {label:'Sort by'}]
   public ticketSortConfiguration: sortConfiguration[]=[
     {name:'pay in', value:'payInAmount', action: value=>this.sortTickets(value),label:'Sort by'},
     {name:'pay out', value:'payOutAmount', action: value=>this.sortTickets(value) },
@@ -41,8 +43,11 @@ export class ProfileComponent implements OnInit {
   public transactionSortConfiguration: sortConfiguration[]=[
     {name:'amount', value:'amount', action: value=>this.sortTransactions(value),label:'Sort by'},
     {name:'date', value:'date', action: value=>this.sortTransactions(value) }];
+  public tableAttConfiguration:TableAttribute[]=[
+    {width:1100}
+  ]
   public ticketTableConfiguration: TableColumn[] = [
-    { type: 'column', header: 'ID', field: 'id',format:'string',tableWidth:1100 },
+    { type: 'column', header: 'ID', field: 'id',format:'string'},
     { type: 'column', header: 'player_id', field: 'playerId',format:'string' },
     { type: 'column', header: 'created_at', field: 'createdAt',format:'date'},
     { type: 'bind',   header: 'pay_in_amount', field1: 'payInAmount', field2: 'currency',format:'number'},
@@ -51,7 +56,7 @@ export class ProfileComponent implements OnInit {
     { type: 'action', header: 'bets',format:'button',action: value =>this.getBets(value), grant:this.hasGrant('CanViewTickets'),image:'/assets/branding/ticket.png'},
   ];
   public transactionTableConfiguration: TableColumn[] = [
-    { type: 'column', header: 'ID', field: 'id',format:'string',tableWidth:1100 },
+    { type: 'column', header: 'ID', field: 'id',format:'string'},
     { type: 'column', header: 'player_id', field: 'playerId',format:'string' },
     { type: 'column', header: 'created_at', field: 'createdAt',format:'date' },
     { type: 'column', header: 'type', field: 'type',format:'string' },

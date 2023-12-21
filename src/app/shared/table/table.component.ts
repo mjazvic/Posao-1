@@ -1,5 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 
+
+export interface TableAttribute{
+  width?:number;
+}
 export interface TableColumn {
   type: 'column' | 'action' | 'exData' | 'bind';
   header: string;
@@ -21,7 +25,8 @@ export interface TableColumn {
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  @Input() configuration: any[]=[];
+  @Input() columnConfiguration: any[]=[];
+  @Input() attributeConfiguration:any;
   @Input() data: any[]=[];
 
 

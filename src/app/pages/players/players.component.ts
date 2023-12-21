@@ -4,7 +4,7 @@ import { players } from "../../data/player.data";
 import { Player } from "../../core/models/player.model";
 import { Transaction } from "../../core/models/transaction.model";
 import { Router } from "@angular/router";
-import { TableColumn } from "../../shared/table/table.component";
+import {TableAttribute, TableColumn} from "../../shared/table/table.component";
 
 @Component({
   selector: 'app-players',
@@ -14,9 +14,11 @@ import { TableColumn } from "../../shared/table/table.component";
 export class PlayersComponent implements OnInit {
   protected readonly players:Player[] = players;  tickets: Ticket[];
   public transactions: Transaction[];
-
+  public tableAttConfiguration:TableAttribute[]=[
+    {width:1000}
+  ]
   public tableConfiguration: TableColumn[] = [
-    {type: 'column', header: 'ID',          field: 'id',format:'string',tableWidth:1000},
+    {type: 'column', header: 'ID',          field: 'id',format:'string'},
     {type: 'column', header: 'username',    field: 'username',format:'string'},
     {type: 'column', header: 'firstname',   field: 'firstName',format:'string'},
     {type: 'column', header: 'lastname',    field: 'lastName',format:'string'},

@@ -8,9 +8,9 @@ import {Transaction} from "../../core/models/transaction.model";
 import {players} from "../../data/player.data";
 import {LoaderService} from "../../core/services/loader/loader.service";
 import {Player} from "../../core/models/player.model";
-import {TableColumn} from "../../shared/table/table.component";
+import {TableAttribute, TableColumn} from "../../shared/table/table.component";
 import {FormField} from "../../shared/form/form.component";
-import {sortConfiguration} from "../../shared/sort/sort.component";
+import {sortAttConfiguration, sortConfiguration} from "../../shared/sort/sort.component";
 
 @Component({
   selector: 'app-tickets',
@@ -26,8 +26,10 @@ export class TicketComponent implements  OnInit{
   protected readonly players:Player[] = players;
   public selectedTicket:Ticket;
   public sortSwitch:boolean=false;
+  public sortattConfiguration:sortAttConfiguration[]=[
+    {label:'Sort by'}]
   public sortConfiguration: sortConfiguration[]=[
-    {name:'pay in', value:'payInAmount', action: value=>this.sortTickets(value),label:'Sort by'},
+    {name:'pay in', value:'payInAmount', action: value=>this.sortTickets(value)},
     {name:'pay out', value:'payOutAmount', action: value=>this.sortTickets(value) },
     {name:'date', value:'date', action: value=>this.sortTickets(value) }];
   public filterConfiguration: FormField[] = [
@@ -40,8 +42,11 @@ export class TicketComponent implements  OnInit{
       ] },
     { type: 'date', header: 'Created From', field: 'createdFrom'},
     {type:'button',header: 'filter',}];
+  public tableAttConfiguration:TableAttribute[]=[
+    {width:1200}
+  ]
   public tableConfiguration: TableColumn[] = [
-      { type: 'column', header: 'ID', field: 'id',format:'string',tableWidth:1200},
+      { type: 'column', header: 'ID', field: 'id',format:'string'},
       { type: 'column', header: 'player_id', field: 'playerId',format:'string'},
       { type: 'exData', header: 'username',   action: value=> this.findPlayerById(value),format:'string'},
       { type: 'column', header: 'created_at', field: 'createdAt',format:'date'},
@@ -83,7 +88,6 @@ export class TicketComponent implements  OnInit{
       createdTo: formValues.createdTo,};
     const username:string=formValues.username;
     this.loadTickets(ticketFilter,username);
-    this.loaderService.hideLoader();
   }
   public hasGrant(grant: Grant | string): boolean {
     const currentUser:User = this.userService.getCurrentUser();

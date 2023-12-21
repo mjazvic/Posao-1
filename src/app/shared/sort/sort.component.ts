@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+export interface sortAttConfiguration {
+  label?:string;
+}
 
 export interface sortConfiguration {
   name:string;
@@ -13,13 +16,14 @@ export interface sortConfiguration {
 })
 export class SortComponent implements OnInit {
   @Input() configuration:any;
+  @Input() attconfiguration:any;
+
   public sort:boolean=false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
   public showSort():void{
     this.sort=!this.sort;
   }

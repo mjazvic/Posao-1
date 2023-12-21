@@ -1,7 +1,8 @@
-<table [style.width.px]="configuration[0]?.tableWidth">
+<ng-container *ngFor="let item of attributeConfiguration">
+<table [style.width.px]="item.width">
   <thead class="header">
   <tr>
-    <ng-container *ngFor="let column of configuration">
+    <ng-container *ngFor="let column of columnConfiguration">
       <th *ngIf="column.type === 'column' || column.type ==='action' || column.type ==='exData' || column.type ==='bind'">{{ column.header | translate }}</th>
     </ng-container>
   </tr>
@@ -9,7 +10,7 @@
   <tbody>
   <ng-container *ngFor="let row of data trackBy: getRowId">
     <tr>
-      <ng-container  *ngFor="let column of configuration">
+      <ng-container  *ngFor="let column of columnConfiguration">
         <td class= "{{column.format}}"  *ngIf="column.type === 'bind'">{{ row[column.field1] | dynamicFormat: column.format }} {{ row[column.field2] | translate}}</td>
         <td class= "{{column.format}}"  *ngIf="column.type === 'exData'">{{ column.action(row) | translate }}</td>
         <td class= "{{column.format}}"  *ngIf="column.type === 'column'">{{ row[column.field] | dynamicFormat: column.format | translate }}</td>
@@ -19,3 +20,4 @@
   </ng-container>
   </tbody>
 </table>
+</ng-container>
