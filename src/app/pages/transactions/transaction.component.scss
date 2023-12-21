@@ -10,14 +10,12 @@
   position:relative;
   display:flex;
   justify-content: center;
-  margin: 20px;
 }
 .form {
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
-  margin: 20px;
 }
 div {
   margin-top: 50px;
@@ -30,8 +28,8 @@ div {
     left: 10%;
   }
   app-form{
-    position: fixed;
-    right: 10%;
+    position: relative;
+    left: 24%;
   }
 }
 

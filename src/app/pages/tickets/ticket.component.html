@@ -1,5 +1,5 @@
 
-<app-button *ngIf="!filterShow" class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button>
+<app-button  class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button>
 <div>
   <app-sort *ngIf="filterShow" [attconfiguration]="sortAttConfiguration" [configuration]="sortConfiguration"></app-sort>
 
