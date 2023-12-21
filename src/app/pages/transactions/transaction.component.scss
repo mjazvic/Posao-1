@@ -23,7 +23,18 @@ app-sort{
   position: relative;
   left: 10%;
 }
-
-
+div {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  app-sort{
+    margin-top: 25px;
+  }
+  app-form{
+    position: fixed;
+    right: 10%;
+  }
+}
 
 

@@ -1,10 +1,10 @@
 
 <app-button *ngIf="!filterShow" class="filterButton" (click)="showFilter()" buttonName="Filter"></app-button>
+<div>
+  <app-sort *ngIf="filterShow" [configuration]="sortConfiguration"></app-sort>
 
-<app-form *ngIf="filterShow" [configuration]="filterConfiguration" (formSubmit)="applyFilter($event)"></app-form>
-
-<app-sort  [configuration]="sortConfiguration"></app-sort>
-
+  <app-form *ngIf="filterShow" [configuration]="filterConfiguration" (formSubmit)="applyFilter($event)"></app-form>
+</div>
 <app-table  class="table" [configuration]="tableConfiguration" [data]="tickets"></app-table>
 
 <app-transactionPopUp [transactions]="selectedTransactions"></app-transactionPopUp>
