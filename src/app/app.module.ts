@@ -71,6 +71,7 @@ import { SortComponent } from './shared/sort/sort.component';
   ],
   imports: [
     RouterModule.forRoot([
+      {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
       {
         path: '', component: MainComponent,canActivate: [AuthGuard], children: [
           {path: 'tickets', component: TicketComponent },
@@ -79,7 +80,6 @@ import { SortComponent } from './shared/sort/sort.component';
           {path: 'profile',component:ProfileComponent}
         ],
       },
-      {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
     ]),
     BrowserModule,
     FormsModule,
